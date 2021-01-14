@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+@import './colors.scss';
+
+* { min-width: 0; }
+
+html {
+  height: 100%;
+
+  body {
+    margin: 0;
+    background: $primaryDarkColor;
+    height: 100%;
+    font-family: 'Work Sans', sans-serif;
+
+    a {
+      text-decoration: none;
+      color: $linkColor;
+
+      .MuiListItem-root, .MuiListItemIcon-root {
+        color: $whiteMediumColor;
+      }
+    }
+
+    #root {
+      height: 100%;
+      display: flex;
+    }
+
+    .flex-column {
+      display: flex;
+      flex-flow: column;
+    }
+
+    .MuiAppBar-root {
+      box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+      border-radius: 0;
+    }
+
+    .MuiContainer-root {
+      @media (max-width: 530px) {
+        padding: 20px 0 0 0;
+      }
+    }
+
+    .MuiButtonBase-root {
+      border-radius: 30px;
+      padding: 6px 40px;
+      text-transform: none;
+
+      a {
+        color: inherit;
+      }
+
+      &.MuiIconButton-root {
+        padding: 12px;
+        border-radius: 50%;
+        
+        &.MuiIconButton-edgeStart {
+          margin-left: 0;
+        }
+      }
+
+      &.MuiListItem-root {
+        padding: 8px 30px;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        width: auto;
+        margin-right: 10px;
+        transition: all 0.225s;
+
+        &.open {
+          margin-right: 20px;
+        }
+
+        .MuiListItemIcon-root {
+          transition: all 0.225s;
+        }
+
+        &.Mui-selected {
+          background-color: rgba($color: $primaryColor, $alpha: 0.1);
+          color: $primaryColor;
+
+          .MuiListItemIcon-root {
+            color: $primaryColor;
+          }
+        }
+      }
+
+      &.loadingButton {
+        .MuiCircularProgress-root {
+          margin-left: 10px;
+          color: $disabledColor;
+        }
+      }
+    }
+
+    .MuiFormControl-root  {
+      .MuiFormLabel-root, .MuiOutlinedInput-root {
+        &.Mui-error {
+          color: $warningColor;
+
+          .MuiOutlinedInput-notchedOutline {
+            border-color: $warningColor;
+          }
+        }
+      }
+
+      .MuiFormHelperText-root {
+        &.Mui-error {
+          color: $warningColor
+        }
+      }
+    }
+
+    .MuiPaper-root {
+      background: $primaryDarkLightColor;
+      border-radius: 10px;
+
+      &.paperContainer {
+        padding: 50px;
+      }
+
+      &.MuiSnackbarContent-root {
+        background: rgba(#fff, 0.15);
+        color:#fff;
+      }
+
+      &.MuiAppBar-root {
+        padding: 0;
+        box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+        border-radius: 5px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &.MuiDrawer-paper {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding: 0;
+
+        &.MuiDrawer-paperAnchorDockedLeft {
+          border-right: none;
+          box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+        }
+
+        .MuiListItem-root {
+          margin-bottom: 10px;
+        }
+      }
+
+      .title {
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
