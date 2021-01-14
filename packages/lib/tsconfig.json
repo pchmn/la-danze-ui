@@ -5,6 +5,10 @@
     "src",
     "types"
   ],
+  "exclude": [
+    "src/**/*.test.tsx",
+    "src/setupTests.ts"
+  ],
   "compilerOptions": {
     "lib": [
       "DOM",
