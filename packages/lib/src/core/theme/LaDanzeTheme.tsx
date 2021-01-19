@@ -23,10 +23,19 @@ const theme = createMuiTheme({
       '"Helvetica Neue"',
       'Arial'
     ].join(','),
-  }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+  },
 });
 
-export function LaDanzeTheme({ children }: React.PropsWithChildren<any>) {
+export function LaDanzeTheme({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
     <ThemeProvider theme={theme}>
       {children}

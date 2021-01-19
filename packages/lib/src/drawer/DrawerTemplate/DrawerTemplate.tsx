@@ -19,11 +19,15 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(6),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(2),
+      paddingTop: theme.spacing(4)
+    },
     height: 'fit-content'
   }
 }));
 
-export function DrawerTemplate({ children }: React.PropsWithChildren<any>): JSX.Element {
+export function DrawerTemplate({ children }: React.PropsWithChildren<React.ReactNode>): JSX.Element {
   const classes = useStyles();
   const matches = useMediaQuery('(max-width: 600px)');
   const { drawerContainer, mainContainer } = getContainers();
@@ -67,10 +71,10 @@ export function DrawerTemplate({ children }: React.PropsWithChildren<any>): JSX.
   );
 }
 
-export function DrawerContainer({ children }: React.PropsWithChildren<any>): JSX.Element {
-  return children;
+export function DrawerContainer({ children }: React.PropsWithChildren<React.ReactNode>): JSX.Element {
+  return <>{children}</>;
 }
 
-export function MainContainer({ children }: React.PropsWithChildren<any>): JSX.Element {
-  return children;
+export function MainContainer({ children }: React.PropsWithChildren<React.ReactNode>): JSX.Element {
+  return <>{children}</>;
 }
