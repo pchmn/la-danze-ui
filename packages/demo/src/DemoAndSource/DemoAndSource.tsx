@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import { ResizeSensor } from 'css-element-queries';
 import React, { useEffect, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import styles from './DemoAndSource.module.scss';
@@ -20,16 +21,20 @@ export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndS
   const { header, demo, sourceCode } = getContainers();
 
   useEffect(() => {
-    setFixedHeight()
+    autoResizeSourceCode()
   });
 
-  function setFixedHeight() {
+  function autoResizeSourceCode() {
     const paperElt = document.querySelector(`div[data-id*="${id}"] .MuiPaper-root`);
     const sourCodeElt = document.querySelector(`div[data-id*="${id}"] .MuiPaper-root div[class*="sourceCode"]`);
     const actionBarElt = document.querySelector(`div[data-id*="${id}"] .MuiPaper-root div[class*="actionBar"]`);
-    if (paperElt && actionBarElt) {
-      (sourCodeElt as HTMLElement).style.height = `${(paperElt as HTMLElement).clientHeight - (actionBarElt as HTMLElement).clientHeight}px`;
-      (sourCodeElt as HTMLElement).style.display = 'block';
+
+    if (paperElt && actionBarElt && sourCodeElt) {
+      // When "demo" resizes, resize source code as well so they have the same height
+      new ResizeSensor(paperElt, function () {
+        (sourCodeElt as HTMLElement).style.height = `${paperElt.clientHeight - actionBarElt.clientHeight}px`;
+        (sourCodeElt as HTMLElement).style.display = 'block';
+      });
     }
   }
 

@@ -6,11 +6,9 @@
   "homepage": "http://pchmn.github.io/la-danze-ui",
   "scripts": {
     "dev": "vite",
-    "start": "ws -r '/la-danze-ui/(.*) -> /$1' -d dist",
     "build": "tsc && vite build",
     "postbuild": "cp 404.html dist/404.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "serve": "ws -r '/la-danze-ui/demo/(.*) -> /$1' -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -19,6 +17,7 @@
     "@hookform/resolvers": "beta",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "css-element-queries": "^1.2.3",
     "la-danze-ui": "*",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",

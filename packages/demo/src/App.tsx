@@ -8,7 +8,6 @@ import logo from '../logo-48px.png';
 import { AnimationsExample } from './AnimationsExample/AnimationsExample';
 import { FormsExample } from './FormsExample/FormsExample';
 
-
 export function App() {
   const location = useLocation();
   const { switchKey, setSwitchKey } = useAnimateSwitch(location.pathname);

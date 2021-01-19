@@ -82,7 +82,7 @@ export function FormsExample() {
     <div className={styles.formsExample}>
       <DemoAndSource id="FormsExample">
         <Header>
-          <h2><pre>ReactHookForm</pre> and <pre>FormField</pre></h2>
+          <h1><pre>ReactHookForm</pre> and <pre>FormField</pre></h1>
           <span>
             Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>ReactHookForm</pre> and <pre>FormField</pre> components.
           </span>
@@ -100,15 +100,6 @@ export function FormsExample() {
             <Button className={styles.submitButton} disabled={loading} variant="contained" color="primary" type="submit">
               Validate
               </Button>
-          </ReactHookForm>
-
-          <ReactHookForm form={form2} onSubmit={form2.handleSubmit(onSubmit)}>
-            <FormField name="email" as={TextField} rules={{ required: true }} label="Email" />
-            <FormField type="password" name="password" as={TextField} rules={{ required: true }} label="Password" />
-
-            <button type="submit">
-              Validate
-            </button>
           </ReactHookForm>
         </Demo>
 

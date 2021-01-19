@@ -1,13 +1,14 @@
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [reactRefresh()],
   build: {
-    base: '/la-danze-ui'
+    base: '/la-danze-ui/demo'
   },
   alias: {
-    // 'la-danze-ui': path.resolve(__dirname, '../lib/src/index.tsx'),
+    'la-danze-ui': path.resolve(__dirname, '../lib/src/index.tsx'),
   },
   optimizeDeps: {
     include: [
