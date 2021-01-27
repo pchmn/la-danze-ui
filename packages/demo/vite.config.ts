@@ -37,8 +37,9 @@ export default defineConfig({
       "@material-ui/core/Radio",
       "@material-ui/core/RadioGroup",
       "@material-ui/core/Snackbar",
-      "@material-ui/icons/FileCopyOutlined"
-
+      "@material-ui/icons/FileCopyOutlined",
+      "@material-ui/core/StyledEngineProvider",
+      "tslib"
     ]
   },
   css: {
