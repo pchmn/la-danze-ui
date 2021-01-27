@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[26],{98:function(a){a.exports=JSON.parse('{"allTagsPath":"/la-danze-ui/doc/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/la-danze-ui/doc/blog/tags/facebook"}')}}]);
