@@ -16,14 +16,138 @@ import React from "react";
 import { LinkProps } from "react-router-dom";
 import { RouterLink } from "../../core/components/RouterLink/RouterLink";
 import { useLaDanzeDrawer } from "./LaDanzeDrawer.hooks";
-import styles from './LaDanzeDrawer.module.scss';
+// import styles from './LaDanzeDrawer.module.scss';
 
 export interface LaDanzeDrawerProps {
-  logoSrc: string;
+  logo: string;
+  title: string;
 }
+const drawerWidth = 290;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    padding: '0',
+    borderRadius: '0',
+    background: theme.palette.background.paper
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+    transition: 'all 0.225s'
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+  },
+  drawerOpen: {
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    [theme.breakpoints.down('sm')]: {
+      // width: '75%'
+    },
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(9) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: '85px',
+    },
+  },
+  toolbar: {
+    // display: 'flex',
+    // alignItems: 'center',
+    // justifyContent: 'flex-end',
+    // padding: theme.spacing(0, 1),
+    height: '150px',
+    position: 'relative',
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  },
+  logo: {
+    position: 'absolute',
+    top: '15px',
+    left: '18.5px',
+    transition: theme.transitions.create('all', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    '&.logoOpen': {
+      top: '50%',
+      transform: 'translateY(-50%)'
+    },
+    [theme.breakpoints.down('sm')]: {
+      top: '50%',
+      transform: 'translateY(-50%)'
+    },
+    '& img': {
+      width: '48px',
+      verticalAlign: 'middle'
+    },
+    '& span': {
+      marginLeft: '20px'
+    },
+  },
+  toggleButton: {
+    position: 'absolute',
+    top: '85px',
+    left: '50%',
+    transform: 'translateX(-25%)',
+    transition: theme.transitions.create('all', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    },
+    '&.toggleButtonOpen': {
+      transform: 'rotate(180deg) translateY(50%)',
+      right: '18.5px',
+      left: '230px',
+      top: '50%',
+    }
+  },
+  listItem: {
+    padding: '8px 15px',
+    margin: '0 15px 10px 15px',
+    width: 'auto',
+    borderRadius: '4px',
+    '& .MuiListItemIcon-root': {
+      color: theme.palette.grey[400]
+    },
+    '& .MuiListItemText-root span': {
+      fontSize: '0.95rem',
+      fontWeight: 500,
+      color: theme.palette.grey[400]
+    },
+    '&.selected': {
+      '& .MuiListItemIcon-root': {
+        color: theme.palette.primary.main
+      },
+      '& .MuiListItemText-root span': {
+        color: theme.palette.primary.main
+      },
+    }
+  }
+}));
 
-export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaDanzeDrawerProps>): JSX.Element {
-  const { classes, open, setOpen } = useLaDanzeDrawer();
+export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren<LaDanzeDrawerProps>): JSX.Element {
+  const { open, setOpen } = useLaDanzeDrawer();
+  const classes = useStyles();
   const matches = useMediaQuery('(max-width: 600px)');
 
   function toggleDrawer() {
@@ -46,10 +170,10 @@ export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaD
   function DrawerContent() {
     return (
       <>
-        <div className={styles.toolbar}>
-          <div className={`${styles.logo} ${open ? styles.logoOpen : ''}`}>
-            <img src={logoSrc} alt="logo" />
-            <span>La Danze en LDC</span>
+        <div className={classes.toolbar}>
+          <div className={`${classes.logo} ${open ? 'logoOpen' : ''}`}>
+            <img src={logo} alt="logo" />
+            <span>{title}</span>
           </div>
           <Hidden xsDown implementation="css">
             <IconButton
@@ -57,13 +181,13 @@ export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaD
               aria-label="open drawer"
               onClick={toggleDrawer}
               edge="start"
-              className={`${styles.toggleButton} ${open ? styles.toggleButtonOpen : ''}`}
+              className={`${classes.toggleButton} ${open ? 'toggleButtonOpen' : ''}`}
             >
               <ChevronRightOutlinedIcon />
             </IconButton>
           </Hidden>
         </div>
-        <List className={`${styles.drawerList} ${open ? styles.drawerListOpen : ''}`}>
+        <List>
           {childrenWithProps()}
         </List>
       </>
@@ -95,7 +219,10 @@ export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaD
             variant="temporary"
             anchor={'left'}
             open={open}
-            className={`${styles.LaDanzeDrawer} ${styles.MobileDrawer}`}
+            className={clsx(classes.drawer, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            })}
             onClose={toggleDrawer}
             onOpen={toggleDrawer}
             ModalProps={{
@@ -110,7 +237,7 @@ export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaD
           className={`${clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          })} ${styles.LaDanzeDrawer}`}
+          })}`}
           classes={{
             paper: clsx({
               [classes.drawerOpen]: open,
@@ -129,7 +256,6 @@ export function LaDanzeDrawer({ children, logoSrc }: React.PropsWithChildren<LaD
 
 interface DrawerListItemProps extends LinkProps {
   title: string;
-  open?: boolean;
   selected?: boolean;
   to: string;
   onClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
@@ -143,13 +269,25 @@ const useStylesBootstrap = makeStyles(() => ({
   },
 }));
 
-export function DrawerListItem({ children, open, title, selected, to, onClick, elementOnClick, ...otherProps }: DrawerListItemProps): JSX.Element {
-  const classes = useStylesBootstrap();
+export function DrawerListItem({ children, title, selected, to, onClick, elementOnClick, ...otherProps }: DrawerListItemProps): JSX.Element {
+  const tooltipClasses = useStylesBootstrap();
+  const classes = useStyles();
+  const { open, setOpen } = useLaDanzeDrawer();
+  const matches = useMediaQuery('(max-width: 600px)');
+
+  function handleOnClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    if (matches) {
+      setOpen(false);
+    }
+    if (onClick) {
+      onClick(event);
+    }
+  }
 
   return (
-    <RouterLink to={to} onClick={onClick} elementOnClick={elementOnClick} {...otherProps}>
-      <Tooltip classes={classes} title={open ? '' : title} placement="right">
-        <ListItem selected={selected} button key={title}>
+    <RouterLink to={to} onClick={handleOnClick} elementOnClick={elementOnClick} {...otherProps}>
+      <Tooltip classes={tooltipClasses} title={open ? '' : title} placement="right">
+        <ListItem className={`${classes.listItem} ${selected ? 'selected' : ''}`} selected={selected} button key={title}>
           {children}
         </ListItem>
       </Tooltip>

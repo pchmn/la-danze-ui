@@ -19,7 +19,6 @@ export function FormField({ defaultValue = '', ...props }: Props): JSX.Element {
   return (
     <Controller
       defaultValue={defaultValue}
-      fullWidth={true} size="small" variant="outlined"
       {...props}
     />
   );

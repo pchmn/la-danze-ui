@@ -1,26 +1,35 @@
 import { ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
+import StyledEngineProvider from "@material-ui/core/StyledEngineProvider";
 import React from 'react';
-import "./theme.scss";
+// import 'typeface-work-sans';
+import './theme.scss';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'dark',
+    mode: 'dark',
     primary: {
       main: '#E74C3C',
     },
     secondary: {
       main: '#FFB74D',
     },
+    background: {
+      default: '#18191b',
+      paper: '#242527',
+    },
+    error: {
+      main: '#f48536',
+    }
   },
   typography: {
     fontFamily: [
-      '"Work Sans"',
-      '"Open Sans"',
+      'Work Sans',
+      'Open Sans',
       'sans-serif',
       'BlinkMacSystemFont',
-      '"Segoe UI"',
+      'Segoe UI',
       'Roboto',
-      '"Helvetica Neue"',
+      'Helvetica Neue',
       'Arial'
     ].join(','),
   },
@@ -33,12 +42,59 @@ const theme = createMuiTheme({
       xl: 1920,
     },
   },
+  components: {
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          fontSize: '0.95rem',
+          textTransform: 'initial',
+          // borderRadius: '30px'
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          padding: '3rem',
+          borderRadius: '6px'
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: 'small',
+        fullWidth: true,
+        variant: 'outlined'
+      }
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        // Name of the slot
+        paper: {
+          padding: '0',
+          borderRadius: '0',
+          width: 'inherit'
+        },
+        paperAnchorDockedLeft: {
+          borderRight: 'none',
+          boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
+        }
+      },
+    }
+  },
 });
 
 export function LaDanzeTheme({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        {children}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
