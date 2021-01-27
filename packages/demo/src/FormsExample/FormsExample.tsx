@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { FormField, ReactHookForm } from 'la-danze-ui';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { Demo, DemoAndSource, Header, SourceCode } from '../DemoAndSource/DemoAndSource';
@@ -32,39 +32,7 @@ export function FormsExample() {
   const form = useForm({
     resolver: yupResolver(validationSchema)
   });
-  const form2 = useForm();
   const [loading, setLoading] = useState(false);
-  let drawer: any;
-
-  useEffect(() => {
-    setFixedHeight();
-    classListener();
-  });
-
-  function setFixedHeight() {
-    const paperElts = document.querySelectorAll('div[class*="FormsExample"] .MuiPaper-root');
-    if (paperElts?.length > 1 && !(paperElts[1] as HTMLElement).style.maxHeight) {
-      (paperElts[1] as HTMLElement).style.maxHeight = getComputedStyle(paperElts[0] as HTMLElement).height;
-    }
-  }
-
-  function classListener() {
-    drawer = document.querySelector('div[class*="MuiDrawer"]');
-    var observer = new MutationObserver(function (event: any) {
-      for (let val of event[0]?.target.classList.values()) {
-        if (val.includes('Open')) {
-          console.log('open (with scapp)');
-        }
-      }
-    })
-
-    observer.observe(drawer, {
-      attributes: true,
-      attributeFilter: ['class'],
-      childList: false,
-      characterData: false
-    })
-  }
 
   function onSubmit(values: any) {
     setLoading(true)
@@ -72,10 +40,6 @@ export function FormsExample() {
       setLoading(false);
       console.log('form values', values);
     }, 1000)
-  }
-
-  if (form2.errors) {
-    console.log('form error', form2.errors)
   }
 
   return (

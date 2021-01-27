@@ -5,7 +5,7 @@ export default {
     "margin": "0",
     "color": "#abb2bf",
     "background": "transparent",
-    "fontSize": "1rem",
+    "fontSize": "0.95rem",
     "overflowY": "auto"
   },
   "hljs-comment": {

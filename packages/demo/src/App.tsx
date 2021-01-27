@@ -4,7 +4,7 @@ import SlowMotionVideoOutlinedIcon from '@material-ui/icons/SlowMotionVideoOutli
 import { AnimateRoute, AnimateSwitch, DrawerContainer, DrawerListItem, DrawerTemplate, LaDanzeDrawer, LaDanzeTheme, MainContainer, useAnimateSwitch, useLaDanzeDrawer } from 'la-danze-ui';
 import React from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
-import logo from '../logo-48px.png';
+import logo from '../logo.svg';
 import { AnimationsExample } from './AnimationsExample/AnimationsExample';
 import { FormsExample } from './FormsExample/FormsExample';
 
@@ -17,7 +17,7 @@ export function App() {
 
   function Drawer() {
     return (
-      <LaDanzeDrawer logoSrc={logo}>
+      <LaDanzeDrawer logo={logo} title="La Danze UI">
         <DrawerListItem onClick={() => setSwitchKey("/forms")} to="/forms" title="Forms" selected={location.pathname.includes('/forms')} key="Mon compte">
           <ListItemIcon><ListAltOutlinedIcon /></ListItemIcon>
           <ListItemText primary="Forms" />
@@ -32,7 +32,6 @@ export function App() {
 
   return (
     <LaDanzeTheme>
-      {/* <Button variant="contained" color="secondary">LOL</Button> */}
       <DrawerTemplate>
 
         <DrawerContainer>
