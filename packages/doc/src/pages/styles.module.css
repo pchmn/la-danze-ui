@@ -1,15 +1,25 @@
 /* stylelint-disable docusaurus/copyright-header */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
 
 /**
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+ body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--ifm-background-color);
+ }
+
+.main {
+  background-color: var(--ifm-hero-background-color);
+}
 
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: var(--ifm-background-color);
 }
 
 @media screen and (max-width: 966px) {
@@ -19,9 +29,27 @@
 }
 
 .buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 3rem;
+}
+
+.button {
+  display: inline-block;
+}
+
+.textButton {
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    display: block;
+    width: fit-content;
+    margin: auto;
+  }
+
+  .textButton {
+    margin-top: 15px;
+  }
 }
 
 .features {

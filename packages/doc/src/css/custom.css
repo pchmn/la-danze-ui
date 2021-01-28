@@ -7,13 +7,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #ea5e4f;
-  --ifm-color-primary-dark: #e74433;
-  --ifm-color-primary-darker: #e53825;
-  --ifm-color-primary-darkest: #c42817;
-  --ifm-color-primary-light: #ed786b;
-  --ifm-color-primary-lighter: #ef8479;
-  --ifm-color-primary-lightest: #f4aba3;
+  --ifm-color-primary: #e74c3c;
+  --ifm-color-primary-dark: #e43422;
+  --ifm-color-primary-darker: #dc2d1b;
+  --ifm-color-primary-darkest: #b52516;
+  --ifm-color-primary-light: #ea6456;
+  --ifm-color-primary-lighter: #ec7063;
+  --ifm-color-primary-lightest: #f1938a;
   --ifm-code-font-size: 95%;
 }
 
@@ -22,4 +22,26 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.button {
+  color: #fff;
+  font-weight: 500;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+}
+.button:hover {
+  background-color: rgb(161, 53, 42);
+  color: #fff;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+  border-color: transparent;
+}
+
+.button.textButton {
+  box-shadow: none;
+  border-color: transparent;
+  color: var(--ifm-color-primary);
+}
+
+.button.textButton:hover {
+  background-color: rgba(231, 76, 60, 0.08);
 }

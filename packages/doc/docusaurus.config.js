@@ -1,8 +1,8 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
+  title: 'La Danze UI',
+  tagline: 'React library that provides a clean UI and facilitate animations and building forms',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/la-danze-ui/doc/',
+  baseUrl: '/la-danze-ui/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -14,13 +14,13 @@ module.exports = {
       disableSwitch: true,
     },
     prism: {
-      theme: require('prism-react-renderer/themes/oceanicNext'),
+      theme: require('prism-react-renderer/themes/dracula'),
     },
     navbar: {
       title: 'La Danze UI',
       logo: {
         alt: 'La Danze UI logo',
-        src: 'img/logo-48px.png',
+        src: 'img/logo.svg',
       },
       items: [
         {
@@ -28,6 +28,11 @@ module.exports = {
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
+        },
+        {
+          href: 'https://pchmn.github.io/la-danze-ui/demo',
+          label: 'Demo',
+          position: 'right',
         },
         {
           href: 'https://github.com/pchmn/la-danze-ui',
@@ -38,52 +43,7 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Style Guide',
-        //       to: 'docs/',
-        //     },
-        //     {
-        //       label: 'Second Doc',
-        //       to: 'docs/doc2/',
-        //     },
-        //   ],
-        // },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} La Danze UI Built with Docusaurus.`,
     },
   },
   presets: [

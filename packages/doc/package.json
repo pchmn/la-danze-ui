@@ -9,7 +9,7 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "ws -r '/la-danze-ui/doc/(.*) -> /$1' -d build",
+    "serve": "ws -r '/la-danze-ui/(.*) -> /$1' -d build",
     "clear": "docusaurus clear"
   },
   "dependencies": {
@@ -31,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sass": "^1.32.5"
   }
 }
