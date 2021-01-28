@@ -11,6 +11,7 @@ export default defineConfig({
     'la-danze-ui': path.resolve(__dirname, '../lib/src/index.tsx'),
   },
   optimizeDeps: {
+    exclude: ["prism-react-renderer"],
     include: [
       "@material-ui/core/Button",
       "@material-ui/core/AppBar",
@@ -39,6 +40,7 @@ export default defineConfig({
       "@material-ui/core/Snackbar",
       "@material-ui/icons/FileCopyOutlined",
       "@material-ui/core/StyledEngineProvider",
+      "react-syntax-highlighter/dist/esm/styles/prism/dracula",
       "tslib"
     ]
   },

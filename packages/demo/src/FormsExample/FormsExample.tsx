@@ -73,8 +73,8 @@ export function FormsExample() {
   );
 }
 
-const codeString =
-  `import React from 'react';
+const codeString = `
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { useForm } from 'react-hook-form';
@@ -125,4 +125,5 @@ export function FormsExample() {
       </Button>
     </ReactHookForm>
   );
-}`;
+}
+`.trim();

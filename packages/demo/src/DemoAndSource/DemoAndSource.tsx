@@ -7,10 +7,10 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import { ResizeSensor } from 'css-element-queries';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from "prism-react-renderer/themes/dracula";
 import React, { useEffect, useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import styles from './DemoAndSource.module.scss';
-import atomOneDark from './highlight-theme';
 
 
 interface DemoAndSourceProps {
@@ -106,6 +106,7 @@ interface SourceCodeProps {
 export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.PropsWithChildren<SourceCodeProps>) {
 
   const [open, setOpen] = useState(false);
+  // codeString = '(num) => num + 1';
 
   function copyToCliboard() {
     if (!codeString) {
@@ -154,9 +155,19 @@ export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.
           </Tooltip>
         </div>
         <div className={styles.sourceCode} style={{ display: 'none' }}>
-          <SyntaxHighlighter className={styles.code} language="javascript" style={atomOneDark} wrapLongLines>
-            {codeString}
-          </SyntaxHighlighter>
+          <Highlight {...defaultProps} theme={theme} code={codeString} language="jsx">
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+              <pre className={`${className} ${styles.pre}`} style={style}>
+                {tokens.map((line, i) => (
+                  <div {...getLineProps({ line, key: i })} className={styles.tokenLine}>
+                    {line.map((token, key) => (
+                      <span {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
         </div>
         <Snackbar message="Source code copied !" open={open} autoHideDuration={1500} onClose={() => setOpen(false)} />
       </Paper>
