@@ -42,6 +42,9 @@ const theme = createMuiTheme({
       xl: 1920,
     },
   },
+  shape: {
+    borderRadius: 6
+  },
   components: {
     // Name of the component
     MuiButton: {
@@ -60,8 +63,7 @@ const theme = createMuiTheme({
         // Name of the slot
         root: {
           // Some CSS
-          padding: '3rem',
-          borderRadius: '6px'
+          padding: '3rem'
         },
       },
     },

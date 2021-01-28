@@ -6,7 +6,7 @@ import React from 'react';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flex: 1
+    flex: 1,
   },
   toolbar: {
     display: 'flex',

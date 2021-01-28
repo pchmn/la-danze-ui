@@ -10,7 +10,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ChevronRightOutlinedIcon from '@material-ui/icons/ChevronRightOutlined';
-import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React from "react";
 import { LinkProps } from "react-router-dom";
@@ -28,16 +27,31 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
-    padding: '0',
+    padding: '2px 0',
     borderRadius: '0',
-    background: theme.palette.background.paper
+    background: theme.palette.background.paper,
+    // boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 2px 0px',
+    '& .title': {
+      display: 'inline-block',
+      '& img': {
+        width: '32px',
+        verticalAlign: 'middle',
+        marginRight: '12px'
+      },
+      '& span': {
+        fontWeight: 700,
+        verticalAlign: 'middle'
+      }
+    }
   },
   menuButton: {
-    marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
-    transition: 'all 0.225s'
+    transition: 'all 0.225s',
+    '& svg': {
+      verticalAlign: 'middle'
+    }
   },
   hide: {
     display: 'none',
@@ -54,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     [theme.breakpoints.down('sm')]: {
-      // width: '75%'
+      width: '75%'
     },
   },
   drawerClose: {
@@ -69,19 +83,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'flex-end',
-    // padding: theme.spacing(0, 1),
     height: '150px',
     position: 'relative',
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
+    [theme.breakpoints.down('sm')]: {
+      height: '90px',
+    },
   },
   logo: {
     position: 'absolute',
-    top: '15px',
-    left: '18.5px',
+    top: '20px',
+    paddingLeft: '21.5px',
     transition: theme.transitions.create('all', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -95,11 +108,17 @@ const useStyles = makeStyles((theme) => ({
       transform: 'translateY(-50%)'
     },
     '& img': {
-      width: '48px',
-      verticalAlign: 'middle'
+      width: '42px',
+      verticalAlign: 'middle',
+      marginRight: '21.5px',
+      [theme.breakpoints.down('sm')]: {
+        width: '32px',
+        marginRight: '12px',
+      },
     },
     '& span': {
-      marginLeft: '20px'
+      verticalAlign: 'middle',
+      fontWeight: 700
     },
   },
   toggleButton: {
@@ -122,10 +141,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   listItem: {
-    padding: '8px 15px',
-    margin: '0 15px 10px 15px',
+    padding: '6px 10px',
+    margin: '0 20px 10px 20px',
     width: 'auto',
-    borderRadius: '4px',
+    borderRadius: '6px',
     '& .MuiListItemIcon-root': {
       color: theme.palette.grey[400]
     },
@@ -200,7 +219,7 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
     <>
       {matches
         ? <>
-          <AppBar position="fixed" className={classes.appBar}>
+          <AppBar position="fixed" className={classes.appBar} elevation={1}>
             <Toolbar>
               <IconButton
                 color="inherit"
@@ -209,8 +228,12 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
                 onClick={toggleDrawer}
                 className={classes.menuButton}
               >
-                <MenuIcon />
+                <svg aria-label="Menu" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
               </IconButton>
+              <div className="title">
+                <img src={logo} alt="logo" />
+                <span>{title}</span>
+              </div>
             </Toolbar>
           </AppBar>
 
