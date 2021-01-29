@@ -1,7 +1,8 @@
+import { Form } from "./Form/Form";
 import { FormField } from "./FormField/FormField";
-import { ReactHookForm } from "./ReactHookForm/ReactHookForm";
 
 export {
   FormField,
-  ReactHookForm
+  Form
 };
+

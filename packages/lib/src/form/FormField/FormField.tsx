@@ -3,9 +3,9 @@ import { Controller, ControllerProps, FieldValues } from "react-hook-form";
 
 type NativeInputs = 'input' | 'select' | 'textarea';
 
-type Props = ControllerProps<React.ReactElement | React.ComponentType<any> | NativeInputs, FieldValues> & FormProps;
+type Props = ControllerProps<React.ReactElement | React.ComponentType<any> | NativeInputs, FieldValues> & FormControlProps;
 
-type FormProps = {
+type FormControlProps = {
   name: string;
   className?: string;
   label?: string;

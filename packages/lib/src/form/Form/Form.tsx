@@ -7,7 +7,7 @@ interface FormProps extends React.FormHTMLAttributes<any> {
   disabled?: boolean;
 }
 
-export function ReactHookForm({ children, form, disabled, ...otherProps }: FormProps): JSX.Element {
+export function Form({ children, form, disabled, ...otherProps }: FormProps): JSX.Element {
 
   function childrenWithProps() {
     return React.Children.map(children, child => {
