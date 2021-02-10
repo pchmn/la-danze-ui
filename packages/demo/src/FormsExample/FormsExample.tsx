@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import { FormField, ReactHookForm } from 'la-danze-ui';
+import { Form, FormField } from 'la-danze-ui';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -46,14 +46,14 @@ export function FormsExample() {
     <div className={styles.formsExample}>
       <DemoAndSource id="FormsExample">
         <Header>
-          <h1><pre>ReactHookForm</pre> and <pre>FormField</pre></h1>
+          <h1><pre>Form</pre> and <pre>FormField</pre></h1>
           <span>
-            Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>ReactHookForm</pre> and <pre>FormField</pre> components.
+            Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>Form</pre> and <pre>FormField</pre> components.
           </span>
         </Header>
 
         <Demo>
-          <ReactHookForm form={form} onSubmit={form.handleSubmit(onSubmit)} disabled={loading}>
+          <Form form={form} onSubmit={form.handleSubmit(onSubmit)} disabled={loading}>
             <FormField className={styles.textField} name="email" as={TextField} label="Email" />
             <FormField className={styles.textField} name="username" as={TextField} label="Username" />
 
@@ -64,7 +64,7 @@ export function FormsExample() {
             <Button className={styles.submitButton} disabled={loading} variant="contained" color="primary" type="submit">
               Validate
               </Button>
-          </ReactHookForm>
+          </Form>
         </Demo>
 
         <SourceCode codeString={codeString} githubSourceLink="https://github.com/pchmn/la-danze-react/blob/main/.env" />
@@ -80,7 +80,7 @@ import TextField from '@material-ui/core/TextField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { ReactHookForm, FormField } from 'la-danze-ui';
+import { Form, FormField } from 'la-danze-ui';
 
 
 const validationSchema = yup.object({
@@ -112,7 +112,7 @@ export function FormsExample() {
   }
 
   return (
-    <ReactHookForm form={form} onSubmit={form.handleSubmit(onSubmit)}>
+    <Form form={form} onSubmit={form.handleSubmit(onSubmit)}>
       <FormField name="email" as={TextField} label="Email" />
       <FormField name="username" as={TextField} label="Username" />
 
@@ -123,7 +123,7 @@ export function FormsExample() {
       <Button type="submit">
         Validate
       </Button>
-    </ReactHookForm>
+    </Form>
   );
 }
 `.trim();

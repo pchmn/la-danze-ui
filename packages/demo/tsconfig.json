@@ -18,7 +18,8 @@
     "isolatedModules": true,
   },
   "include": [
-    "./src"
+    "./src",
+    "../lib"
   ],
   "exclude": [
     "src/**/*.test.tsx"

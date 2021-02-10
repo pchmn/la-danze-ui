@@ -41,6 +41,8 @@ export default defineConfig({
       "@material-ui/icons/FileCopyOutlined",
       "@material-ui/core/StyledEngineProvider",
       "react-syntax-highlighter/dist/esm/styles/prism/dracula",
+      "@material-ui/icons/ArrowForward",
+      "@material-ui/core/styles/useTheme",
       "tslib"
     ]
   },
