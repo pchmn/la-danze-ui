@@ -1,12 +1,6 @@
-import { AnimateRoute } from "./AnimateRoute/AnimateRoute";
-import { AnimateSwitch } from "./AnimateSwitch/AnimateSwitch";
-import { useAnimateSwitch } from "./AnimateSwitch/AnimateSwitch.hooks";
-import { MountTransition } from "./MountTransition/MountTransition";
-
-export {
-  AnimateRoute,
-  AnimateSwitch,
-  MountTransition,
-  useAnimateSwitch
-};
+export * from "./AnimateLink/AnimateLink";
+export * from "./AnimateRoute/AnimateRoute";
+export * from "./AnimateSwitch/AnimateSwitch";
+export * from "./AnimateSwitch/AnimateSwitch.hooks";
+export * from "./MountTransition/MountTransition";
 

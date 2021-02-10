@@ -5,10 +5,6 @@
     "src",
     "types"
   ],
-  "exclude": [
-    "src/**/*.test.tsx",
-    "src/setupTests.ts"
-  ],
   "compilerOptions": {
     "lib": [
       "DOM",
@@ -30,6 +26,21 @@
     // interop between ESM and CJS modules. Recommended by TS
     "esModuleInterop": true,
     // significant perf increase by skipping checking .d.ts files, particularly those in node_modules. Recommended by TS
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@core": [
+        "src/core/index"
+      ],
+      "@animation": [
+        "src/animation/index"
+      ],
+      "@drawer": [
+        "src/drawer/index"
+      ],
+      "@form": [
+        "src/form/index"
+      ]
+    }
   }
 }

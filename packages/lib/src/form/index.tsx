@@ -1,8 +1,3 @@
-import { Form } from "./Form/Form";
-import { FormField } from "./FormField/FormField";
-
-export {
-  FormField,
-  Form
-};
+export * from './Form/Form';
+export * from './FormField/FormField';
 

@@ -15,9 +15,9 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build --tsconfig ./tsconfig.build.json",
     "postbuild": "copyfiles -e \"./src/core/theme/*.module.scss\" -f ./src/core/theme/*.scss ./dist/",
-    "test": "tsdx test",
+    "test": "tsdx test --coverage",
     "lint": "tsdx lint",
     "size": "size-limit",
     "analyze": "size-limit --why"
@@ -46,7 +46,13 @@
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@core$": "<rootDir>/src/core/index.tsx",
+      "^@animation$": "<rootDir>/src/animation/index.tsx",
+      "^@drawer$": "<rootDir>/src/drawer/index.tsx",
+      "^@form$": "<rootDir>/src/form/index.tsx"
+    }
   },
   "dependencies": {
     "react-hookstore": "^1.5.1"
@@ -61,6 +67,7 @@
     "@testing-library/react": "^11.2.2",
     "@types/enzyme": "^3.10.8",
     "@types/react-router-dom": "^5.1.6",
+    "@types/history": "^4.7.8",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "autoprefixer": "^10.1.0",
     "copyfiles": "^2.4.1",
