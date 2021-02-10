@@ -2,7 +2,7 @@ import React from "react";
 import { UseFormMethods } from "react-hook-form";
 import { FormField } from "../FormField/FormField";
 
-interface FormProps extends React.FormHTMLAttributes<any> {
+export interface FormProps extends React.FormHTMLAttributes<any> {
   form: UseFormMethods<any> & { onSubmit?: any };
   disabled?: boolean;
 }

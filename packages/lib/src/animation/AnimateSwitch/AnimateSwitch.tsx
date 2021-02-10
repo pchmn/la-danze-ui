@@ -3,16 +3,19 @@ import React from "react";
 import { Switch, SwitchProps, useLocation } from "react-router-dom";
 import { AnimateRoute } from "../AnimateRoute/AnimateRoute";
 import { MountTransitionProps } from "../MountTransition/MountTransition";
+import { AnimationKey } from "./AnimateSwitch.hooks";
 
+export const AnimateSwitchContext = React.createContext('');
 
-interface AnimateSwitchProps extends SwitchProps, MountTransitionProps {
-  switchKey?: string | number;
+export interface AnimateSwitchProps extends React.Attributes, SwitchProps, MountTransitionProps {
+  animationKey?: AnimationKey;
 }
 
 export function AnimateSwitch({
   children,
   location,
-  switchKey,
+  animationKey,
+  key,
   exit,
   initial,
   animate,
@@ -20,10 +23,12 @@ export function AnimateSwitch({
   variants,
   fullHeight,
   ...otherProps }: AnimateSwitchProps): JSX.Element {
-  const originalLocation = useLocation();
+
+  if (!location) {
+    location = useLocation();
+  }
 
   function childrenWithProps() {
-
     return React.Children.map(children, child => {
       // checking isValidElement is the safe way and avoids a typescript error too
       if (React.isValidElement(child) && child.type === AnimateRoute) {
@@ -36,15 +41,17 @@ export function AnimateSwitch({
           fullHeight: child.props.fullHeight || fullHeight
         });
       }
-      return child;
+      throw Error('<AnimateSwitch /> can only be used with <AnimateRoute />');
     });
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <Switch location={location || originalLocation} key={switchKey || location?.pathname} {...otherProps}>
-        {childrenWithProps()}
-      </Switch>
-    </AnimatePresence>
+    <AnimateSwitchContext.Provider value='animateSwitch'>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={key || animationKey?.key || location.key} {...otherProps}>
+          {childrenWithProps()}
+        </Switch>
+      </AnimatePresence>
+    </AnimateSwitchContext.Provider>
   );
 }

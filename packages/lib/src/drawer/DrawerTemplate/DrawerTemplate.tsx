@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React from 'react';
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export function DrawerTemplate({ children }: React.PropsWithChildren<React.ReactNode>): JSX.Element {
   const classes = useStyles();
-  const matches = useMediaQuery('(max-width: 600px)');
+  const matches = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const { drawerContainer, mainContainer } = getContainers();
 
   function getContainers() {

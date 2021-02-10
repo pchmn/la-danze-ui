@@ -12,15 +12,11 @@ describe('<Form />', () => {
     const useFormValue = useForm();
 
     return (
-      <>
-        <Form form={useFormValue} onSubmit={useFormValue.handleSubmit(onSubmit)}>
-          <FormField id="email" name="email" as={TextField} rules={{ required: true, pattern: /^\S+@\S+$/ }} label="Email" />
+      <Form form={useFormValue} onSubmit={useFormValue.handleSubmit(onSubmit)}>
+        <FormField id="email" name="email" as={TextField} rules={{ required: true, pattern: /^\S+@\S+$/ }} label="Email" />
 
-          <button type="submit">
-            Validate
-          </button>
-        </Form>
-      </>
+        <button type="submit">Validate</button>
+      </Form>
     );
   };
 
@@ -50,7 +46,7 @@ describe('<Form />', () => {
     await waitFor(() => expect(onSubmit).not.toHaveBeenCalled());
   });
 
-  test('It should show email', async () => {
+  test('It should call onSubmit', async () => {
     const { validateButton, onSubmit, emailInput } = setUp();
 
     fireEvent.change(emailInput, { target: { value: 'good@email' } });

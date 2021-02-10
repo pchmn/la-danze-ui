@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-export function useAnimateSwitch(key?: string | number) {
-  const [switchKey, setSwitchKey] = useState<string | number>(key || Math.random());
+export interface AnimationKey {
+  key: number;
+  updateKey: () => void;
+}
 
-  function updateSwitchKey() {
-    setSwitchKey(Math.random());
+export function useAnimationKey(): AnimationKey {
+  const [key, setKey] = useState<number>(Math.random());
+
+  function updateKey() {
+    setKey(Math.random());
   }
 
-  return { switchKey, setSwitchKey, updateSwitchKey };
+  return { key, updateKey };
 }

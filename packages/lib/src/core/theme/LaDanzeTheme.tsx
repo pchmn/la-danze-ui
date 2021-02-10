@@ -33,15 +33,6 @@ const theme = createMuiTheme({
       'Arial'
     ].join(','),
   },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 960,
-      lg: 1280,
-      xl: 1920,
-    },
-  },
   shape: {
     borderRadius: 6
   },
@@ -54,6 +45,7 @@ const theme = createMuiTheme({
           // Some CSS
           fontSize: '0.95rem',
           textTransform: 'initial',
+          padding: '6px 16px'
           // borderRadius: '30px'
         },
       },
