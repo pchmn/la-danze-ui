@@ -45,3 +45,11 @@
 .button.textButton:hover {
   background-color: rgba(231, 76, 60, 0.08);
 }
+
+.codeFont {
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.bold {
+  font-weight: 600;
+}
