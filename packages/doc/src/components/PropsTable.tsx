@@ -1,6 +1,6 @@
 import * as React from "react";
 
-interface PropsDetail {
+export interface PropsDetail {
   name: string;
   type: string | string[];
   default?: string;
@@ -12,11 +12,11 @@ export function PropsTable({ componentProps }: { componentProps: PropsDetail[] }
 
   function getType(type: string | string[]) {
     if (Array.isArray(type)) {
-      type.map((item, index) => {
+      return type.map((item, index) => {
         if (index === 0) {
           return item;
         }
-        return <><br />|<span style={{ marginLeft: '5px' }}>item</span></>
+        return <><br />|<span style={{ marginLeft: '5px' }}>{item}</span></>
       });
     }
     return type;
@@ -36,13 +36,13 @@ export function PropsTable({ componentProps }: { componentProps: PropsDetail[] }
       <tbody>
         {componentProps.map(item => {
           return (
-            <>
+            <tr>
               <td className="codeFont bold">{item.name}</td>
-              <td className="codeFont bold">{getType(item.type)}</td>
-              <td className="codeFont bold">{item.default}</td>
-              <td>{item.required ? 'Yes' : 'No'}</td>
-              <td>{item.description}</td>
-            </>
+              <td className="codeFont italic fz90">{getType(item.type)}</td>
+              <td className="codeFont italic fz90">{item.default}</td>
+              <td className="fz90">{item.required ? <span className="bold">Yes</span> : 'No'}</td>
+              <td className="propsDescription fz90">{item.description}</td>
+            </tr>
           )
         })
 

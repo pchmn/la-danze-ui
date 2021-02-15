@@ -72,7 +72,7 @@ function Home() {
                 'button button--primary button--lg',
                 styles.button,
               )}
-              to={useBaseUrl('docs/')}>
+              to={useBaseUrl('docs/1.0.0')}>
               Getting Started
             </Link>
             <Link

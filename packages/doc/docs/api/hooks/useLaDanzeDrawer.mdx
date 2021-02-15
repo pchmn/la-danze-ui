@@ -3,4 +3,18 @@ title: useLaDanzeDrawer
 hide_title: true
 ---
 
-# useLaDanzeDrawer()
+# `useLaDanzeDrawer()`
+
+This hooks permits read and/or update open state of `LaDanzeDrawer`.
+
+## Example
+
+```tsx
+import { useLaDanzeDrawer } from 'la-danze-ui';
+...
+
+function App() {
+  const [open, setOpen] = useLaDanzeDrawer();
+  ...
+}
+```

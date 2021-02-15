@@ -1,0 +1,59 @@
+---
+title: LaDanzeDrawer
+hide_title: true
+---
+
+# `LaDanzeDrawer`
+
+This component is a custom drawer. See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
+
+> It must be use with `DrawerTemplate` (see [doc](usage/core/drawer.md)).
+
+## Example
+
+```jsx
+import React from 'react';
+import logo from './logo.svg';
+import { 
+  DrawerTemplate,
+  DrawerContainer,
+  MainContainer,
+  LaDanzeDrawer
+} from 'la-danze-ui';
+
+function App() {
+  return (
+    <DrawerTemplate>
+      <DrawerContainer>
+        <LaDanzeDrawer logo={logo} title="Drawer">
+          ...
+        </LaDanzeDrawer>
+      </DrawerContainer>
+
+      <MainContainer>
+        ...
+      </MainContainer>
+    </DrawerTemplate>
+  );
+}
+```
+
+## Props
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'logo',
+    type: 'string',
+    required: true,
+    description: 'The logo to use.'
+  },
+  {
+    name: 'title',
+    type: 'string',
+    required: true,
+    description: 'The title to use.'
+  }
+];
+
+<PropsTable componentProps={componentProps} />

@@ -24,7 +24,7 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/',
+          to: 'docs/1.0.0',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
@@ -53,14 +53,19 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "1.0.0",
+              path: "1.0.0"
+            }
+          }
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

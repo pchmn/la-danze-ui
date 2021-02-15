@@ -53,3 +53,19 @@
 .bold {
   font-weight: 600;
 }
+
+.italic {
+  font-style: italic;
+}
+
+.fz90 {
+  font-size: 90%;
+}
+
+.propsDescription code {
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: rgb(255 255 255 / 18%);
+  padding: 2px;
+  border-radius: 2px;
+  word-break: break-word;
+}

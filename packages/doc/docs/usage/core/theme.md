@@ -2,37 +2,27 @@
 title: Theme
 ---
 
-## `LaDanzeTheme`
+The theme provide by **La Danze UI** is basically a [material-ui](https://next.material-ui.com/) theme. The color scheme is based on a football club colors ([SRFC](https://twitter.com/staderennais)) 🔴⚫.
+See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
 
-This component will make the theme available to the child tree. So it should be used at the root of the component tree.
+## Usage
 
-### Props
+To use it, just wrapp your app with `LaDanzeTheme` and that's it:
 
-| Name | Type |  Required | Default | Description |
-|------|:----:|----------:| -------:| -----------:|
-| children |  `React.ReactNode` | Yes | / | The component tree. |
-
-### Example
-
-```jsx
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LaDanzeTheme } from 'la-danze-ui';
+import { LaDanzeTheme  } from 'la-danze-ui';
 
-function App() {
+function App() {  
   return (
     <LaDanzeTheme>
-      <div>hello</div>
+      <div>my app</div>
     </LaDanzeTheme>
   );
 }
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
 ```
+
+## API
+* [`LaDanzeTheme`](api/components/LaDanzeTheme.mdx)
 

@@ -3,4 +3,95 @@ title: AnimateRoute
 hide_title: true
 ---
 
-# AnimateRoute
+# `AnimateRoute`
+
+This component extends `Route` component of [react-router-dom](https://reactrouter.com/web/guides/quick-start) and provides additionnal props for animating the route.
+
+By default, `AnimateSwitch` will set same animation for all its contained routes. So if you want all your routes to behave the same, just use `AnimateRoute` as a regular `Route` and nothing more.
+
+However if you want a particular route to use a different animation, you can do it. For basic animations just set animationType prop:
+* fade (default)
+* scale
+* slide up
+* slide down
+* slide left
+* slide right
+
+If your not satisfied with these animations, you can do your own animation with some [framer-motion](https://www.framer.com/motion/) imported props (inherited from [`MountTransition`](api/components/MountTransition.mdx)). See below.
+
+> `AnimateRoute` uses `MountTransition` component under the hook to make the animation.
+
+## Example
+
+```jsx
+import { AnimateSwitch, AnimateRoute } from 'la-danze-ui';
+
+function App() {
+  return (
+    ...
+    <AnimateSwitch animationType="slideLeft">
+      // AnimateRoute must be contained in a AnimateSwitch
+      <AnimateRoute path="/example">
+          example
+      </AnimateRoute>
+      // Different animation for this route
+      <AnimateRoute path="/different-animation" animationType="scale">
+        different animation
+      </AnimateRoute>
+      ...
+    </AnimatedSwitch>
+  );
+}
+```
+
+## Props
+
+> Extends [`Route`](https://reactrouter.com/web/api/Route) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'animationType',
+    type: [`'fade'`, `'scale'`, `'slideUp'`, `'slideDown'`, `'slideLeft'`, `'slideRight'`],
+    default: `'fade'`,
+    description: <>	Animation type of the route. Override <code>variants</code> prop.</>
+  },
+  {
+    name: 'initial',
+    type: ['Target', 'VariantLabels', 'boolean'],
+    default: `'initial'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.initial">doc</a>.</>
+  },
+  {
+    name: 'animate',
+    type: ['AnimationControls', 'TargetAndTransition', 'VariantLabels', 'boolean'],
+    default: `'in'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.animate">doc</a>.</>
+  },
+  {
+    name: 'exit',
+    type: ['TargetAndTransition', 'VariantLabels'],
+    default: `'out'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.exit">doc</a>.</>
+  },
+  {
+    name: 'transition',
+    type: ['Transition'],
+    default: `{ duration: 0.225 }`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.transition">doc</a>.</>
+  },
+  {
+    name: 'variants',
+    type: ['Variants'],
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.variants">doc</a>.</>
+  },
+  {
+    name: 'style',
+    type: ['MotionStyle'],
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.style">doc</a>.</>
+  },
+];
+
+<PropsTable componentProps={componentProps} />
