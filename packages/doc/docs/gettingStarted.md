@@ -3,7 +3,7 @@ title: Getting Started
 slug: /
 ---
 
-La Danze UI is available as a npm package.
+**La Danze UI** is available as a npm package.
 
 ## Installation
 

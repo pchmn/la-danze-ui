@@ -33,9 +33,11 @@ module.exports = {
             'api/components/DrawerListItem',
             'api/components/AnimateSwitch',
             'api/components/AnimateRoute',
+            'api/components/AnimateLink',
             'api/components/MountTransition',
             'api/components/Form',
             'api/components/FormField',
+            'api/components/NavLink',
           ]
         },
         {

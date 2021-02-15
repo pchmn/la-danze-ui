@@ -1,0 +1,40 @@
+---
+title: AnimateLink
+hide_title: true
+---
+
+# `AnimateLink`
+
+This component extends [`NavLink`](api/components/NavLink.mdx) (chich extends `NavLink` of [react-router-dom](https://reactrouter.com/web/api/NavLink)). It provides additional props for animating nested routing (see [explanation](usage/animation/routing.md#nested-routing)).
+
+
+## Example
+
+```jsx
+import { AnimateLink } from 'la-danze-ui';
+
+function App() {
+  return (
+    ...
+    <AnimateLink to="/" exact title="Home" />
+    ...
+  );
+}
+```
+
+## Props
+
+> Extends [`NavLink`](api/components/NavLink.mdx) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'animationKey',
+    type: 'AnimationKey',
+    description: <>Override <code>key</code> prop. Use it only if you have nested routes. It will prevent parent route to re render.</>
+  },
+];
+
+<PropsTable componentProps={componentProps} />

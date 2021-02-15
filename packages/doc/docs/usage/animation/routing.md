@@ -48,7 +48,7 @@ function App() {
 
 If you have nested routing in your app, there is a problem (fixable): when a child route changes, it will re render parent route as well.
 
-To prevent this you can use `AnimateLink` (extends `NavLink` of react-router-dom) in combination with `useAnimateKey()` hook and animationKey prop of `AnimateSwitch` component. 
+To prevent this you can use `AnimateLink` (extends `NavLink` of react-router-dom) in combination with `useAnimateKey()` hook and `animationKey` prop of `AnimateSwitch` component. 
 
 See example:
 
@@ -87,7 +87,7 @@ function App() {
 
 function NestedRoutes() {
   // Get unique animationKey object
-  // Since it is different from parent animationKey, it will prevent re rendering of parent routes
+  // Since it is different from parent animationKey, it will prevent re rendering of parent route
   const animationKey = useAnimationKey();
 
   return (
@@ -128,15 +128,16 @@ function App() {
       <Link to="/route1">Go to Route 1</Link>
       <Link to="/route2">Go to Route 2</Link>
 
-      // All routes will have slide left animation, except /route2
-      // /route 2 will have scale animation because its animationType prop is provided
       <AnimateSwitch animationType="slideLeft">
+        // slideLeft animation (extends animationType of AnimateSwitch)
         <AnimateRoute exact path="/">
           Home
         </AnimateRoute>
+        // slideLeft animation (extends animationType of AnimateSwitch)
         <AnimateRoute path="/route1">
           Route 1
         </AnimateRoute>
+        // scale animation (overrides animationType of AnimateSwitch)
         <AnimateRoute path="/route2" animationType="scale">
           Route 2
         </AnimateRoute>
@@ -171,4 +172,5 @@ See [API doc](#api) of these components for more detail.
 
 * [`AnimateSwitch`](api/components/AnimateSwitch.mdx)
 * [`AnimateRoute`](api/components/AnimateRoute.mdx)
+* [`AnimateLink`](api/components/AnimateLink.mdx)
 * [`useAnimationKey()`](api/hooks/useAnimationKey.mdx)

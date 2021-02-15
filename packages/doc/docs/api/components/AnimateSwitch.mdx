@@ -46,7 +46,7 @@ export const componentProps = [
     name: 'animationType',
     type: [`'fade'`, `'scale'`, `'slideUp'`, `'slideDown'`, `'slideLeft'`, `'slideRight'`],
     default: `'fade'`,
-    description: <>	Animation type of the route. Override <code>variants</code> prop.</>
+    description: <>	Animation type of all contained routes. Overrides <code>variants</code> prop. Overriden by <code>AnimateRoute</code> <code>animationType</code> prop.</>
   },
   {
     name: 'animationKey',

@@ -4,7 +4,7 @@ title: Form
 
 Simplify use of [react-hook-form](https://react-hook-form.com/) with [material-ui](https://next.material-ui.com/) components. See demo.
 
-By using `Form` and `FormField` your form fields will automatically mapped and some useful props will be added to material-ui components (`error`, `helperText` (error messge) and `disabled`).
+By using `Form` and `FormField` your form fields will be automatically mapped and some useful props will be added to field components (`error`, `helperText` (error message) and `disabled`).
 
 > It uses react-hook-form `Controller` component under the hook
 

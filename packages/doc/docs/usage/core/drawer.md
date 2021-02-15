@@ -2,7 +2,7 @@
 title: Drawer
 ---
 
-**La Danze UI** provides a custom drawer with simple use. See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
+**La Danze UI** provides a custom permanent drawer with simple use. See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
 
 ## Basic Usage
 
