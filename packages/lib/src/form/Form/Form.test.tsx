@@ -1,4 +1,3 @@
-
 import { Form, FormField } from '@la-danze-ui/form';
 import TextField from '@material-ui/core/TextField';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
@@ -6,13 +5,18 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 describe('<Form />', () => {
-
   const Container = ({ onSubmit }: { onSubmit: any }) => {
     const useFormValue = useForm();
 
     return (
       <Form form={useFormValue} onSubmit={useFormValue.handleSubmit(onSubmit)}>
-        <FormField id="email" name="email" as={TextField} rules={{ required: true, pattern: /^\S+@\S+$/ }} label="Email" />
+        <FormField
+          id="email"
+          name="email"
+          as={TextField}
+          rules={{ required: true, pattern: /^\S+@\S+$/ }}
+          label="Email"
+        />
 
         <button type="submit">Validate</button>
       </Form>

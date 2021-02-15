@@ -1,15 +1,10 @@
-import { MountTransition } from "@la-danze-ui/animation";
-import { render, screen } from "@testing-library/react";
-import React from "react";
+import { MountTransition } from '@la-danze-ui/animation';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
 
 describe('<MountTransition />', () => {
-
   const Container = () => {
-    return (
-      <MountTransition>
-        Content
-      </MountTransition>
-    );
+    return <MountTransition>Content</MountTransition>;
   };
 
   test('It should show content', async () => {
@@ -17,4 +12,4 @@ describe('<MountTransition />', () => {
 
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
-})
+});

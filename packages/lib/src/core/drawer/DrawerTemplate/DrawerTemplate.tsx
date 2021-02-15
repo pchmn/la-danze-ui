@@ -6,7 +6,7 @@ import React from 'react';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flex: 1,
+    flex: 1
   },
   toolbar: {
     display: 'flex',
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   },
   content: {
     flexGrow: 1,
@@ -36,7 +36,7 @@ export function DrawerTemplate({ children }: React.PropsWithChildren<React.React
     let drawerContainer: any;
     let mainContainer: any;
 
-    React.Children.forEach(children, child => {
+    React.Children.forEach(children, (child) => {
       if (React.isValidElement(child)) {
         if (child.type === DrawerContainer) {
           drawerContainer = child;
@@ -61,9 +61,7 @@ export function DrawerTemplate({ children }: React.PropsWithChildren<React.React
         <CssBaseline />
         {drawerContainer}
         <main className={classes.content}>
-          {matches &&
-            <div className={classes.toolbar} />
-          }
+          {matches && <div className={classes.toolbar} />}
           {mainContainer}
         </main>
       </div>

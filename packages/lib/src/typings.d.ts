@@ -17,7 +17,7 @@ declare module '*.png' {
   export default content;
 }
 
-interface SvgrComponent extends React.FunctionComponent<React.SVGAttributes<SVGElement>> { }
+type SvgrComponent = React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 
 declare module '*.svg' {
   const svgUrl: string;

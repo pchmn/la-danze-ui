@@ -1,5 +1,5 @@
-import { AnimationControls, TargetAndTransition, Variants } from "framer-motion";
-import { MakeCustomValueType } from "framer-motion/types/types";
+import { AnimationControls, TargetAndTransition, Variants } from 'framer-motion';
+import { MakeCustomValueType } from 'framer-motion/types/types';
 
 export interface AnimateRoutingProps {
   animationType?: 'scale' | 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';

@@ -3,8 +3,7 @@ import { AnimateAppearance } from './AnimateAppearanceExample/AnimateAppearanceE
 import { AnimateRouting } from './AnimateRoutingExample/AnimateRoutingExample';
 import styles from './AnimationsExample.module.scss';
 
-export function AnimationsExample() {
-
+export function AnimationsExample(): JSX.Element {
   return (
     <div className={styles.animationsExample} data-testid="AnimationsExample">
       <AnimateRouting />

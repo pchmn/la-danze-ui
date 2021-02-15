@@ -1,13 +1,10 @@
 import { Button, Paper } from '@material-ui/core';
 import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from 'la-danze-ui';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { Demo, DemoAndSource, Header, SourceCode } from '../../DemoAndSource/DemoAndSource';
 import styles from './AnimateRoutingExample.module.scss';
 
-
-export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any>) {
-  const location = useLocation();
+export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any>): JSX.Element {
   const animationKey = useAnimationKey();
 
   function onActive(active: boolean) {
@@ -26,7 +23,8 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
 
         <Demo>
           <Button
-            color="primary" variant="contained"
+            color="primary"
+            variant="contained"
             className={styles.animateButton}
             component={AnimateLink}
             animationKey={animationKey}
@@ -36,7 +34,8 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
             Go to Home
           </Button>
           <Button
-            color="primary" variant="contained"
+            color="primary"
+            variant="contained"
             className={styles.animateButton}
             component={AnimateLink}
             animationKey={animationKey}
@@ -46,7 +45,8 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
             Go to Route 1
           </Button>
           <Button
-            color="primary" variant="contained"
+            color="primary"
+            variant="contained"
             className={styles.animateButton}
             component={AnimateLink}
             animationKey={animationKey}
@@ -80,13 +80,10 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
 }
 
 function Route(props: any) {
-  return (
-    <div style={{ textAlign: 'center' }}>{props.name}</div>
-  );
+  return <div style={{ textAlign: 'center' }}>{props.name}</div>;
 }
 
-const codeString =
-  `
+const codeString = `
 import { AnimateSwitch, AnimateRoute  } from 'la-danze-ui';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';

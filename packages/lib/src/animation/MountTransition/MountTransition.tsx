@@ -15,16 +15,30 @@ export function MountTransition({
   variants,
   fullHeight,
   transition = { duration: 0.225 },
-  ...otherProps }: React.PropsWithChildren<MountTransitionProps>): JSX.Element {
-
+  ...otherProps
+}: React.PropsWithChildren<MountTransitionProps>): JSX.Element {
   switch (animationType) {
-    case 'scale': variants = scaleVariant; break;
-    case 'fade': variants = baseVariant; break;
-    case 'slideUp': variants = slideUpVariant; break;
-    case 'slideDown': variants = slideDownVariant; break;
-    case 'slideLeft': variants = slideLeftVariant; break;
-    case 'slideRight': variants = slideRightVariant; break;
-    default: variants = scaleVariant; break;
+    case 'scale':
+      variants = scaleVariant;
+      break;
+    case 'fade':
+      variants = baseVariant;
+      break;
+    case 'slideUp':
+      variants = slideUpVariant;
+      break;
+    case 'slideDown':
+      variants = slideDownVariant;
+      break;
+    case 'slideLeft':
+      variants = slideLeftVariant;
+      break;
+    case 'slideRight':
+      variants = slideRightVariant;
+      break;
+    default:
+      variants = scaleVariant;
+      break;
   }
 
   return (
@@ -39,96 +53,96 @@ export function MountTransition({
     >
       {children}
     </motion.div>
-  )
+  );
 }
 
 const baseVariant = {
   initial: {
-    opacity: 0,
+    opacity: 0
   },
 
   in: {
-    opacity: 1,
+    opacity: 1
   },
 
   out: {
-    opacity: 0,
-  },
+    opacity: 0
+  }
 };
 
 const scaleVariant = {
   initial: {
     ...baseVariant.initial,
-    scale: 0.75,
+    scale: 0.75
   },
 
   in: {
     ...baseVariant.in,
-    scale: 1,
+    scale: 1
   },
 
   out: {
     ...baseVariant.out,
-    scale: 0.75,
-  },
+    scale: 0.75
+  }
 };
 
 const slideUpVariant = {
   initial: {
     ...baseVariant.initial,
-    y: '50%',
+    y: '50%'
   },
   in: {
     ...baseVariant.in,
-    y: 0,
+    y: 0
   },
   out: {
     ...baseVariant.out,
     y: '-50%'
-  },
+  }
 };
 
 const slideDownVariant = {
   initial: {
     ...baseVariant.initial,
-    y: '-50%',
+    y: '-50%'
   },
   in: {
     ...baseVariant.in,
-    y: 0,
+    y: 0
   },
   out: {
     ...baseVariant.out,
     y: '50%'
-  },
+  }
 };
 
 const slideRightVariant = {
   initial: {
     ...baseVariant.initial,
-    x: '-50%',
+    x: '-50%'
   },
   in: {
     ...baseVariant.in,
-    x: 0,
+    x: 0
   },
   out: {
     ...baseVariant.out,
     x: '50%'
-  },
+  }
 };
 
 const slideLeftVariant = {
   initial: {
     ...baseVariant.initial,
-    x: '50%',
+    x: '50%'
   },
   in: {
     ...baseVariant.in,
-    x: 0,
+    x: 0
   },
   out: {
     ...baseVariant.out,
     x: '-50%'
-  },
+  }
 };

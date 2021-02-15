@@ -1,8 +1,8 @@
-import { AnimateRoute, AnimateSwitch } from "@la-danze-ui/animation";
-import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
+import { AnimateRoute, AnimateSwitch } from '@la-danze-ui/animation';
+import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import React from "react";
-import { Link, Route } from "react-router-dom";
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
 
 describe('<AnimateSwitch />', () => {
   const ExceptionContainer = () => {
@@ -22,8 +22,12 @@ describe('<AnimateSwitch />', () => {
         <Link to="/route1">Go to Route 1</Link>
 
         <AnimateSwitch>
-          <AnimateRoute exact path="/"><RouteContainer routeName="home" /></AnimateRoute>
-          <AnimateRoute path="/route1"><RouteContainer routeName="route 1" /></AnimateRoute>
+          <AnimateRoute exact path="/">
+            <RouteContainer routeName="home" />
+          </AnimateRoute>
+          <AnimateRoute path="/route1">
+            <RouteContainer routeName="route 1" />
+          </AnimateRoute>
         </AnimateSwitch>
       </div>
     );
@@ -34,7 +38,7 @@ describe('<AnimateSwitch />', () => {
       <div>
         <span data-testid="routeName">{routeName}</span>
       </div>
-    )
+    );
   };
 
   const setUp = (route?: string) => {
@@ -85,4 +89,4 @@ describe('<AnimateSwitch />', () => {
 
     await waitFor(() => expect(getRouteName()).toHaveTextContent('home'));
   });
-})
+});

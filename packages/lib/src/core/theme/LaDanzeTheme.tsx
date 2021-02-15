@@ -1,5 +1,5 @@
-import { ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from "@material-ui/core";
-import StyledEngineProvider from "@material-ui/core/StyledEngineProvider";
+import { ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
+import StyledEngineProvider from '@material-ui/core/StyledEngineProvider';
 import React from 'react';
 // import 'typeface-work-sans';
 import './theme.scss';
@@ -8,17 +8,17 @@ const theme = createMuiTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#E74C3C',
+      main: '#E74C3C'
     },
     secondary: {
-      main: '#FFB74D',
+      main: '#FFB74D'
     },
     background: {
       default: '#18191b',
-      paper: '#242527',
+      paper: '#242527'
     },
     error: {
-      main: '#f48536',
+      main: '#f48536'
     }
   },
   typography: {
@@ -31,7 +31,7 @@ const theme = createMuiTheme({
       'Roboto',
       'Helvetica Neue',
       'Arial'
-    ].join(','),
+    ].join(',')
   },
   shape: {
     borderRadius: 6
@@ -47,8 +47,8 @@ const theme = createMuiTheme({
           textTransform: 'initial',
           padding: '6px 16px'
           // borderRadius: '30px'
-        },
-      },
+        }
+      }
     },
     MuiPaper: {
       styleOverrides: {
@@ -56,8 +56,8 @@ const theme = createMuiTheme({
         root: {
           // Some CSS
           padding: '3rem'
-        },
-      },
+        }
+      }
     },
     MuiTextField: {
       defaultProps: {
@@ -76,19 +76,18 @@ const theme = createMuiTheme({
         },
         paperAnchorDockedLeft: {
           borderRight: 'none',
-          boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
+          boxShadow:
+            '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
         }
-      },
+      }
     }
-  },
+  }
 });
 
 export function LaDanzeTheme({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StyledEngineProvider>
   );
 }

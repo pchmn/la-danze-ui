@@ -1,8 +1,8 @@
-import { AnimateRoute, AnimationKey } from "@la-danze-ui/animation";
-import { AnimatePresence } from "framer-motion";
-import React from "react";
-import { Switch, SwitchProps, useLocation } from "react-router-dom";
-import { AnimateRoutingProps } from "../models/animate-routing-props";
+import { AnimateRoute, AnimationKey } from '@la-danze-ui/animation';
+import { AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { Switch, SwitchProps, useLocation } from 'react-router-dom';
+import { AnimateRoutingProps } from '../models/animate-routing-props';
 
 export const AnimateSwitchContext = React.createContext('');
 
@@ -21,14 +21,14 @@ export function AnimateSwitch({
   animationType,
   variants,
   fullHeight,
-  ...otherProps }: AnimateSwitchProps) {
-
+  ...otherProps
+}: AnimateSwitchProps): JSX.Element {
   if (!location) {
     location = useLocation();
   }
 
   function childrenWithProps() {
-    return React.Children.map(children, child => {
+    return React.Children.map(children, (child) => {
       // checking isValidElement is the safe way and avoids a typescript error too
       if (React.isValidElement(child) && child.type === AnimateRoute) {
         return React.cloneElement(child, {
@@ -45,7 +45,7 @@ export function AnimateSwitch({
   }
 
   return (
-    <AnimateSwitchContext.Provider value='animateSwitch'>
+    <AnimateSwitchContext.Provider value="animateSwitch">
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={key || animationKey?.key || location.key} {...otherProps}>
           {childrenWithProps()}

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-export function useIsMount() {
+export function useIsMount(): boolean {
   const [isMount, setIsMount] = useState(false);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export function useIsMount() {
     return () => {
       setIsMount(false);
     };
-  });
+  }, []);
 
   return isMount;
 }

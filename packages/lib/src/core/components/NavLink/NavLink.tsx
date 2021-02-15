@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   NavLink as OriginalNavLink,
   NavLinkProps as OriginalNavLinkProps,
   useLocation,
   useRouteMatch
-} from "react-router-dom";
+} from 'react-router-dom';
 
 export interface NavLinkProps extends OriginalNavLinkProps, React.RefAttributes<HTMLAnchorElement> {
   to: string;
@@ -14,68 +14,60 @@ export interface NavLinkProps extends OriginalNavLinkProps, React.RefAttributes<
   sensitive?: boolean;
 }
 
-export const NavLink = React.forwardRef<any, NavLinkProps>(
-  (
-    {
-      to,
-      exact,
-      strict,
-      sensitive,
-      children,
-      onClick,
-      onActive,
-      location,
-      isActive,
-      safeOnClick,
-      noRefresh,
-      ...otherProps
-    },
-    ref
-  ) => {
-    const [active, setActive] = useState(false);
-    const match = useRouteMatch({ path: to, exact, strict, sensitive });
-    if (!location) {
-      location = useLocation();
+function NavLinkComponent(
+  {
+    to,
+    exact,
+    strict,
+    sensitive,
+    children,
+    onClick,
+    onActive,
+    location,
+    isActive,
+    safeOnClick,
+    noRefresh,
+    ...otherProps
+  }: NavLinkProps,
+  ref: React.ForwardedRef<any>
+) {
+  const [active, setActive] = useState(false);
+  const match = useRouteMatch({ path: to, exact, strict, sensitive });
+  location = useLocation();
+
+  function checkActive(): boolean {
+    if (isActive && location) {
+      return isActive(match, location);
     }
-
-    function checkActive(): boolean {
-      if (isActive && location) {
-        return isActive(match, location);
-      }
-      return !!match;
-    }
-
-    useEffect(() => {
-      if (onActive) {
-        onActive(active);
-      }
-    }, [active]);
-
-    useEffect(() => {
-      setActive(checkActive());
-    }, [location?.pathname, location?.search]);
-
-    function handleOnClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-      if (checkActive() && noRefresh) {
-        event.preventDefault();
-      } else if (safeOnClick) {
-        safeOnClick(event);
-      }
-      if (onClick) {
-        onClick(event);
-      }
-    }
-
-    return (
-      <OriginalNavLink
-        to={to}
-        onClick={handleOnClick}
-        isActive={checkActive}
-        ref={ref}
-        {...otherProps}
-      >
-        {children}
-      </OriginalNavLink>
-    );
+    return !!match;
   }
-);
+
+  useEffect(() => {
+    if (onActive) {
+      onActive(active);
+    }
+  }, [active]);
+
+  useEffect(() => {
+    setActive(checkActive());
+  }, [location?.pathname, location?.search]);
+
+  function handleOnClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    if (checkActive() && noRefresh) {
+      event.preventDefault();
+    } else if (safeOnClick) {
+      safeOnClick(event);
+    }
+    if (onClick) {
+      onClick(event);
+    }
+  }
+
+  return (
+    <OriginalNavLink to={to} onClick={handleOnClick} isActive={checkActive} ref={ref} {...otherProps}>
+      {children}
+    </OriginalNavLink>
+  );
+}
+
+export const NavLink = React.forwardRef<any, NavLinkProps>(NavLinkComponent);

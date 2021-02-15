@@ -1,18 +1,18 @@
-import { AnimateLink, AnimationKey } from "@la-danze-ui/animation";
-import { useIsMount, useLaDanzeDrawer } from "@la-danze-ui/core";
-import { makeStyles, Theme } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import Drawer from "@material-ui/core/Drawer";
-import Hidden from "@material-ui/core/Hidden";
-import IconButton from "@material-ui/core/IconButton";
-import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Toolbar from "@material-ui/core/Toolbar";
-import Tooltip from "@material-ui/core/Tooltip";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { AnimateLink, AnimationKey } from '@la-danze-ui/animation';
+import { useIsMount, useLaDanzeDrawer } from '@la-danze-ui/core';
+import { makeStyles, Theme } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ChevronRightOutlinedIcon from '@material-ui/icons/ChevronRightOutlined';
 import clsx from 'clsx';
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 export interface LaDanzeDrawerProps {
   logo: string;
@@ -22,7 +22,7 @@ export interface LaDanzeDrawerProps {
 const drawerWidth = 290;
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     padding: '2px 0',
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     [theme.breakpoints.up('md')]: {
-      display: 'none',
+      display: 'none'
     },
     transition: 'all 0.225s',
     '& svg': {
@@ -51,33 +51,33 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap'
   },
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.enteringScreen
     }),
     '@media (max-width: 380px)': {
       width: '75%'
-    },
+    }
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
     width: theme.spacing(9) + 1,
     [theme.breakpoints.up('md')]: {
-      width: '85px',
-    },
+      width: '85px'
+    }
   },
   toolbar: {
     height: '150px',
@@ -85,8 +85,8 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     [theme.breakpoints.down('md')]: {
-      height: '90px',
-    },
+      height: '90px'
+    }
   },
   logo: {
     position: 'absolute',
@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '21.5px',
     transition: theme.transitions.create('all', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     '&.logoOpen': {
       top: '50%',
@@ -110,13 +110,13 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '21.5px',
       [theme.breakpoints.down('md')]: {
         width: '32px',
-        marginRight: '12px',
-      },
+        marginRight: '12px'
+      }
     },
     '& span': {
       verticalAlign: 'middle',
       fontWeight: 700
-    },
+    }
   },
   toggleButton: {
     position: 'absolute',
@@ -125,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translateX(-25%)',
     transition: theme.transitions.create('all', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     [theme.breakpoints.down('md')]: {
       display: 'none'
@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
       transform: 'rotate(180deg) translateY(50%)',
       right: '18.5px',
       left: '230px',
-      top: '50%',
+      top: '50%'
     }
   },
   listItem: {
@@ -156,13 +156,13 @@ const useStyles = makeStyles((theme) => ({
       },
       '& .MuiListItemText-root span': {
         color: theme.palette.primary.main
-      },
+      }
     }
   },
   tooltip: {
     fontSize: '1rem',
     marginLeft: '30px'
-  },
+  }
 }));
 
 export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren<LaDanzeDrawerProps>): JSX.Element {
@@ -203,8 +203,8 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
 
   return (
     <>
-      {matches
-        ? <>
+      {matches ? (
+        <>
           <AppBar position="fixed" className={classes.appBar} elevation={1}>
             <Toolbar>
               <IconButton
@@ -214,7 +214,16 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
                 onClick={toggleDrawer}
                 className={classes.menuButton}
               >
-                <svg aria-label="Menu" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                <svg aria-label="Menu" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false">
+                  <title>Menu</title>
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                    d="M4 7h22M4 15h22M4 23h22"
+                  ></path>
+                </svg>
               </IconButton>
               <div className="title">
                 <img src={logo} alt="logo" />
@@ -230,33 +239,34 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
             open={open}
             className={clsx(classes.drawer, {
               [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
+              [classes.drawerClose]: !open
             })}
             onClose={toggleDrawer}
             onOpen={toggleDrawer}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true // Better open performance on mobile.
             }}
           >
             {DrawerContent()}
           </SwipeableDrawer>
         </>
-        : <Drawer
+      ) : (
+        <Drawer
           variant="permanent"
           className={`${clsx(classes.drawer, {
             [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
+            [classes.drawerClose]: !open
           })}`}
           classes={{
             paper: clsx({
               [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
-            }),
+              [classes.drawerClose]: !open
+            })
           }}
         >
           {DrawerContent()}
         </Drawer>
-      }
+      )}
     </>
   );
 }
@@ -272,15 +282,15 @@ interface DrawerListItemProps extends ListItemProps<any> {
   isActive?: (match: any, location: any) => boolean;
   onActive?: (active: boolean) => void;
   safeOnClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-  onClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
-  elementOnClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
+  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  elementOnClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 const useTooltipStyles = makeStyles(() => ({
   tooltip: {
     fontSize: '1rem',
     marginLeft: '40px'
-  },
+  }
 }));
 
 export function DrawerListItem({
@@ -295,14 +305,14 @@ export function DrawerListItem({
   isActive,
   onActive,
   safeOnClick,
-  ...otherProps }: DrawerListItemProps): JSX.Element {
+  ...otherProps
+}: DrawerListItemProps): JSX.Element {
   const classes = useStyles();
   const tooltipClasses = useTooltipStyles();
   const [open, setOpen] = useLaDanzeDrawer();
   const matches = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [active, setActive] = useState(false);
   const isMount = useIsMount();
-
 
   function handleOnClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     if (matches) {
@@ -332,9 +342,16 @@ export function DrawerListItem({
       safeOnClick={safeOnClick}
       onClick={handleOnClick}
       isActive={isActive}
-      onActive={handleOnActive}>
+      onActive={handleOnActive}
+    >
       <Tooltip classes={tooltipClasses} title={open ? '' : title} placement="right">
-        <ListItem className={`${classes.listItem} ${active ? 'active' : ''}`} selected={active} button key={title} {...otherProps}>
+        <ListItem
+          className={`${classes.listItem} ${active ? 'active' : ''}`}
+          selected={active}
+          button
+          key={title}
+          {...otherProps}
+        >
           {children}
         </ListItem>
       </Tooltip>

@@ -1,20 +1,27 @@
-import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from "@la-danze-ui/animation";
-import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
+import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from '@la-danze-ui/animation';
+import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import React from "react";
+import React from 'react';
 
 describe('<AnimateRoute />', () => {
-
-  const Container = ({ onClick, safeOnClick }: { onClick: () => void, safeOnClick: () => void }) => {
+  const Container = ({ onClick, safeOnClick }: { onClick: () => void; safeOnClick: () => void }) => {
     const animationKey = useAnimationKey();
     return (
       <div>
-        <AnimateLink to="/" animationKey={animationKey} onClick={onClick} safeOnClick={safeOnClick}>Go to Home</AnimateLink>
-        <AnimateLink to="/route1" animationKey={animationKey} noRefresh onClick={onClick} safeOnClick={safeOnClick}>Go to Route 1</AnimateLink>
+        <AnimateLink to="/" animationKey={animationKey} onClick={onClick} safeOnClick={safeOnClick}>
+          Go to Home
+        </AnimateLink>
+        <AnimateLink to="/route1" animationKey={animationKey} noRefresh onClick={onClick} safeOnClick={safeOnClick}>
+          Go to Route 1
+        </AnimateLink>
 
         <AnimateSwitch animationKey={animationKey}>
-          <AnimateRoute exact path="/"><RouteContainer routeName="home" /></AnimateRoute>
-          <AnimateRoute path="/route1"><RouteContainer routeName="route 1" /></AnimateRoute>
+          <AnimateRoute exact path="/">
+            <RouteContainer routeName="home" />
+          </AnimateRoute>
+          <AnimateRoute path="/route1">
+            <RouteContainer routeName="route 1" />
+          </AnimateRoute>
         </AnimateSwitch>
 
         <span data-testid="animationKey">{animationKey.key}</span>
@@ -27,7 +34,7 @@ describe('<AnimateRoute />', () => {
       <div>
         <span data-testid="routeName">{routeName}</span>
       </div>
-    )
+    );
   };
 
   const setUp = (route?: string) => {
@@ -52,7 +59,7 @@ describe('<AnimateRoute />', () => {
       expect(getRouteName()).toHaveTextContent('route 1');
       expect(getAnimationKey().textContent).not.toBe(prevAnimationKey);
       expect(route1Link).toHaveClass('active');
-    })
+    });
   });
 
   test('It should update animation key (refresh)', async () => {
@@ -65,7 +72,7 @@ describe('<AnimateRoute />', () => {
       expect(getRouteName()).toHaveTextContent('home');
       expect(getAnimationKey().textContent).not.toBe(prevAnimationKey);
       expect(homeLink).toHaveClass('active');
-    })
+    });
   });
 
   test('It should not upate animation key (noRefresh)', async () => {
@@ -77,7 +84,7 @@ describe('<AnimateRoute />', () => {
     await waitFor(() => {
       expect(getRouteName()).toHaveTextContent('route 1');
       expect(getAnimationKey().textContent).toBe(prevAnimationKey);
-    })
+    });
   });
 
   test('It should call safeOnClick and onClick (route change)', async () => {
@@ -115,6 +122,4 @@ describe('<AnimateRoute />', () => {
       expect(onClick).toHaveBeenCalled();
     });
   });
-
 });
-

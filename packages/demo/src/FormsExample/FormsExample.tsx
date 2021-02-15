@@ -9,25 +9,16 @@ import { Demo, DemoAndSource, Header, SourceCode } from '../DemoAndSource/DemoAn
 import styles from './FormsExample.module.scss';
 
 const validationSchema = yup.object({
-  email: yup
-    .string()
-    .required('Email mandatory')
-    .email('Wrong email format'),
-  username: yup
-    .string()
-    .required('Username mandatory')
-    .min(2, '2 characters minimum'),
-  password: yup
-    .string()
-    .required('Password mandatory')
-    .min(8, '8 characters minimum'),
+  email: yup.string().required('Email mandatory').email('Wrong email format'),
+  username: yup.string().required('Username mandatory').min(2, '2 characters minimum'),
+  password: yup.string().required('Password mandatory').min(8, '8 characters minimum'),
   confirmPassword: yup
     .string()
     .required('Confirm password mandatory')
-    .oneOf([yup.ref('password'), ''], 'Passwords mismatch'),
+    .oneOf([yup.ref('password'), ''], 'Passwords mismatch')
 });
 
-export function FormsExample() {
+export function FormsExample(): JSX.Element {
   // Form
   const form = useForm({
     resolver: yupResolver(validationSchema)
@@ -35,20 +26,23 @@ export function FormsExample() {
   const [loading, setLoading] = useState(false);
 
   function onSubmit(values: any) {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
       setLoading(false);
       console.log('form values', values);
-    }, 1000)
+    }, 1000);
   }
 
   return (
     <div className={styles.formsExample}>
       <DemoAndSource id="FormsExample">
         <Header>
-          <h1><pre>Form</pre> and <pre>FormField</pre></h1>
+          <h1>
+            <pre>Form</pre> and <pre>FormField</pre>
+          </h1>
           <span>
-            Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>Form</pre> and <pre>FormField</pre> components.
+            Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>Form</pre> and{' '}
+            <pre>FormField</pre> components.
           </span>
         </Header>
 
@@ -59,11 +53,23 @@ export function FormsExample() {
 
             <span className={styles.passwordHelper}>8 characters minimum.</span>
             <FormField className={styles.textField} type="password" name="password" as={TextField} label="Password" />
-            <FormField className={styles.textField} type="password" name="confirmPassword" as={TextField} label="Confirm password" />
+            <FormField
+              className={styles.textField}
+              type="password"
+              name="confirmPassword"
+              as={TextField}
+              label="Confirm password"
+            />
 
-            <Button className={styles.submitButton} disabled={loading} variant="contained" color="primary" type="submit">
+            <Button
+              className={styles.submitButton}
+              disabled={loading}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
               Validate
-              </Button>
+            </Button>
           </Form>
         </Demo>
 

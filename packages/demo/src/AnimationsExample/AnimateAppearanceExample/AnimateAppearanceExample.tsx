@@ -10,8 +10,10 @@ import React, { useState } from 'react';
 import { Demo, DemoAndSource, Header, SourceCode } from '../../DemoAndSource/DemoAndSource';
 import styles from './AnimateAppearanceExample.module.scss';
 
-export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<any>) {
-  const [animationType, setAnimationType] = useState<'scale' | 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight'>('scale');
+export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<any>): JSX.Element {
+  const [animationType, setAnimationType] = useState<
+    'scale' | 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight'
+  >('scale');
   const [animationStatus, setAnimationStatus] = useState(false);
 
   function handleAnimationChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -28,14 +30,22 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
         <Header>
           <h1>Animate (dis)appearance</h1>
           <span>
-            Example of (dis)appearance animations using <pre>AnimatePresence</pre> and <pre>MountTransition</pre> component.
+            Example of (dis)appearance animations using <pre>AnimatePresence</pre> and <pre>MountTransition</pre>{' '}
+            component.
           </span>
         </Header>
 
         <Demo>
           <span className={styles.label}>Animation type</span>
           <FormControl component="fieldset">
-            <RadioGroup onChange={handleAnimationChange} value={animationType} row aria-label="position" name="position" defaultValue="top">
+            <RadioGroup
+              onChange={handleAnimationChange}
+              value={animationType}
+              row
+              aria-label="position"
+              name="position"
+              defaultValue="top"
+            >
               <FormControlLabel
                 className={styles.radio}
                 value="scale"
@@ -81,21 +91,25 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
             </RadioGroup>
           </FormControl>
 
-          <Button className={styles.animateButton} onClick={toggleAnimation} variant="contained" color="primary" type="submit">
-            {animationStatus
-              ? 'Hide' : 'Show'
-            }
+          <Button
+            className={styles.animateButton}
+            onClick={toggleAnimation}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
+            {animationStatus ? 'Hide' : 'Show'}
           </Button>
 
           <div className={styles.animationResult}>
             <span>Result:</span>
             <Paper variant="outlined" className={styles.paperResult}>
               <AnimatePresence>
-                {animationStatus &&
+                {animationStatus && (
                   <MountTransition animationType={animationType}>
                     <div className={styles.animatedBox} />
                   </MountTransition>
-                }
+                )}
               </AnimatePresence>
             </Paper>
           </div>
@@ -107,8 +121,7 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
   );
 }
 
-const codeString =
-  `import Paper from '@material-ui/core/Paper';
+const codeString = `import Paper from '@material-ui/core/Paper';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { MountTransition } from 'la-danze-ui';

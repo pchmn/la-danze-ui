@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 // Render component wrapped by BrowserRouter
 // See https://testing-library.com/docs/example-react-router#reducing-boilerplate
 export const renderWithRouter = (ui: React.ReactElement, { route = '/' } = {}) => {
-  window.history.pushState({}, 'Test page', route)
+  window.history.pushState({}, 'Test page', route);
 
-  return render(ui, { wrapper: BrowserRouter })
+  return render(ui, { wrapper: BrowserRouter });
 };
 
 // Mock Framer motion
@@ -21,6 +21,6 @@ jest.mock('framer-motion', () => {
 
   return {
     motion: motion,
-    AnimatePresence: FakeAnimatePresence,
+    AnimatePresence: FakeAnimatePresence
   };
 });

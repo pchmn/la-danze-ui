@@ -10,14 +10,12 @@
       "vite/client",
       "node"
     ],
-    "importHelpers": true,
     "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "paths": {
       "la-danze-ui": [
         "../lib/src/index"
@@ -30,6 +28,6 @@
     "types"
   ],
   "exclude": [
-    "src/**/*.test.tsx"
+    "../lib/src/**/*.test.tsx",
   ]
 }

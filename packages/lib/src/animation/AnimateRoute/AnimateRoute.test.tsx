@@ -1,10 +1,9 @@
-import { AnimateRoute, AnimateSwitch } from "@la-danze-ui/animation";
-import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
-import React from "react";
-import { Switch } from "react-router-dom";
+import { AnimateRoute, AnimateSwitch } from '@la-danze-ui/animation';
+import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
+import React from 'react';
+import { Switch } from 'react-router-dom';
 
 describe('<AnimateRoute />', () => {
-
   const ExceptionContainer = () => {
     return (
       <div>
@@ -21,10 +20,10 @@ describe('<AnimateRoute />', () => {
     const err = console.error;
     console.error = jest.fn();
 
-    const error = Error('You can\'t use <AnimateRoute /> outside a <AnimateSwitch />');
+    const error = Error("You can't use <AnimateRoute /> outside a <AnimateSwitch />");
     expect(() => renderWithRouter(<ExceptionContainer />)).toThrow(error);
 
     // Restore writing to stderr.
     console.error = err;
   });
-})
+});

@@ -8,20 +8,19 @@ import Tooltip from '@material-ui/core/Tooltip';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import { ResizeSensor } from 'css-element-queries';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from "prism-react-renderer/themes/dracula";
+import theme from 'prism-react-renderer/themes/dracula';
 import React, { useEffect, useState } from 'react';
 import styles from './DemoAndSource.module.scss';
-
 
 interface DemoAndSourceProps {
   id: string;
 }
 
-export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndSourceProps>) {
+export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndSourceProps>): JSX.Element {
   const { header, demo, sourceCode } = getContainers();
 
   useEffect(() => {
-    autoResizeSourceCode()
+    autoResizeSourceCode();
   });
 
   function autoResizeSourceCode() {
@@ -43,7 +42,7 @@ export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndS
     let demo: any;
     let sourceCode: any;
 
-    React.Children.forEach(children, child => {
+    React.Children.forEach(children, (child) => {
       if (React.isValidElement(child)) {
         if (child.type === Header) {
           header = child;
@@ -66,21 +65,14 @@ export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndS
 
   return (
     <Grid container spacing={0} className={styles.demoAndSource} data-id={id}>
-      <>
-        {header}
-      </>
-      <>
-        {demo}
-      </>
-      <>
-        {sourceCode}
-      </>
-
+      <>{header}</>
+      <>{demo}</>
+      <>{sourceCode}</>
     </Grid>
   );
 }
 
-export function Header({ children }: React.PropsWithChildren<any>) {
+export function Header({ children }: React.PropsWithChildren<any>): JSX.Element {
   return (
     <Grid item md={12} className={styles.header}>
       {children}
@@ -88,12 +80,10 @@ export function Header({ children }: React.PropsWithChildren<any>) {
   );
 }
 
-export function Demo({ children }: React.PropsWithChildren<any>) {
+export function Demo({ children }: React.PropsWithChildren<any>): JSX.Element {
   return (
     <Grid item md={6} xs={12}>
-      <Paper className={`${styles.demo} paperContainer`}>
-        {children}
-      </Paper>
+      <Paper className={`${styles.demo} paperContainer`}>{children}</Paper>
     </Grid>
   );
 }
@@ -101,10 +91,13 @@ export function Demo({ children }: React.PropsWithChildren<any>) {
 interface SourceCodeProps {
   codeString: string;
   githubSourceLink: string;
-  height?: number
+  height?: number;
 }
-export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.PropsWithChildren<SourceCodeProps>) {
-
+export function SourceCode({
+  codeString,
+  githubSourceLink,
+  height = -1
+}: React.PropsWithChildren<SourceCodeProps>): JSX.Element {
   const [open, setOpen] = useState(false);
   // codeString = '(num) => num + 1';
 
@@ -113,13 +106,13 @@ export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.
       throw new Error('No code to copy');
     }
 
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.value = codeString;
 
     // Avoid scrolling to bottom
-    textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.position = "fixed";
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.position = 'fixed';
 
     document.body.appendChild(textArea);
     textArea.focus();
@@ -141,7 +134,10 @@ export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.
 
   return (
     <Grid item md={6} xs={12}>
-      <Paper className={`${styles.sourceCodePaper} sourCodePaper`} style={height !== -1 ? { height: 'auto' } : { height }}>
+      <Paper
+        className={`${styles.sourceCodePaper} sourCodePaper`}
+        style={height !== -1 ? { height: 'auto' } : { height }}
+      >
         <div className={styles.actionBar}>
           <Tooltip title="Show full source on Github">
             <IconButton aria-label="githubFullSource" onClick={openGithubSource}>
@@ -159,9 +155,9 @@ export function SourceCode({ codeString, githubSourceLink, height = -1 }: React.
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
               <pre className={`${className} ${styles.pre}`} style={style}>
                 {tokens.map((line, i) => (
-                  <div {...getLineProps({ line, key: i })} className={styles.tokenLine}>
+                  <div {...getLineProps({ line, key: i })} key={i} className={styles.tokenLine}>
                     {line.map((token, key) => (
-                      <span {...getTokenProps({ token, key })} />
+                      <span {...getTokenProps({ token, key })} key={key} />
                     ))}
                   </div>
                 ))}

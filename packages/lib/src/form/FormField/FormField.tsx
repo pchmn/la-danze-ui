@@ -1,9 +1,13 @@
-import React from "react";
-import { Controller, ControllerProps, FieldValues } from "react-hook-form";
+import React from 'react';
+import { Controller, ControllerProps, FieldValues } from 'react-hook-form';
 
 type NativeInputs = 'input' | 'select' | 'textarea';
 
-export type FormFieldProps = ControllerProps<React.ReactElement | React.ComponentType<any> | NativeInputs, FieldValues> & MuiProps;
+export type FormFieldProps = ControllerProps<
+  React.ReactElement | React.ComponentType<any> | NativeInputs,
+  FieldValues
+> &
+  MuiProps;
 
 export interface MuiProps {
   name: string;
@@ -24,12 +28,5 @@ export interface ComponentFormFieldProps extends MuiProps, React.RefAttributes<a
 }
 
 export function FormField({ defaultValue = '', ...props }: FormFieldProps): JSX.Element {
-
-  return (
-    <Controller
-      defaultValue={defaultValue}
-      {...props}
-    />
-  );
-
+  return <Controller defaultValue={defaultValue} {...props} />;
 }
