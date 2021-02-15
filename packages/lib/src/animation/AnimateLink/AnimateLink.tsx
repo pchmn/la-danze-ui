@@ -1,6 +1,6 @@
+import { AnimationKey } from "@la-danze-ui/animation";
+import { NavLink, NavLinkProps } from "@la-danze-ui/core";
 import React from "react";
-import { NavLink, NavLinkProps } from "../../core/components/NavLink/NavLink";
-import { AnimationKey } from "../AnimateSwitch/AnimateSwitch.hooks";
 
 export interface AnimateLinkProps extends NavLinkProps {
   animationKey?: AnimationKey;

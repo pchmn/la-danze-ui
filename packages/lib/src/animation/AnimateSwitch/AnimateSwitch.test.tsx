@@ -1,9 +1,8 @@
+import { AnimateRoute, AnimateSwitch } from "@la-danze-ui/animation";
+import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import { renderWithRouter } from "../../testing/testing.utils";
-import { AnimateRoute } from '../AnimateRoute/AnimateRoute';
-import { AnimateSwitch } from './AnimateSwitch';
 
 describe('<AnimateSwitch />', () => {
   const ExceptionContainer = () => {

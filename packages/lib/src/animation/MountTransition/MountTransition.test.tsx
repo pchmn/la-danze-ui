@@ -1,4 +1,4 @@
-import { MountTransition } from "@animation";
+import { MountTransition } from "@la-danze-ui/animation";
 import { render, screen } from "@testing-library/react";
 import React from "react";
 

@@ -1,8 +1,7 @@
+import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from "@la-danze-ui/animation";
+import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from "react";
-import { AnimateLink, AnimateRoute, useAnimationKey } from "..";
-import { renderWithRouter } from "../../testing/testing.utils";
-import { AnimateSwitch } from "../AnimateSwitch/AnimateSwitch";
 
 describe('<AnimateRoute />', () => {
 

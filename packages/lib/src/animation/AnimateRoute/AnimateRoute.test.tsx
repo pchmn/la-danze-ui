@@ -1,8 +1,7 @@
+import { AnimateRoute, AnimateSwitch } from "@la-danze-ui/animation";
+import { renderWithRouter } from "@la-danze-ui/testing/testing.utils";
 import React from "react";
 import { Switch } from "react-router-dom";
-import { renderWithRouter } from "../../testing/testing.utils";
-import { AnimateSwitch } from "../AnimateSwitch/AnimateSwitch";
-import { AnimateRoute } from './AnimateRoute';
 
 describe('<AnimateRoute />', () => {
 

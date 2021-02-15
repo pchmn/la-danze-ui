@@ -29,17 +29,17 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@core": [
+      "@la-danze-ui/core": [
         "src/core/index"
       ],
-      "@animation": [
+      "@la-danze-ui/animation": [
         "src/animation/index"
       ],
-      "@drawer": [
-        "src/drawer/index"
-      ],
-      "@form": [
+      "@la-danze-ui/form": [
         "src/form/index"
+      ],
+      "@la-danze-ui/testing/*": [
+        "src/testing/*"
       ]
     }
   }

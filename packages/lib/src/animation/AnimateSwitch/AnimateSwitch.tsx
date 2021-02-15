@@ -1,14 +1,13 @@
+import { AnimateRoute, AnimationKey, MountTransitionProps } from "@la-danze-ui/animation";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
 import { Switch, SwitchProps, useLocation } from "react-router-dom";
-import { AnimateRoute } from "../AnimateRoute/AnimateRoute";
-import { MountTransitionProps } from "../MountTransition/MountTransition";
-import { AnimationKey } from "./AnimateSwitch.hooks";
 
 export const AnimateSwitchContext = React.createContext('');
 
 export interface AnimateSwitchProps extends React.Attributes, SwitchProps, MountTransitionProps {
   animationKey?: AnimationKey;
+  // animationType?: 'scale' | 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
 }
 
 export function AnimateSwitch({

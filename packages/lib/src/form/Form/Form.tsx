@@ -1,6 +1,6 @@
+import { FormField } from '@la-danze-ui/form';
 import React from "react";
 import { UseFormMethods } from "react-hook-form";
-import { FormField } from "../FormField/FormField";
 
 export interface FormProps extends React.FormHTMLAttributes<any> {
   form: UseFormMethods<any> & { onSubmit?: any };

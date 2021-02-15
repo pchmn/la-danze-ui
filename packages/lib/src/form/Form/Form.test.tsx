@@ -1,10 +1,9 @@
 
+import { Form, FormField } from '@la-danze-ui/form';
 import TextField from '@material-ui/core/TextField';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormField } from '../FormField/FormField';
-import { Form } from './Form';
 
 describe('<Form />', () => {
 

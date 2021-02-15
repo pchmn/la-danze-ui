@@ -1,13 +1,25 @@
 // Theme colors
-$primaryColor: #E74C3C;
-$primaryLightColor: rgba($primaryColor, 0.5);
-$secondaryColor: #FFB74D;
-$seCondaryLightColor: rgab($secondaryColor, 0.5);
-$whiteMediumColor: #DADADA;
-$grayColor: #979797;
-$primaryDarkColor: #18191b;
+$colorPrimary: #E74C3C;
+$colorPrimaryLight: rgba($colorPrimary, 0.5);
+$colorSecondary: #FFB74D;
+$colorSecondaryLight: rgab($colorSecondary, 0.5);
+$colorWhiteMedium: #DADADA;
+$colorPrimaryDark: #18191b;
 $primaryDarkLightColor: #242527;
 
-$linkColor: rgba(231, 76, 60, 0.7215686275);
-$disabledColor: #8e8e8e;
-$warningColor: #f48536;
+$colorLink: rgba(231, 76, 60, 0.7215686275);
+$colorDisabled: #8e8e8e;
+$colorWarning: #f48536;
+
+:root {
+  --color-primary: #{$colorPrimary};
+  --color-primary-light: #{$colorPrimaryLight};
+  --color-primary-dark: #{$colorPrimaryDark};
+  --color-primary-dark-light: #{$primaryDarkLightColor};
+  --color-secondary: #{$colorSecondary};
+  --color-secondary-light: #{$colorSecondaryLight};
+  --color-white-medium: #{$colorWhiteMedium};
+  --color-link: #{$colorLink};
+  --color-disabled: #{$colorDisabled};
+  --color-warning: #{$colorWarning};
+}

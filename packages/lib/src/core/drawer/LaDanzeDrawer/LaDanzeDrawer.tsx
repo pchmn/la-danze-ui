@@ -1,3 +1,5 @@
+import { AnimateLink, AnimationKey } from "@la-danze-ui/animation";
+import { useIsMount, useLaDanzeDrawer } from "@la-danze-ui/core";
 import { makeStyles, Theme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,9 +13,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ChevronRightOutlinedIcon from '@material-ui/icons/ChevronRightOutlined';
 import clsx from 'clsx';
 import React, { useState } from "react";
-import { AnimateLink } from "../../animation/AnimateLink/AnimateLink";
-import { AnimationKey } from "../../animation/AnimateSwitch/AnimateSwitch.hooks";
-import { useLaDanzeDrawer } from "./LaDanzeDrawer.hooks";
 
 export interface LaDanzeDrawerProps {
   logo: string;
@@ -204,64 +203,6 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
 
   return (
     <>
-      {/* <Hidden mdDown implementation="css">
-        <Drawer
-          variant="permanent"
-          className={`${clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          })}`}
-          classes={{
-            paper: clsx({
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
-            }),
-          }}
-        >
-          {DrawerContent()}
-        </Drawer>
-      </Hidden>
-
-      <Hidden mdUp implementation="css">
-        <>
-          <AppBar position="fixed" className={classes.appBar} elevation={1}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={toggleDrawer}
-                className={classes.menuButton}
-              >
-                <svg aria-label="Menu" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" strokeLinecap="round" strokeMiterlimit="10" strokeWidth="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
-              </IconButton>
-              <div className="title">
-                <img src={logo} alt="logo" />
-                <span>{title}</span>
-              </div>
-            </Toolbar>
-          </AppBar>
-
-          <SwipeableDrawer
-            container={container}
-            variant="temporary"
-            anchor={'left'}
-            open={open}
-            className={clsx(classes.drawer, {
-              [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
-            })}
-            onClose={toggleDrawer}
-            onOpen={toggleDrawer}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            {DrawerContent()}
-          </SwipeableDrawer>
-        </>
-      </Hidden> */}
-
       {matches
         ? <>
           <AppBar position="fixed" className={classes.appBar} elevation={1}>
@@ -329,6 +270,7 @@ interface DrawerListItemProps extends ListItemProps<any> {
   exact?: boolean;
   strict?: boolean;
   isActive?: (match: any, location: any) => boolean;
+  onActive?: (active: boolean) => void;
   safeOnClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   onClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
   elementOnClick?: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
@@ -351,6 +293,7 @@ export function DrawerListItem({
   exact,
   strict,
   isActive,
+  onActive,
   safeOnClick,
   ...otherProps }: DrawerListItemProps): JSX.Element {
   const classes = useStyles();
@@ -358,6 +301,8 @@ export function DrawerListItem({
   const [open, setOpen] = useLaDanzeDrawer();
   const matches = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [active, setActive] = useState(false);
+  const isMount = useIsMount();
+
 
   function handleOnClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     if (matches) {
@@ -368,8 +313,26 @@ export function DrawerListItem({
     }
   }
 
+  function handleOnActive(active: boolean) {
+    if (isMount) {
+      setActive(active);
+      if (onActive) {
+        onActive(active);
+      }
+    }
+  }
+
   return (
-    <AnimateLink animationKey={animationKey} to={to} noRefresh={noRefresh} exact={exact} strict={strict} safeOnClick={safeOnClick} onClick={handleOnClick} isActive={isActive} onActive={setActive}>
+    <AnimateLink
+      animationKey={animationKey}
+      to={to}
+      noRefresh={noRefresh}
+      exact={exact}
+      strict={strict}
+      safeOnClick={safeOnClick}
+      onClick={handleOnClick}
+      isActive={isActive}
+      onActive={handleOnActive}>
       <Tooltip classes={tooltipClasses} title={open ? '' : title} placement="right">
         <ListItem className={`${classes.listItem} ${active ? 'active' : ''}`} selected={active} button key={title} {...otherProps}>
           {children}

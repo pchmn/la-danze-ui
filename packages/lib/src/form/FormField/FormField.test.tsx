@@ -1,9 +1,8 @@
+import { ComponentFormFieldProps, Form, FormField } from '@la-danze-ui/form';
 import { TextField } from "@material-ui/core";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Form } from "../Form/Form";
-import { ComponentFormFieldProps, FormField } from "./FormField";
 
 describe('<FormControl />', () => {
 
