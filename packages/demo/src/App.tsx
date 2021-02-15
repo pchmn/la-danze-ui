@@ -40,7 +40,7 @@ export function App() {
         </DrawerContainer>
 
         <MainContainer>
-          <AnimateSwitch animationType="fade" animationKey={animationKey}>
+          <AnimateSwitch animationType="fade" animationKey={animationKey} exit="out">
             <AnimateRoute path="/forms">
               <FormsExample />
             </AnimateRoute>

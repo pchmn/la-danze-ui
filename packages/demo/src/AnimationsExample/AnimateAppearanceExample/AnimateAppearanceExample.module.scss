@@ -1,5 +1,3 @@
-@import "../../../../lib/dist/colors.scss"; 
-
 .animateAppearance {
 
   .label {
@@ -28,7 +26,7 @@
       .animatedBox {
         height: 30px;
         width: 30px;
-        background-color: $secondaryColor;
+        background-color: var(--color-secondary);
         margin: auto;
       }
     }

@@ -7,9 +7,12 @@ export default defineConfig({
   build: {
     base: '/la-danze-ui/demo'
   },
-  alias: {
-    'la-danze-ui': path.resolve(__dirname, '../lib/src/index.tsx'),
-  },
+  alias: [
+    { find: /^la-danze-ui$/, replacement: path.resolve(__dirname, '../lib/src/index') },
+    { find: /^@la-danze-ui\/core$/, replacement: path.resolve(__dirname, '../lib/src/core/index') },
+    { find: /^@la-danze-ui\/animation$/, replacement: path.resolve(__dirname, '../lib/src/animation/index') },
+    { find: /^@la-danze-ui\/form$/, replacement: path.resolve(__dirname, '../lib/src/form/index') },
+  ],
   optimizeDeps: {
     exclude: ["prism-react-renderer"],
     include: [

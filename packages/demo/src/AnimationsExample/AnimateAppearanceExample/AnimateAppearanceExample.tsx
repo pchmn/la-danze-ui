@@ -18,9 +18,8 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
     setAnimationType((event.target as HTMLInputElement).value as any);
   }
 
-  function animate() {
-    setAnimationStatus(true);
-    setTimeout(() => setAnimationStatus(false), 1500)
+  function toggleAnimation() {
+    setAnimationStatus(!animationStatus);
   }
 
   return (
@@ -82,8 +81,10 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
             </RadioGroup>
           </FormControl>
 
-          <Button className={styles.animateButton} onClick={animate} variant="contained" color="primary" type="submit">
-            Animate
+          <Button className={styles.animateButton} onClick={toggleAnimation} variant="contained" color="primary" type="submit">
+            {animationStatus
+              ? 'Hide' : 'Show'
+            }
           </Button>
 
           <div className={styles.animationResult}>
