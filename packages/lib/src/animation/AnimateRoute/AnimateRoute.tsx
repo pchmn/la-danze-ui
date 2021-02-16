@@ -1,4 +1,4 @@
-import { AnimateSwitchContext } from '@la-danze-ui/animation/AnimateSwitch/AnimateSwitch';
+import { AnimateSwitchContext } from '@la-danze-ui/animation/AnimateRoutingContext/AnimateRoutingContext';
 import { AnimateRoutingProps } from '@la-danze-ui/animation/models/animate-routing-props';
 import { MountTransition } from '@la-danze-ui/animation/MountTransition/MountTransition';
 import React, { useContext } from 'react';
