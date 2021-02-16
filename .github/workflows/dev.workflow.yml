@@ -13,7 +13,7 @@ jobs:
         node-version: '12'
     - run: yarn install
     - run: yarn build
-    - run: yarn test:lib:ci
+    - run: yarn test:ci:lib
 
   sonarcloud:
     name: Sonar
