@@ -8,6 +8,7 @@
     "dev:lib": "npm start --prefix packages/lib",
     "build:lib": "npm run build --prefix packages/lib",
     "test:lib": "npm run test --prefix packages/lib",
+    "test:ci:lib": "npm run test:ci --prefix packages/lib",
     "dev:demo": "npm run dev --prefix packages/demo",
     "serve:demo": "npm run serve --prefix packages/demo",
     "build:demo": "npm run build --prefix packages/demo",
