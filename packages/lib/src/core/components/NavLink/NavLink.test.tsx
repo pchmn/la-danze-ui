@@ -1,27 +1,49 @@
-import { NavLink } from "@la-danze-ui/core";
+import { NavLink } from '@la-danze-ui/core';
 import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
-import { fireEvent, screen, waitFor } from "@testing-library/react";
-import React, { useState } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { fireEvent, screen, waitFor } from '@testing-library/react';
+import React, { useState } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 describe('<NavLink />', () => {
-
-  const Container = ({ onActive, safeOnClick, onClick }: { onActive: () => void, safeOnClick: () => void, onClick: () => void }) => {
+  const Container = ({
+    onActive,
+    safeOnClick,
+    onClick
+  }: {
+    onActive: () => void;
+    safeOnClick: () => void;
+    onClick: () => void;
+  }) => {
     const [active, setActive] = useState(true);
 
     const isActive = (_match: any | null, location: any) => {
       return location.search === '?active=true';
-    }
+    };
 
     return (
       <div>
-        <NavLink to="/" exact safeOnClick={safeOnClick} onClick={onClick}>Go to Home</NavLink>
-        <NavLink to="/route1" noRefresh safeOnClick={safeOnClick} onClick={onClick}>Go to Route 1</NavLink>
-        <NavLink to={`/route2?active=${active}`} onClick={() => setActive(!active)} isActive={isActive} onActive={onActive}>Go to Route 2</NavLink>
+        <NavLink to="/" exact safeOnClick={safeOnClick} onClick={onClick}>
+          Go to Home
+        </NavLink>
+        <NavLink to="/route1" noRefresh safeOnClick={safeOnClick} onClick={onClick}>
+          Go to Route 1
+        </NavLink>
+        <NavLink
+          to={`/route2?active=${active}`}
+          onClick={() => setActive(!active)}
+          isActive={isActive}
+          onActive={onActive}
+        >
+          Go to Route 2
+        </NavLink>
 
         <Switch>
-          <Route exact path="/"><RouteContainer routeName="home" /></Route>
-          <Route path="/route1"><RouteContainer routeName="route 1" /></Route>
+          <Route exact path="/">
+            <RouteContainer routeName="home" />
+          </Route>
+          <Route path="/route1">
+            <RouteContainer routeName="route 1" />
+          </Route>
         </Switch>
       </div>
     );
@@ -34,7 +56,7 @@ describe('<NavLink />', () => {
         <span data-testid="routeName">{routeName}</span>
         <span data-testid="initId">{location.key}</span>
       </div>
-    )
+    );
   };
 
   const setUp = (route?: string) => {
@@ -42,7 +64,9 @@ describe('<NavLink />', () => {
     const safeOnClick = jest.fn();
     const onClick = jest.fn();
 
-    const container = renderWithRouter(<Container onActive={onActive} safeOnClick={safeOnClick} onClick={onClick} />, { route });
+    const container = renderWithRouter(<Container onActive={onActive} safeOnClick={safeOnClick} onClick={onClick} />, {
+      route
+    });
     const homeLink = screen.getByText('Go to Home');
     const route1Link = screen.getByText('Go to Route 1');
     const route2Link = screen.getByText('Go to Route 2');
@@ -169,4 +193,4 @@ describe('<NavLink />', () => {
     fireEvent.click(homeLink);
     await waitFor(() => expect(getInitId()).not.toHaveTextContent(prevInitId));
   });
-})
+});

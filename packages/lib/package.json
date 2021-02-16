@@ -50,7 +50,9 @@
     "moduleNameMapper": {
       "^@la-danze-ui/core$": "<rootDir>/src/core/index.tsx",
       "^@la-danze-ui/animation$": "<rootDir>/src/animation/index.tsx",
-      "^@la-danze-ui/form$": "<rootDir>/src/form/index.tsx"
+      "^@la-danze-ui/form$": "<rootDir>/src/form/index.tsx",
+      "^@la-danze-ui/testing/(.*)": "<rootDir>/src/testing/$1",
+      "\\.(css|scss)$": "identity-obj-proxy"
     }
   },
   "dependencies": {
@@ -65,8 +67,8 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.2",
     "@types/enzyme": "^3.10.8",
-    "@types/react-router-dom": "^5.1.6",
     "@types/history": "^4.7.8",
+    "@types/react-router-dom": "^5.1.6",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "autoprefixer": "^10.1.0",
     "copyfiles": "^2.4.1",
@@ -74,6 +76,7 @@
     "enzyme": "^3.11.0",
     "framer-motion": "^3.0.0",
     "husky": "^4.3.7",
+    "identity-obj-proxy": "^3.0.0",
     "postcss": "^8.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
