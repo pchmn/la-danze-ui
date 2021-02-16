@@ -95,8 +95,6 @@ describe('<FormControl />', () => {
   test('It should call onSubmit', async () => {
     const { validateButton, emailInput, customInput, onSubmit } = setUp();
 
-    console.log('custominput before', customInput.value, emailInput.value);
-
     fireEvent.change(emailInput, { target: { value: 'good@email' } });
     fireEvent.change(customInput, { target: { value: 'custom value' } });
     fireEvent.click(validateButton);

@@ -5,4 +5,14 @@
     "src/setupTests.ts",
     "src/testing/*"
   ],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": [
+          "*"
+        ]
+      }
+    ]
+  }
 }

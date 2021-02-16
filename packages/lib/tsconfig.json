@@ -41,14 +41,6 @@
       "@la-danze-ui/testing/*": [
         "src/testing/*"
       ]
-    },
-    "plugins": [
-      {
-        "transform": "@zerollup/ts-transform-paths",
-        "exclude": [
-          "*"
-        ]
-      }
-    ]
+    }
   }
 }

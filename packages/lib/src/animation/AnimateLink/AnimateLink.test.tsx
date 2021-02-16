@@ -1,4 +1,7 @@
-import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from '@la-danze-ui/animation';
+import { AnimateLink } from '@la-danze-ui/animation/AnimateLink/AnimateLink';
+import { AnimateRoute } from '@la-danze-ui/animation/AnimateRoute/AnimateRoute';
+import { AnimateSwitch } from '@la-danze-ui/animation/AnimateSwitch/AnimateSwitch';
+import { useAnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
 import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
 import { Button } from '@material-ui/core';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
