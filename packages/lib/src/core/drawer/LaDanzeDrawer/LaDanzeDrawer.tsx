@@ -1,5 +1,7 @@
-import { AnimateLink, AnimationKey } from '@la-danze-ui/animation';
-import { useIsMount, useLaDanzeDrawer } from '@la-danze-ui/core';
+import { AnimateLink } from '@la-danze-ui/animation/AnimateLink/AnimateLink';
+import { AnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
+import { useLaDanzeDrawer } from '@la-danze-ui/core/drawer/hooks/useLaDanzeDrawer.hook';
+import { useIsMount } from '@la-danze-ui/core/hooks/useIsMount.hook';
 import { makeStyles, Theme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';

@@ -1,4 +1,4 @@
-import { NavLink } from '@la-danze-ui/core';
+import { NavLink } from '@la-danze-ui/core/components/NavLink/NavLink';
 import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React, { useState } from 'react';

@@ -7,8 +7,5 @@
     "moduleResolution": "Node",
     "noEmit": true,
     "jsx": "react"
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

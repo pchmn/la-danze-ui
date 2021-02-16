@@ -1,4 +1,4 @@
-import { FormField } from '@la-danze-ui/form';
+import { FormField } from '@la-danze-ui/form/FormField/FormField';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 

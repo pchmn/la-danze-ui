@@ -130,20 +130,17 @@ import { MountTransition } from 'la-danze-ui';
 export function AnimationsExample() {
   const [animationStatus, setAnimationStatus] = useState(false);
 
-  useEffet(() => {
-    // Simulate appearance after 1 sec
-    setTimeout(() => setAnimationStatus(true), 1000);
-  })
+  function toggleAnimation() {
+    setAnimationStatus(!animationStatus);
+  }
 
   return (
-    <Paper>
-      <AnimatePresence>
-        {animationStatus &&
-          <MountTransition animationType="scale">
-            <div />
-          </MountTransition>
-        }
-      </AnimatePresence>
-    </Paper>
+    <Button>{animationStatus ? 'Hide' : 'Show'}</Button>
+
+    <AnimatePresence>
+      {animationStatus &&
+        <MountTransition animationType="scale" />
+      }
+    </AnimatePresence>
   );
 }`;

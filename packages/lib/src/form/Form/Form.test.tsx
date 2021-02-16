@@ -1,4 +1,5 @@
-import { Form, FormField } from '@la-danze-ui/form';
+import { Form } from '@la-danze-ui/form/Form/Form';
+import { FormField } from '@la-danze-ui/form/FormField/FormField';
 import TextField from '@material-ui/core/TextField';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';

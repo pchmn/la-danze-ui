@@ -1,4 +1,5 @@
-import { AnimateRoute, AnimateSwitch } from '@la-danze-ui/animation';
+import { AnimateRoute } from '@la-danze-ui/animation/AnimateRoute/AnimateRoute';
+import { AnimateSwitch } from '@la-danze-ui/animation/AnimateSwitch/AnimateSwitch';
 import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from 'react';

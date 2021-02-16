@@ -1,8 +1,9 @@
-import { AnimateRoute, AnimationKey } from '@la-danze-ui/animation';
+import { AnimateRoute } from '@la-danze-ui/animation/AnimateRoute/AnimateRoute';
+import { AnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
+import { AnimateRoutingProps } from '@la-danze-ui/animation/models/animate-routing-props';
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { Switch, SwitchProps, useLocation } from 'react-router-dom';
-import { AnimateRoutingProps } from '../models/animate-routing-props';
 
 export const AnimateSwitchContext = React.createContext('');
 

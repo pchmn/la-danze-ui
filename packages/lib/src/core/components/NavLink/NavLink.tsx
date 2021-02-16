@@ -29,7 +29,7 @@ function NavLinkComponent(
     noRefresh,
     ...otherProps
   }: NavLinkProps,
-  ref: React.ForwardedRef<any>
+  ref?: React.ForwardedRef<any>
 ) {
   const [active, setActive] = useState(false);
   const match = useRouteMatch({ path: to, exact, strict, sensitive });
@@ -70,4 +70,4 @@ function NavLinkComponent(
   );
 }
 
-export const NavLink = React.forwardRef<any, NavLinkProps>(NavLinkComponent);
+export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(NavLinkComponent);

@@ -29,18 +29,26 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@la-danze-ui/core": [
-        "src/core/index"
+      "@la-danze-ui/core/*": [
+        "src/core/*"
       ],
-      "@la-danze-ui/animation": [
-        "src/animation/index"
+      "@la-danze-ui/animation/*": [
+        "src/animation/*"
       ],
-      "@la-danze-ui/form": [
-        "src/form/index"
+      "@la-danze-ui/form/*": [
+        "src/form/*"
       ],
       "@la-danze-ui/testing/*": [
         "src/testing/*"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "transform": "@zerollup/ts-transform-paths",
+        "exclude": [
+          "*"
+        ]
+      }
+    ]
   }
 }

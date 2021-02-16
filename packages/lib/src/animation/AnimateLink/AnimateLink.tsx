@@ -1,14 +1,22 @@
-import { AnimationKey } from '@la-danze-ui/animation';
-import { NavLink, NavLinkProps } from '@la-danze-ui/core';
+import { AnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
+import { NavLink } from '@la-danze-ui/core/components/NavLink/NavLink';
 import React from 'react';
+import {
+  NavLinkProps as OriginalNavLinkProps
+} from 'react-router-dom';
 
-export interface AnimateLinkProps extends NavLinkProps {
+export interface AnimateLinkProps extends OriginalNavLinkProps, React.RefAttributes<HTMLAnchorElement> {
+  to: string;
+  safeOnClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  noRefresh?: boolean;
+  onActive?: (active: boolean) => void;
+  sensitive?: boolean;
   animationKey?: AnimationKey;
 }
 
 function AnimateLinkComponent(
   { children, animationKey, noRefresh = false, safeOnClick, onClick, ...otherProps }: AnimateLinkProps,
-  ref: React.ForwardedRef<any>
+  ref?: React.ForwardedRef<any>
 ) {
   function handleOnClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if (!noRefresh) {
@@ -33,4 +41,4 @@ function AnimateLinkComponent(
   );
 }
 
-export const AnimateLink = React.forwardRef<any, AnimateLinkProps>(AnimateLinkComponent);
+export const AnimateLink = React.forwardRef<HTMLAnchorElement, AnimateLinkProps>(AnimateLinkComponent);

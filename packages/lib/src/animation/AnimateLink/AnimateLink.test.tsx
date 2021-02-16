@@ -1,5 +1,6 @@
 import { AnimateLink, AnimateRoute, AnimateSwitch, useAnimationKey } from '@la-danze-ui/animation';
 import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
+import { Button } from '@material-ui/core';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
@@ -14,6 +15,8 @@ describe('<AnimateRoute />', () => {
         <AnimateLink to="/route1" animationKey={animationKey} noRefresh onClick={onClick} safeOnClick={safeOnClick}>
           Go to Route 1
         </AnimateLink>
+
+        <Button component={AnimateLink} to="" />
 
         <AnimateSwitch animationKey={animationKey}>
           <AnimateRoute exact path="/">

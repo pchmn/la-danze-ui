@@ -9,9 +9,9 @@ export default defineConfig({
   },
   alias: [
     { find: /^la-danze-ui$/, replacement: path.resolve(__dirname, '../lib/src/index') },
-    { find: /^@la-danze-ui\/core$/, replacement: path.resolve(__dirname, '../lib/src/core/index') },
-    { find: /^@la-danze-ui\/animation$/, replacement: path.resolve(__dirname, '../lib/src/animation/index') },
-    { find: /^@la-danze-ui\/form$/, replacement: path.resolve(__dirname, '../lib/src/form/index') },
+    { find: /^@la-danze-ui\/core\/(.*)/, replacement: path.resolve(__dirname, '../lib/src/core/$1') },
+    { find: /^@la-danze-ui\/animation\/(.*)/, replacement: path.resolve(__dirname, '../lib/src/animation/$1') },
+    { find: /^@la-danze-ui\/form\/(.*)/, replacement: path.resolve(__dirname, '../lib/src/form/$1') },
   ],
   optimizeDeps: {
     exclude: ["prism-react-renderer"],
