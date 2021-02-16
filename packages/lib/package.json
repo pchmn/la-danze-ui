@@ -59,7 +59,11 @@
       "ts-jest": {
         "tsConfig": "tsconfig.test.json"
       }
-    }
+    },
+    "collectCoverageFrom": [
+      "**/*.tsx",
+      "!**/*(index|test).tsx"
+    ]
   },
   "dependencies": {
     "react-hookstore": "^1.5.1"

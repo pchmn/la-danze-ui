@@ -11,9 +11,12 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '12'
-    - run: yarn install
-    - run: yarn build
-    - run: yarn test:ci:lib
+    - name: INSTALL
+      run: yarn install
+    - name: BUILD
+      run: yarn build
+    - name: TEST
+      run: yarn test:ci:lib
     - uses: actions/upload-artifact@v2
       with:
         name: coverage
@@ -31,9 +34,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: coverage
-    - name: Display structure of downloaded files
-      run: ls -R
-    - name: SonarCloud Scan
+    - name: SONAR
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
