@@ -4,6 +4,7 @@ on: push
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,6 +16,8 @@ jobs:
     - run: yarn test:lib:ci
 
   sonarcloud:
+    name: Sonar
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
