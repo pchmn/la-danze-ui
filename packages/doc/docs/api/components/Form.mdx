@@ -1,0 +1,49 @@
+---
+title: Form
+hide_title: true
+---
+
+# `Form`
+
+This component extends `form` html element. It is meant to be used with `FormField` components, in which it will add useful props for form validation.
+
+## Example
+
+```jsx
+import { useForm } from 'react-hook-form';
+import { Form, FormField } from 'la-danze-ui';
+
+function App() {
+  const form = useForm();
+
+  return (
+    <Form form={form}>
+      <FormField name="email" rules={...} />
+      ...
+    </Form>
+  );
+}
+```
+
+## Props
+
+> Extends [`React.FormHTMLAttributes`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const additionalProps = [
+  {
+    name: 'form',
+    type: 'UseFormMethods<any>',
+    required: true,
+    description: <>Value of react-hook-form <a href="https://react-hook-form.com/api#useFormRef">useForm()</a>.</>
+  },
+  {
+    name: 'disabled',
+    type: 'boolean',
+    description: <>Disable all fields. Overriden by <code>FormField</code> <code>disabled</code> prop.</>
+  }
+];
+
+<PropsTable componentProps={additionalProps} />

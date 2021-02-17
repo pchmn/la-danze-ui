@@ -1,0 +1,71 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #e74c3c;
+  --ifm-color-primary-dark: #e43422;
+  --ifm-color-primary-darker: #dc2d1b;
+  --ifm-color-primary-darkest: #b52516;
+  --ifm-color-primary-light: #ea6456;
+  --ifm-color-primary-lighter: #ec7063;
+  --ifm-color-primary-lightest: #f1938a;
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.button {
+  color: #fff;
+  font-weight: 500;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+}
+.button:hover {
+  background-color: rgb(161, 53, 42);
+  color: #fff;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+  border-color: transparent;
+}
+
+.button.textButton {
+  box-shadow: none;
+  border-color: transparent;
+  color: var(--ifm-color-primary);
+}
+
+.button.textButton:hover {
+  background-color: rgba(231, 76, 60, 0.08);
+}
+
+.codeFont {
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.fz90 {
+  font-size: 90%;
+}
+
+.propsDescription code {
+  font-family: Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: rgb(255 255 255 / 18%);
+  padding: 2px;
+  border-radius: 2px;
+  word-break: break-word;
+}

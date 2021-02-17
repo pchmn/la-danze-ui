@@ -1,0 +1,51 @@
+---
+title: NavLink
+hide_title: true
+---
+
+# `NavLink`
+
+This component extends extends `NavLink` of [react-router-dom](https://reactrouter.com/web/api/NavLink). It provides additional props for preventing refresh of current route.
+
+
+## Example
+
+```jsx
+import { NavLink } from 'la-danze-ui';
+
+function App() {
+  return (
+    ...
+    <NavLink to="/" exact title="Home" noRefresh />
+    ...
+  );
+}
+```
+
+## Props
+
+> Extends react-router-dom [`NavLink`](https://reactrouter.com/web/api/NavLink) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'noRefresh',
+    type: 'boolean',
+    default: 'false',
+    description: <>If <code>true</code> and link is active, prevents refresh when clicking.</>
+  },
+    {
+    name: 'safeOnClick',
+    type: 'function',
+    description: <>Onclick event fired only when there is a route change by clicking on link (if <code>noRefresh</code> = <code>true</code> and link is active, event will not be fired).<br /><code>(event: React.MouseEvent&lt;HTMLAnchorElement, MouseEvent&gt;) => void</code></>
+  },
+  {
+    name: 'onActive',
+    type: 'function',
+    description: <>Event fired when active state changes.<br /><code>(active: boolean) => void</code></>
+  }
+];
+
+<PropsTable componentProps={componentProps} />
