@@ -36,14 +36,14 @@ yarn add la-danze-ui
 
 ### Peer dependencies
 
-* [`material-ui`](https://next.material-ui.com/) (next)
+* material-ui (next):
   * `@material-ui/core@next`
   * `@material-ui/icons@next`
   * `@emotion/react`
   * `@emotion/styled`
-* [`react-router-dom`](https://reactrouter.com/web/guides/quick-start)
-* [`framer-motion`](https://www.framer.com/motion/)
-* [`react-hook-form`](https://react-hook-form.com/)
+* `react-router-dom`
+* `framer-motion`
+* `react-hook-form`
   
 
 ## Quickstart
@@ -79,6 +79,15 @@ See [live preview](https://pchmn.github.io/la-danze-ui/demo).
 
 This project is licensed under the terms of the
 [MIT license](/LICENSE).
+
+## Libraries used
+
+**La Danze UI** uses and requires these dependencies:
+
+* [Material-UI](https://next.material-ui.com/) (next)
+* [React Router Dom](https://next.material-ui.com/)
+* [Framer motion](https://www.framer.com/motion/)
+* [React Hook Form](https://react-hook-form.com/)
 
 ## Project organizaton
 
