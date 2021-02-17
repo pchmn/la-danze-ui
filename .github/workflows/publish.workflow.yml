@@ -1,4 +1,4 @@
-name: La Danze UI publish
+name: Publish
 
 on:
   push:
@@ -8,20 +8,17 @@ on:
 jobs:
   publish:
     name: Publish la-danze-ui
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: artifact
-          path: dist
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: cd packages/lib
-      - run: yarn install
-      - run: yarn publish
+      - name: INSTALL
+        run: yarn install
+      - name: PUBLISH
+        run: npm publish
+        working-directory: packages/lib
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}         
