@@ -91,4 +91,4 @@ This project is licensed under the terms of the
 
 ## Project organizaton
 
-See little explanation of this project [organization](PROJECT_ORGANIZATION.md).
+See little explanation of this project [organization](.github/PROJECT_ORGANIZATION.md).
