@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import React from 'react';
+import config from '../../config';
 import styles from './styles.module.css';
 
 const features = [
@@ -49,7 +50,7 @@ function Feature({ imageUrl, title, description }) {
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )}
-      <h3>{title}</h3>
+      <h2>{title}</h2>
       <p>{description}</p>
     </div>
   );
@@ -64,6 +65,7 @@ function Home() {
       description="Description will go into a meta tag in <head />">
       <header className={clsx('hero', styles.heroBanner)}>
         <div className="container">
+          <img src="img/logo.svg" alt="logo" />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
@@ -72,7 +74,7 @@ function Home() {
                 'button button--primary button--lg',
                 styles.button,
               )}
-              to={useBaseUrl('docs/1.0.0')}>
+              to={useBaseUrl(`docs/${config.LA_DANZE_UI_VERSION}`)}>
               Getting Started
             </Link>
             <Link

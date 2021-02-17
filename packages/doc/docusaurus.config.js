@@ -1,3 +1,5 @@
+const config = require('./config');
+
 module.exports = {
   title: 'La Danze UI',
   tagline: 'React library that provides a clean UI and facilitate animations and building forms',
@@ -17,18 +19,24 @@ module.exports = {
       theme: require('prism-react-renderer/themes/dracula'),
     },
     navbar: {
-      title: 'La Danze UI',
+      title: `La Danze UI`,
       logo: {
         alt: 'La Danze UI logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          to: 'docs/1.0.0',
+          to: 'docs/0.0.1',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
+        // {
+        //   type: 'docsVersion',
+        //   position: 'left',
+        //   // to: "/path // by default, link to active/latest version
+        //   // label: "label" // by default, show active/latest version label
+        // },
         {
           href: 'https://pchmn.github.io/la-danze-ui/demo',
           label: 'Demo',
@@ -53,24 +61,27 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/pchmn/la-danze-ui/edit/main/packages/doc/',
           lastVersion: "current",
           versions: {
             current: {
-              label: "1.0.0",
-              path: "1.0.0"
+              label: config.LA_DANZE_UI_VERSION,
+              path: config.LA_DANZE_UI_VERSION
             }
           }
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
   ],
+  plugins: [
+    // path.resolve(__dirname, 'plugins/dotenv.plugin'),
+  ]
 };

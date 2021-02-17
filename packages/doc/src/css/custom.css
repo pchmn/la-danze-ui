@@ -46,6 +46,10 @@
   background-color: rgba(231, 76, 60, 0.08);
 }
 
+.footer.footer--dark {
+  background-color: #33363b;
+}
+
 .codeFont {
   font-family: Consolas, "Liberation Mono", Menlo, monospace;
 }
