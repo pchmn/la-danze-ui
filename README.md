@@ -68,6 +68,8 @@ function App() {
 }
 ```
 
+[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/focused-smoke-tnjj1?file=/src/App.tsx)
+
 ## Documentation
 
 See [docs website](https://pchmn.github.io/la-danze-ui/).
