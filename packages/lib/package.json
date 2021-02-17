@@ -1,27 +1,35 @@
 {
   "name": "la-danze-ui",
+  "description": "React library that provides a clean UI and facilitate animations and building forms",
   "author": "pchmn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/la-danze-ui.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pchmn/la-danze-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pchmn/la-danze-ui/issues"
+  },
+  "homepage": "https://github.com/pchmn/la-danze-ui#readme",
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --tsconfig ./tsconfig.build.json",
-    "postbuild": "copyfiles -e \"./src/core/theme/*.module.scss\" -f ./src/core/theme/*.scss ./dist/",
     "test": "tsdx test --runInBand",
     "test:ci": "tsdx test --ci --coverage --runInBand",
     "lint": "tsdx lint",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "prepublishOnly": "npm run build"
   },
   "husky": {
     "hooks": {

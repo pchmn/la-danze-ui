@@ -1,7 +1,7 @@
 import { ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import StyledEngineProvider from '@material-ui/core/StyledEngineProvider';
 import React from 'react';
-// import 'typeface-work-sans';
 import './theme.scss';
 
 const theme = createMuiTheme({
@@ -87,7 +87,10 @@ const theme = createMuiTheme({
 export function LaDanzeTheme({ children }: React.PropsWithChildren<React.ReactNode>) {
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </StyledEngineProvider>
   );
 }
