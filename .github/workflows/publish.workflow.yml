@@ -1,4 +1,4 @@
-name: La Danze UI publish
+name: Publish
 
 on:
   push:
@@ -15,8 +15,10 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn install
-      - run: npm publish
+      - name: INSTALL
+        run: yarn install
+      - name: PUBLISH
+        run: npm publish
         working-directory: packages/lib
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}         
