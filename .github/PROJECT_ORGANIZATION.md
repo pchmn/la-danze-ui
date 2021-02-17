@@ -54,7 +54,7 @@ All commands below must be launched from root of project (See [package.json](pac
 
 There are 2 workflows:
 * [`build.workflow.yml`](workflows/build.workflow.yml) - launched on every push, expect for tags, .md files excluded (See [pipeline](https://github.com/pchmn/la-danze-ui/actions?query=workflow%3ABuild))
-  * **Build and Test la-danze-ui**: build library and test it with coverage
+  * **Build and Test la-danze-ui**: build demo, doc, library and test library with coverage
   * **Sonar la-danze-ui**: run sonar cloud on library
 
 ![build.workflow](build.workflow.png)
