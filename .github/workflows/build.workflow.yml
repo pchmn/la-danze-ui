@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build
 
 on:
   push:
@@ -6,10 +6,16 @@ on:
       - '**'
     tags-ignore:
       - '*.*'
+    paths-ignore:
+      - '**.md'
+      - '.github/**.*.png'
+  pull_request:
+    paths-ignore:
+      - '**.md'
 
 jobs:
   build:
-    name: Build
+    name: Build and Test la-danze-ui
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -28,7 +34,7 @@ jobs:
         path: packages/lib/coverage/lcov.info
 
   sonarcloud:
-    name: Sonar
+    name: Sonar la-danze-ui
     needs: build
     runs-on: ubuntu-latest
     steps:
