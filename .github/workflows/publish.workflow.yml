@@ -15,8 +15,9 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: cd packages/lib
       - run: yarn install
+        working-directory: packages/lib
       - run: yarn publish
+        working-directory: packages/lib
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}         
