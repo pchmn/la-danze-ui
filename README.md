@@ -85,7 +85,7 @@ This project is licensed under the terms of the
 **La Danze UI** uses and requires these dependencies:
 
 * [Material-UI](https://next.material-ui.com/) (next)
-* [React Router Dom](https://next.material-ui.com/)
+* [React Router Dom](https://reactrouter.com/web/guides/quick-start)
 * [Framer motion](https://www.framer.com/motion/)
 * [React Hook Form](https://react-hook-form.com/)
 
