@@ -8,7 +8,6 @@ on:
 jobs:
   publish:
     name: Publish la-danze-ui
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,10 +15,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - uses: actions/download-artifact@v2
-        with:
-          name: artifact
-          path: dist
       - run: cd packages/lib
       - run: yarn install
       - run: yarn publish
