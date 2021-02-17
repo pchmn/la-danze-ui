@@ -1,12 +1,48 @@
 {
   "name": "la-danze-ui-monorepo",
   "version": "0.0.1",
+  "author": "pchmn",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev:lib": "npm start --prefix packages/lib",
+    "build:lib": "npm run build --prefix packages/lib",
+    "test:lib": "npm run test --prefix packages/lib",
+    "test:ci:lib": "npm run test:ci --prefix packages/lib",
+    "dev:demo": "npm run dev --prefix packages/demo",
+    "serve:demo": "npm run serve --prefix packages/demo",
+    "build:demo": "npm run build --prefix packages/demo",
+    "deploy:demo": "npm run deploy --prefix packages/demo",
+    "dev:doc": "npm run dev --prefix packages/doc",
+    "serve:doc": "npm run serve --prefix packages/doc",
+    "build:doc": "npm run build --prefix packages/doc",
+    "build": "npm run build:lib && npm run build:demo && npm run build:doc",
+    "copyfiles": "rm -rf dist && mkdir dist && cp -r packages/doc/build/. dist && cp -r packages/demo/dist dist/demo",
+    "predeploy": "npm run build && npm run copyfiles",
+    "deploy": "gh-pages -d dist",
+    "publish:lib": "cd packages/lib && npm publish"
+  },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.1.0",
+    "local-web-server": "^4.2.1",
+    "prettier": "^2.2.1",
     "typescript": "^4.1.2"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "eslint": "^7.20.0"
+  }
 }

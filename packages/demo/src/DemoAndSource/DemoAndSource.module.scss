@@ -1,0 +1,82 @@
+.demoAndSource {
+  flex-grow: 1;
+
+  .header {
+    margin-bottom: 30px;
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  pre {
+    display: inline-block;
+    background: #44494f;
+    margin: 0;
+    padding: 2px 5px;
+    margin: 2px 0px;
+    border-radius: 6px;
+  }
+  
+  .demo {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+  
+    @media (max-width: 960px)  {
+      border-top-right-radius: 6px;
+      border-bottom-left-radius: 0;
+    }
+  }
+  
+  .sourceCodePaper {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    // background: #282a36;
+    position: relative;
+    padding: 0;
+  
+    @media (max-width: 960px)  {
+      border-bottom-left-radius: 6px;
+      border-top-right-radius: 0;
+    }
+
+    .actionBar {
+      padding: 5px 10px;
+      background: rgba(#1e1f21, 0.9);
+      border-top-right-radius: 6px;
+
+      @media (max-width: 960px)  {
+        border-top-right-radius: 0;
+      }
+    }
+
+    .sourceCode {
+      overflow-y: auto;
+
+      border-bottom-right-radius: 6px;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      @media (max-width: 960px)  {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 6px;
+
+      }
+
+      .pre {
+        display: block;
+        padding: 20px 25px;
+        margin: 0;
+        border-radius: 0;
+
+        .tokenLine {
+          white-space: pre-wrap;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

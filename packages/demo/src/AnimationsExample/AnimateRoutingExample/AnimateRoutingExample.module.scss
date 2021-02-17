@@ -1,0 +1,26 @@
+.animateRoutingExample {
+  .animateButton:not(:last-child) {
+    display: block;
+    width: fit-content;
+    margin-right: 30px;
+    margin-bottom: 30px;
+  }
+
+  .animationResult {
+    span {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .paperResult {
+      padding: 20px;
+      height: 70px;
+
+      .animatedBox {
+        height: 30px;
+        width: 30px;
+        background-color: var(--color-secondary);
+        margin: auto;
+      }
+    }
+  }
+}

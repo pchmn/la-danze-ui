@@ -1,0 +1,96 @@
+---
+title: MountTransition
+hide_title: true
+---
+
+# `MountTransition`
+
+This component extends `motion.div` component of [framer-motion](https://www.framer.com/motion/). It provides one additional prop: `animationType`.
+
+You just have to use this prop to do basic animations:
+* fade (default)
+* scale
+* slide up
+* slide down
+* slide left
+* slide right
+
+All other `motion.div` props are present, but some have default values. See below.
+
+## Example
+
+```jsx
+import { AnimatePresence } from 'framer-motion';
+import { MountTransition } from 'la-danze-ui';
+
+function App({ isVisible }) {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <MountTransition
+          animationType="slideLeft"
+        />
+      )}
+    </AnimatePresence>
+  );
+}
+```
+
+## Props
+
+> Extends [`motion.div`](https://www.framer.com/api/motion/component/#props) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const additionalProps = [
+  {
+    name: 'animationType',
+    type: [`'fade'`, `'scale'`, `'slideUp'`, `'slideDown'`, `'slideLeft'`, `'slideRight'`],
+    default: `'fade'`,
+    description: <>	Animation type of the div. Overrides <code>variants</code> prop.</>
+  }
+];
+
+<PropsTable componentProps={additionalProps} />
+
+Original `motion.div` props default values:
+
+export const defaultProps = [
+  {
+    name: 'initial',
+    type: ['Target', 'VariantLabels', 'boolean'],
+    default: `'initial'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.initial">doc</a>.</>
+  },
+  {
+    name: 'animate',
+    type: ['AnimationControls', 'TargetAndTransition', 'VariantLabels', 'boolean'],
+    default: `'in'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.animate">doc</a>.</>
+  },
+  {
+    name: 'exit',
+    type: ['TargetAndTransition', 'VariantLabels'],
+    default: `'out'`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.exit">doc</a>.</>
+  },
+  {
+    name: 'transition',
+    type: ['Transition'],
+    default: `{ duration: 0.225 }`,
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.transition">doc</a>.</>
+  },
+  {
+    name: 'variants',
+    type: ['Variants'],
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.variants">doc</a>.</>
+  },
+  {
+    name: 'style',
+    type: ['MotionStyle'],
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.style">doc</a>.</>
+  },
+];
+
+<PropsTable componentProps={defaultProps} />

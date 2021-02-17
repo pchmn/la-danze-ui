@@ -1,0 +1,46 @@
+name: La Danze UI dev
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '*.*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+    - name: INSTALL
+      run: yarn install
+    - name: BUILD
+      run: yarn build
+    - name: TEST
+      run: yarn test:ci:lib
+    - uses: actions/upload-artifact@v2
+      with:
+        name: coverage
+        path: packages/lib/coverage/lcov.info
+
+  sonarcloud:
+    name: Sonar
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - uses: actions/download-artifact@v2
+      with:
+        name: coverage
+    - name: SONAR
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}    
