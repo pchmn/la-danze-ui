@@ -1,4 +1,4 @@
-name: La Danze UI dev
+name: Build and Test
 
 on:
   push:

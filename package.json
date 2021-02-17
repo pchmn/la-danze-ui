@@ -19,8 +19,7 @@
     "build": "npm run build:lib && npm run build:demo && npm run build:doc",
     "copyfiles": "rm -rf dist && mkdir dist && cp -r packages/doc/build/. dist && cp -r packages/demo/dist dist/demo",
     "predeploy": "npm run build && npm run copyfiles",
-    "deploy": "gh-pages -d dist",
-    "publish:lib": "cd packages/lib && npm publish"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.15.1",
