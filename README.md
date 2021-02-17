@@ -48,7 +48,7 @@ yarn add la-danze-ui
 
 ## Quickstart
 
-Just a quick example to apply **La Danze UI** theme to `material-ui` components:
+Just a quick example that shows how to apply **La Danze UI** theme to your app:
 
 ```jsx
 import React from 'react';
