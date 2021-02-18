@@ -1,3 +1,20 @@
 {
-  "dryRun": true
+  "branches": ["main", "next"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    ["@semantic-release/npm", {
+      "npmPublish": false,
+      "pkgRoot": "packages/lib"
+    }],
+    ["./.github/scripts/semantic-release.plugin.js", {
+      "files": [
+        {
+          "path": "config.js",
+          "versionKey": "LA_DANZE_UI_VERSION"
+        }
+      ]
+    }]
+  ],
+  "preset": "angular"
 }

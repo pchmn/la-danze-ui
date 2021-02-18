@@ -77,11 +77,6 @@ See [docs website](https://pchmn.github.io/la-danze-ui/).
 ## Demo
 See [live preview](https://pchmn.github.io/la-danze-ui/demo).
 
-## License
-
-This project is licensed under the terms of the
-[MIT license](/LICENSE).
-
 ## Libraries used
 
 **La Danze UI** uses and requires these dependencies:
@@ -91,6 +86,12 @@ This project is licensed under the terms of the
 * [Framer motion](https://www.framer.com/motion/)
 * [React Hook Form](https://react-hook-form.com/)
 
+## License
+
+This project is licensed under the terms of the
+[MIT license](./LICENSE).
+
+
 ## Project organizaton
 
-See little explanation of this project [organization](.github/PROJECT_ORGANIZATION.md).
+See little explanation of this project [organization](https://github.com/pchmn/la-danze-ui/blob/main/.github/doc/PROJECT_ORGANIZATION.md).
