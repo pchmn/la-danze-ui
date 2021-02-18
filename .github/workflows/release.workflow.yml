@@ -1,4 +1,4 @@
-name: Build
+name: Release workflow
 
 on:
   push:
@@ -70,6 +70,7 @@ jobs:
 
   release:
     name: Release
+    needs: build
     runs-on: ubuntu-18.04
     steps:
 
@@ -86,7 +87,7 @@ jobs:
           name: lib-dist
           path: packages/lib/dist/
 
-      - name: Release
+      - name: RELEASE
         run: yarn semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
