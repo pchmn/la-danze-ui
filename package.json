@@ -50,6 +50,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "debug": "^4.3.1",
     "eslint": "^7.20.0"
   }
 }
