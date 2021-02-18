@@ -26,7 +26,7 @@ module.exports = {
       },
       items: [
         {
-          to: 'docs/0.0.1',
+          to: `docs/${config.LA_DANZE_UI_VERSION}`,
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',

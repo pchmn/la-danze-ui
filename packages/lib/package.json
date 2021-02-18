@@ -24,12 +24,12 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --tsconfig ./tsconfig.build.json",
+    "postbuild": "copyfiles -f ../../README.md ../../LICENSE ./dist/",
     "test": "tsdx test --ci --runInBand",
     "test:ci": "tsdx test --ci --coverage --runInBand",
     "lint": "tsdx lint",
     "size": "size-limit",
-    "analyze": "size-limit --why",
-    "prepublishOnly": "npm run build && npm run test"
+    "analyze": "size-limit --why"
   },
   "husky": {
     "hooks": {

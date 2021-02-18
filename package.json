@@ -18,8 +18,8 @@
     "serve:doc": "npm run serve --prefix packages/doc",
     "build:doc": "npm run build --prefix packages/doc",
     "build": "npm run build:lib && npm run build:demo && npm run build:doc",
-    "copyfiles": "rm -rf dist && mkdir dist && cp -r packages/doc/build/. dist && cp -r packages/demo/dist dist/demo",
-    "predeploy": "npm run build && npm run copyfiles",
+    "build:ci": "npm run build",
+    "postbuild:ci": "rm -rf dist && mkdir dist && cp -r packages/doc/build/. dist && cp -r packages/demo/dist dist/demo",
     "deploy": "gh-pages -d dist"
   },
   "husky": {
