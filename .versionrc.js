@@ -15,6 +15,10 @@ module.exports = {
     {
       filename: "packages/doc/package.json",
       type: "json"
+    },
+    {
+      filename: "config.js",
+      updater: "standard-version.updater.js"
     }
   ]
 }
