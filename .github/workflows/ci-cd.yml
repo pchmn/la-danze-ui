@@ -2,6 +2,8 @@ name: La Danze UI CI/CD
 
 on:
   push:
+    branches:
+      - '**'
     tags-ignore:
       - '*.*'
     paths-ignore:
