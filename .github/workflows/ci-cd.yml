@@ -48,7 +48,7 @@ jobs:
     - run: ls -R    
 
     - name: INSTALL
-      run: yarn install
+      run: yarn install --prefer-offline
 
     - name: BUILD
       run: yarn build:ci
@@ -127,7 +127,7 @@ jobs:
     - run: ls -R  
 
     - name: INSTALL
-      run: yarn install
+      run: yarn install --prefer-offline
 
     - name: COPY README.md
       run: cp README.md packages/lib/
