@@ -6,9 +6,10 @@ on:
     branches:
       - '**'
       - '!gh-pages'
-    # Run on all version tags 
-    tags:
-      - 'v*.*.*'
+    # Ignore all tags, because release commits (where tags are) already trigged workflow
+    # so it prevents workflow to be launched twice for same changes
+    tags-ignore:
+      - '*.*'
     # Don't run when files commited are only doc files
     paths-ignore:
       - '**.md'
@@ -17,13 +18,19 @@ on:
     # Run only on main branch
     branches:
       - 'main'
-    # Run on all version tags   
-    tags:
-      - 'v*.*.*'
+    # Ignore all tags, because release commits (where tags are) already trigged workflow
+    # so it prevents workflow to be launched twice for same changes
+    tags-ignore:
+      - '*.*'
     # Don't run when files commited are only doc files  
     paths-ignore:
       - '**.md'
       - '.github/doc/**'
+
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
 
 jobs:
 
@@ -35,7 +42,7 @@ jobs:
     
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ GITHUB_TOKEN }}
 
     - uses: actions/setup-node@v2
       with:
@@ -44,15 +51,13 @@ jobs:
     # ---------------------------------- 
     #           Yarn cache 
     # ----------------------------------   
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
     - uses: actions/cache@v2
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      id: yarn-cache
       with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        path: |
+          node_modules
+          */*/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
     # ---------------------------------- 
@@ -61,7 +66,9 @@ jobs:
 
     # Install dependencies
     - name: INSTALL
-      run: yarn install --prefer-offline
+      # Install dependencies only if cache was not found to accelerate workflow
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn install
 
     # Build all packages (lib, demo, doc)
     - name: BUILD
@@ -103,7 +110,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ GITHUB_TOKEN }}
 
     # ---------------------------------- 
     #    Download coverage artifacts 
@@ -119,7 +126,6 @@ jobs:
     - name: SONAR
       uses: sonarsource/sonarcloud-github-action@master
       env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
@@ -127,15 +133,15 @@ jobs:
   release:
     name: Release
     # Launch only on main branch
-    # Skip if there is a version tag (this job created the tag, so we won't rerun it)
-    if: github.ref == 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/v')
+    # Skip if it is a release commit (this job created it)
+    if: github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore(release):')
     needs: build
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ GITHUB_TOKEN }}
 
     - uses: actions/setup-node@v2
       with:
@@ -144,20 +150,13 @@ jobs:
     # ---------------------------------- 
     #           Yarn cache 
     # ----------------------------------
-    - uses: actions/download-artifact@v2
-      with:
-        name: lib-dist
-        path: packages/lib/dist/
-
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-
     - uses: actions/cache@v2
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      id: yarn-cache
       with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        path: |
+          node_modules
+          */*/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
     # ---------------------------------- 
@@ -166,7 +165,9 @@ jobs:
 
     # Install dependencies  
     - name: INSTALL
-      run: yarn install --prefer-offline
+      # Install dependencies only if cache was not found to accelerate workflow
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn install
 
     # Copy README.md to lib package (for npm)  
     - name: COPY README.md
@@ -176,7 +177,6 @@ jobs:
     - name: RELEASE
       run: yarn semantic-release
       env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}   
         GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}   
@@ -187,15 +187,15 @@ jobs:
   # Deploy to gh pages
   deploy:
     name: Deploy
-    # Launch only on version tags
-    if: startsWith(github.ref, 'refs/tags/v')
+    # Deploy only if it is a release commit
+    if: startsWith(github.event.head_commit.message, 'chore(release):')
     needs: build
     runs-on: ubuntu-latest
     steps:
 
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        token: ${{ GITHUB_TOKEN }}
 
     - uses: actions/setup-node@v2
       with:
@@ -216,7 +216,7 @@ jobs:
     - name: DEPLOY
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        github_token: ${{ GITHUB_TOKEN }}
         publish_dir: ./dist
         user_name: ${{ secrets.GIT_AUTHOR_NAME }} 
         user_email: ${{ secrets.GIT_AUTHOR_EMAIL }}
