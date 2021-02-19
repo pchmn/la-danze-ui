@@ -33,19 +33,10 @@ jobs:
       with:
         node-version: '12'
 
-    - uses: actions/cache@v2
-      with:
-        path: |
-          node_modules
-          */*/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - run: ls -R    
+    - uses: c-hive/gha-yarn-cache@v1 
 
     - name: INSTALL
-      run: yarn install --prefer-offline
+      run: yarn install
 
     - name: BUILD
       run: yarn build:ci
@@ -109,19 +100,10 @@ jobs:
         name: lib-dist
         path: packages/lib/dist/
 
-    - uses: actions/cache@v2
-      with:
-        path: |
-          node_modules
-          */*/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - run: ls -R  
+    - uses: c-hive/gha-yarn-cache@v1 
 
     - name: INSTALL
-      run: yarn install --prefer-offline
+      run: yarn install
 
     - name: COPY README.md
       run: cp README.md packages/lib/
@@ -154,6 +136,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: dist
+        path: dist/
 
     - name: DEPLOY
       uses: peaceiris/actions-gh-pages@v3
