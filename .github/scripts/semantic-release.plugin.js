@@ -2,12 +2,14 @@
 const fs = require('fs');
 const debug = require('debug')('semantic-release:update-version-in-files');
 
-function prepare({ files, versionKey = 'version' }, { lastRelease, nextRelease }) {
-  debug("config %o", { files, versionKey });
+let pluginLogger;
+
+function prepare({ files, versionKey = 'version' }, { lastRelease, nextRelease, logger }) {
+  pluginLogger = logger;
+  debug('config %o', { files, versionKey });
   debug(`version ${lastRelease.version} -> ${nextRelease.version}`);
 
   files.forEach((item) => parseObject(item, versionKey, lastRelease.version, nextRelease.version));
-  debug(`All files correctly updated with new version ${newVersion}`);
 }
 
 function parseObject(fileConfig, versionKey, oldVersion, newVersion) {
@@ -15,9 +17,11 @@ function parseObject(fileConfig, versionKey, oldVersion, newVersion) {
     if (!fileConfig.path) {
       throw new Error(`'path' attribute is mandatory for fileConfig object, received: ${JSON.stringify(fileConfig)}`);
     }
+    debug(`Will update ${fileConfig.path} with ${fileConfig.versionKey || versionKey}:${newVersion}`);
     updateFileVersion(fileConfig.path, fileConfig.versionKey || versionKey, oldVersion, newVersion);
   } else {
-    updateFileVersion(fileConfig, versionKey, oldVersion, newVersion);
+    debug(`Will update ${fileConfig.path} with ${versionKey}:${newVersion}`);
+    updateFileVersion(fileConfig, fileConfig.versionKey, oldVersion, newVersion);
   }
 }
 
@@ -33,11 +37,13 @@ function updateFileVersion(filePath, versionKey, oldVersion, newVersion) {
     }
 
     const splitStr = content.match(regex)[0];
+    debug(`Old version found in ${filePath}: ${splitStr}`);
     const splitted = content.split(splitStr);
     splitted.splice(1, 0, splitStr.replace(oldVersion, newVersion));
 
     fs.writeFileSync(filePath, splitted.join('') + '\n');
-    debug(`${filePath} correctly updated with new version ${newVersion}`);
+
+    pluginLogger.log(`${filePath} correctly updated with ${versionKey}:${newVersion}`);
 
   } catch (error) {
     throw new Error(`Could not update "${filePath}": ${error.message}`);
