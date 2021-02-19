@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/pchmn/la-danze-ui/compare/v0.0.8...v0.0.9) (2021-02-19)
+
+
+### Bug Fixes
+
+* use dist directory for gh pages ([9ef9e4d](https://github.com/pchmn/la-danze-ui/commit/9ef9e4d1cc11b1bfcd0bac8ffdead1a8425f74ec))
+
 ## [0.0.8](https://github.com/pchmn/la-danze-ui/compare/v0.0.7...v0.0.8) (2021-02-19)
 
 
