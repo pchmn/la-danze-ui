@@ -14,7 +14,8 @@
           "versionKey": "LA_DANZE_UI_VERSION"
         }
       ]
-    }]
+    }],
+    "@semantic-release/git"
   ],
   "preset": "angular"
 }
