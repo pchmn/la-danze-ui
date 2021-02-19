@@ -21,7 +21,7 @@ function parseObject(fileConfig, versionKey, oldVersion, newVersion) {
     updateFileVersion(fileConfig.path, fileConfig.versionKey || versionKey, oldVersion, newVersion);
   } else {
     debug(`Will update ${fileConfig.path} with ${versionKey}:${newVersion}`);
-    updateFileVersion(fileConfig, fileConfig.versionKey, oldVersion, newVersion);
+    updateFileVersion(fileConfig, versionKey, oldVersion, newVersion);
   }
 }
 
