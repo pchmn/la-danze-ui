@@ -89,7 +89,7 @@ See [live preview](https://pchmn.github.io/la-danze-ui/demo).
 ## License
 
 This project is licensed under the terms of the
-[MIT license](./LICENSE).
+[MIT license](https://github.com/pchmn/la-danze-ui/blob/main/LICENSE).
 
 
 ## Project organizaton
