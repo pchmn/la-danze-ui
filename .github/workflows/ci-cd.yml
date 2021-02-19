@@ -2,24 +2,32 @@ name: La Danze UI CI/CD
 
 on:
   push:
+    # Run on all branches excepted gh-pages
     branches:
       - '**'
       - '!gh-pages'
-    tags-ignore:
-      - '*.*'
+    # Run on all version tags 
+    tags:
+      - 'v*.*.*'
+    # Don't run when files commited are only doc files
     paths-ignore:
       - '**.md'
       - '.github/doc/**'
   pull_request:
+    # Run only on main branch
     branches:
       - 'main'
-    tags-ignore:
-      - '*.*'
+    # Run on all version tags   
+    tags:
+      - 'v*.*.*'
+    # Don't run when files commited are only doc files  
     paths-ignore:
       - '**.md'
       - '.github/doc/**'
 
 jobs:
+
+  # Build and Test
   build:
     name: Build and Test
     runs-on: ubuntu-latest
@@ -33,7 +41,11 @@ jobs:
       with:
         node-version: '12'
 
-    - id: yarn-cache-dir-path
+    # ---------------------------------- 
+    #           Yarn cache 
+    # ----------------------------------   
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - uses: actions/cache@v2
@@ -43,16 +55,25 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
+    # ---------------------------------- 
+    #           Yarn cache 
+    # ----------------------------------          
 
+    # Install dependencies
     - name: INSTALL
       run: yarn install --prefer-offline
 
+    # Build all packages (lib, demo, doc)
     - name: BUILD
       run: yarn build:ci
 
+    # Test lib package
     - name: TEST
       run: yarn test:ci:lib
 
+    # ---------------------------------- 
+    #         Upload artifacts 
+    # ----------------------------------  
     - uses: actions/upload-artifact@v2
       with:
         name: coverage
@@ -67,7 +88,12 @@ jobs:
       with:
         name: dist
         path: dist/
+    # ---------------------------------- 
+    #         Upload artifacts 
+    # ----------------------------------         
 
+
+  # Sonnar scan (lib package)  
   sonarcloud:
     name: Sonar
     needs: build
@@ -79,19 +105,30 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+    # ---------------------------------- 
+    #    Download coverage artifacts 
+    # ---------------------------------- 
     - uses: actions/download-artifact@v2
       with:
         name: coverage
+    # ---------------------------------- 
+    #    Download coverage artifacts 
+    # ---------------------------------- 
 
+    # Run sonar scan
     - name: SONAR
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+
+  # Release lib package
   release:
     name: Release
-    if: github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore(release):')
+    # Launch only on main branch
+    # Skip if there is a version tag (this job created the tag, so we won't rerun it)
+    if: github.ref == 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -104,12 +141,16 @@ jobs:
       with:
         node-version: '12'
 
+    # ---------------------------------- 
+    #           Yarn cache 
+    # ----------------------------------
     - uses: actions/download-artifact@v2
       with:
         name: lib-dist
         path: packages/lib/dist/
 
-    - id: yarn-cache-dir-path
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - uses: actions/cache@v2
@@ -119,13 +160,19 @@ jobs:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-yarn-
+    # ---------------------------------- 
+    #           Yarn cache 
+    # ----------------------------------
 
+    # Install dependencies  
     - name: INSTALL
       run: yarn install --prefer-offline
 
+    # Copy README.md to lib package (for npm)  
     - name: COPY README.md
       run: cp README.md packages/lib/
 
+    # Release  
     - name: RELEASE
       run: yarn semantic-release
       env:
@@ -136,9 +183,12 @@ jobs:
         GIT_COMMITTER_NAME: ${{ secrets.GIT_AUTHOR_NAME }}   
         GIT_COMMITTER_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}   
 
+
+  # Deploy to gh pages
   deploy:
     name: Deploy
-    if: startsWith(github.event.head_commit.message, 'chore(release):')
+    # Launch only on version tags
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -151,11 +201,18 @@ jobs:
       with:
         node-version: '12'
 
+    # ---------------------------------- 
+    #     Download dist artifacts 
+    # ----------------------------------
     - uses: actions/download-artifact@v2
       with:
         name: dist
         path: dist/
+    # ---------------------------------- 
+    #     Download dist artifacts 
+    # ----------------------------------
 
+    # Deploy dist folder to gh pages  
     - name: DEPLOY
       uses: peaceiris/actions-gh-pages@v3
       with:
