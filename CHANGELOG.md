@@ -1,3 +1,10 @@
+## [0.0.8](https://github.com/pchmn/la-danze-ui/compare/v0.0.7...v0.0.8) (2021-02-19)
+
+
+### Bug Fixes
+
+* use personal access token to trigger other workflow ([d865c75](https://github.com/pchmn/la-danze-ui/commit/d865c75d209b45ed28fd0def68c40bfdb936c479))
+
 ## [0.0.7](https://github.com/pchmn/la-danze-ui/compare/v0.0.6...v0.0.7) (2021-02-19)
 
 
