@@ -3,6 +3,7 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
     ["@semantic-release/npm", {
       "pkgRoot": "packages/lib"
     }],
@@ -11,10 +12,16 @@
         {
           "path": "config.js",
           "versionKey": "LA_DANZE_UI_VERSION"
-        }
+        },
+        "package.json",
+        "packages/demo/package.json",
+        "packages/doc/package.json",
       ]
     }],
-    "@semantic-release/git"
+    ["@semantic-release/git", {
+      "assets": ["package.json", "packages/lib/package.json", "packages/demo/package.json","packages/doc/package.json", "config.js", "CHANGELOG.md"],
+      "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
+    }]
   ],
   "preset": "angular"
 }
