@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/pchmn/la-danze-ui/compare/v0.0.5...v0.0.6) (2021-02-19)
+
+
+### Bug Fixes
+
+* update github actions badge on README.md ([ed7f773](https://github.com/pchmn/la-danze-ui/commit/ed7f77310af5258a8dc660799d4299dc602bd869))
+
 ## [0.0.5](https://github.com/pchmn/la-danze-ui/compare/v0.0.4...v0.0.5) (2021-02-19)
 
 
