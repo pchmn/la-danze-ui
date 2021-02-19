@@ -33,9 +33,8 @@ jobs:
       with:
         node-version: '12'
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+    - id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - uses: actions/cache@v2
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
@@ -46,19 +45,13 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - name: INSTALL
-      uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: install
+      run: yarn install --prefer-offline
 
     - name: BUILD
-      uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build:ci
+      run: yarn build:ci
 
     - name: TEST
-      uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: test:ci:lib
+      run: yarn test:ci:lib
 
     - uses: actions/upload-artifact@v2
       with:
@@ -116,9 +109,8 @@ jobs:
         name: lib-dist
         path: packages/lib/dist/
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+    - id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
 
     - uses: actions/cache@v2
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
@@ -129,9 +121,7 @@ jobs:
           ${{ runner.os }}-yarn-
 
     - name: INSTALL
-      uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: install
+      run: yarn install --prefer-offline
 
     - name: COPY README.md
       run: cp README.md packages/lib/
