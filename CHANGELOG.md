@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/pchmn/la-danze-ui/compare/v0.0.6...v0.0.7) (2021-02-19)
+
+
+### Bug Fixes
+
+* README.md now in npm ([cea47c6](https://github.com/pchmn/la-danze-ui/commit/cea47c65f9124e66459df768d72b7afd83d0cbf4))
+
 ## [0.0.6](https://github.com/pchmn/la-danze-ui/compare/v0.0.5...v0.0.6) (2021-02-19)
 
 
