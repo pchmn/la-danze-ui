@@ -1,3 +1,3 @@
 module.exports = {
-  LA_DANZE_UI_VERSION: '0.0.10'
+  LA_DANZE_UI_VERSION: '0.0.11'
 };
