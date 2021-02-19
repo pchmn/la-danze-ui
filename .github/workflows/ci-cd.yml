@@ -32,7 +32,8 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-      path: '**/node_modules'
+      path: |
+        **/node_modules
         key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
     - name: INSTALL
@@ -100,7 +101,8 @@ jobs:
 
     - uses: actions/cache@v2
       with:
-      path: '**/node_modules'
+      path: |
+        **/node_modules
         key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
     - name: INSTALL
