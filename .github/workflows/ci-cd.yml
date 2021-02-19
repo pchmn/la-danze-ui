@@ -47,18 +47,18 @@ jobs:
 
     - name: INSTALL
       uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
+      with:
+        cmd: install
 
     - name: BUILD
       uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build:ci
+      with:
+        cmd: build:ci
 
     - name: TEST
       uses: borales/actions-yarn@v2.0.0
-          with:
-            cmd: test:ci:lib
+      with:
+        cmd: test:ci:lib
 
     - uses: actions/upload-artifact@v2
       with:
@@ -130,8 +130,8 @@ jobs:
 
     - name: INSTALL
       uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
+      with:
+        cmd: install
 
     - name: COPY README.md
       run: cp README.md packages/lib/
