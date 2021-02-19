@@ -8,7 +8,6 @@
     "postinstall": "husky install",
     "dev:lib": "npm start --prefix packages/lib",
     "build:lib": "npm run build --prefix packages/lib",
-    "build:ci:lib": "npm run build:ci --prefix packages/lib",
     "test:lib": "npm run test --prefix packages/lib",
     "test:ci:lib": "npm run test:ci --prefix packages/lib",
     "dev:demo": "npm run dev --prefix packages/demo",
@@ -19,7 +18,7 @@
     "serve:doc": "npm run serve --prefix packages/doc",
     "build:doc": "npm run build --prefix packages/doc",
     "build": "npm run build:lib && npm run build:demo && npm run build:doc",
-    "build:ci": "npm run build:ci:lib && npm run build:demo && npm run build:doc",
+    "build:ci": "npm run build",
     "postbuild:ci": "rm -rf dist && mkdir dist && cp -r packages/doc/build/. dist && cp -r packages/demo/dist dist/demo",
     "deploy": "gh-pages -d dist"
   },

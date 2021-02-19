@@ -24,8 +24,6 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --tsconfig ./tsconfig.build.json",
-    "build:ci": "tsdx build --tsconfig ./tsconfig.build.json",
-    "postbuild:ci": "copyfiles -f ../../README.md ./",
     "test": "tsdx test --ci --runInBand",
     "test:ci": "tsdx test --ci --coverage --runInBand",
     "lint": "tsdx lint",
