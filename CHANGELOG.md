@@ -1,3 +1,10 @@
+## [0.0.5](https://github.com/pchmn/la-danze-ui/compare/v0.0.4...v0.0.5) (2021-02-19)
+
+
+### Bug Fixes
+
+* add semantic-release ([a64bf09](https://github.com/pchmn/la-danze-ui/commit/a64bf09b834dc72118eec0b3075fdefa348ba34c))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
