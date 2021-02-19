@@ -9,7 +9,7 @@
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pchmn/la-danze-ui/blob/main/LICENSE)
 [![npm latest package](https://img.shields.io/npm/v/la-danze-ui/latest.svg)](https://www.npmjs.com/package/la-danze-ui)
-[![example branch parameter](https://github.com/pchmn/la-danze-ui/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions)
+[![la danze ui cicd](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=la-danze-ui&metric=coverage)](https://sonarcloud.io/dashboard?id=la-danze-ui)
 
