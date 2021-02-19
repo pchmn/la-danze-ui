@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - '**'
+      - '!gh-pages'
+    tags-ignore:
+      - '*.*'
+    paths-ignore:
+      - '**.md'
+      - '.github/doc/**'
+  pull_request:
+    branches:
+      - 'main'
     tags-ignore:
       - '*.*'
     paths-ignore:
@@ -75,7 +84,7 @@ jobs:
 
   release:
     name: Release
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore(release):')
     needs: build
     runs-on: ubuntu-latest
     steps:
