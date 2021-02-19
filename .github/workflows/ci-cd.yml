@@ -100,9 +100,9 @@ jobs:
     # ----------------------------------         
 
 
-  # Sonnar scan (lib package)  
+  # Coverage (lib package)  
   sonarcloud:
-    name: Sonar
+    name: Coverage
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -127,6 +127,13 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    # Update coverage file to codecov
+    - name: CODECOV
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./lcov.info
 
 
   # Release lib package
