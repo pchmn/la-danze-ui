@@ -1,3 +1,10 @@
+## [0.0.12](https://github.com/pchmn/la-danze-ui/compare/v0.0.11...v0.0.12) (2021-02-21)
+
+
+### Bug Fixes
+
+* remove @material-ui/icons to reduce dependencies size ([4a3e960](https://github.com/pchmn/la-danze-ui/commit/4a3e9606b6cdc2a905ea286b728d8f0e8ef4bedb))
+
 ## [0.0.11](https://github.com/pchmn/la-danze-ui/compare/v0.0.10...v0.0.11) (2021-02-19)
 
 
