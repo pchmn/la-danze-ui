@@ -8,11 +8,11 @@ import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import ChevronRightOutlinedIcon from '@material-ui/icons/ChevronRightOutlined';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 
@@ -192,7 +192,9 @@ export function LaDanzeDrawer({ children, logo, title }: React.PropsWithChildren
               edge="start"
               className={`${classes.toggleButton} ${open ? 'toggleButtonOpen' : ''}`}
             >
-              <ChevronRightOutlinedIcon />
+              <SvgIcon>
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+              </SvgIcon>
             </IconButton>
           </Hidden>
         </div>
