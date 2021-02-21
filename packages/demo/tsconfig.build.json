@@ -1,26 +1,17 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "esnext"
-    ],
-    "types": [
-      "vite/client",
-      "node"
-    ],
-    "allowJs": false,
     "skipLibCheck": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "la-danze-ui": [
+        "../lib/dist"
+      ]
+    }
   },
   "include": [
-    "./src"
+    "./src",
+    "typings.d.ts"
   ],
   "exclude": [
     "src/**/*.test.tsx"

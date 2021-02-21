@@ -1,16 +1,15 @@
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import Tooltip from '@material-ui/core/Tooltip';
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import { ResizeSensor } from 'css-element-queries';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 import React, { useEffect, useState } from 'react';
 import styles from './DemoAndSource.module.scss';
+import { ReactComponent as GithubIcon } from '/assets/github.svg';
 
 interface DemoAndSourceProps {
   id: string;
@@ -140,13 +139,17 @@ export function SourceCode({
       >
         <div className={styles.actionBar}>
           <Tooltip title="Show full source on Github">
-            <IconButton aria-label="githubFullSource" onClick={openGithubSource}>
-              <FontAwesomeIcon icon={faGithub} size="sm" />
+            <IconButton aria-label="copy" onClick={openGithubSource}>
+            <SvgIcon fontSize="small">
+                <GithubIcon />
+            </SvgIcon>
             </IconButton>
           </Tooltip>
           <Tooltip title="Copy the source">
             <IconButton aria-label="copy" onClick={copyToCliboard}>
-              <FileCopyOutlinedIcon fontSize="small" />
+              <SvgIcon fontSize="small">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z" />
+              </SvgIcon> 
             </IconButton>
           </Tooltip>
         </div>

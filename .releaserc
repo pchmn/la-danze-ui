@@ -1,7 +1,12 @@
 {
   "branches": ["main", "next"],
   "plugins": [
-    "@semantic-release/commit-analyzer",
+    ["@semantic-release/commit-analyzer", {
+      "preset": "angular",
+      "releaseRules": [
+        {"scope": "demo", "release": false}
+      ]
+    }],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     ["@semantic-release/npm", {
@@ -22,6 +27,5 @@
       "assets": ["package.json", "packages/lib/package.json", "packages/demo/package.json","packages/doc/package.json", "config.js", "CHANGELOG.md"],
       "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
     }]
-  ],
-  "preset": "angular"
+  ]
 }

@@ -7,8 +7,7 @@
       "esnext"
     ],
     "types": [
-      "vite/client",
-      "node"
+      "vite/client"
     ],
     "allowJs": false,
     "skipLibCheck": true,
@@ -25,7 +24,7 @@
   "include": [
     "./src",
     "../lib/src",
-    "types"
+    "typings.d.ts"
   ],
   "exclude": [
     "../lib/src/**/*.test.tsx",
