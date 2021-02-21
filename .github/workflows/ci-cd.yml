@@ -195,9 +195,15 @@ jobs:
   deploy:
     name: Deploy
     # Deploy only if it is a release commit
-    if: startsWith(github.event.head_commit.message, 'chore(release):')
+    # or if commit message contains [deploy] option
+    if: startsWith(github.event.head_commit.message, 'chore(release):') || contains(github.event.head_commit.message, '[deploy]')
     needs: build
     runs-on: ubuntu-latest
+    # Manual deployment
+    # See https://devblogs.microsoft.com/devops/i-need-manual-approvers-for-github-actions-and-i-got-them-now/
+    environment:
+      name: pchmn.github.io/la-danze-ui
+      url: https://pchmn.github.io/la-danze-ui/
     steps:
 
     - uses: actions/checkout@v2

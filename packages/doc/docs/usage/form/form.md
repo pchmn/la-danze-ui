@@ -2,15 +2,15 @@
 title: Form
 ---
 
-Simplify use of [react-hook-form](https://react-hook-form.com/) with [material-ui](https://next.material-ui.com/) components. See demo.
+Simplify use of [react-hook-form](https://react-hook-form.com/) with [material-ui](https://next.material-ui.com/) components. See [demo](https://pchmn.github.io/la-danze-ui/demo/forms).
 
-By using `Form` and `FormField` your form fields will be automatically mapped and some useful props will be added to field components (`error`, `helperText` (error message) and `disabled`).
+By using `Form` and `FormField` your form fields will be automatically mapped and some useful props will be added to field components (`error`, `helperText` (error message) and `disabled`, which are material-ui component props).
 
-> It uses react-hook-form `Controller` component under the hook
+> It uses react-hook-form `Controller` component under the hood
 
 ## Basic usage
 
-Just set `form` prop on `Form` component, and `name` prop on `FormField` component (same as Controller component).
+Set `form` prop on `Form` component (with react-hook-form `useForm()` hook), and `name` prop on `FormField` component (same as Controller component).
 
 Below a form example with [yup](https://github.com/jquense/yup) validation:
 

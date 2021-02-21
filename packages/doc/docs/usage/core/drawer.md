@@ -2,15 +2,15 @@
 title: Drawer
 ---
 
-**La Danze UI** provides a custom permanent drawer with simple use. See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
+**La Danze UI** provides a custom permanent and responsive drawer. See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
 
 ## Basic Usage
 
-First your app must be wrapper by `LaDanzeTheme` (see [doc](usage/core/theme.md)).
+First your app must be wrapped by `LaDanzeTheme` (see [doc](usage/core/theme.md)).
 
 Then you have to use `DrawerTemplate` in combination with `LaDanzeDrawer` to make it possible. You should use `DrawerListItem` component which extends [material-ui](https://next.material-ui.com/) `ListItem` in your drawer.
 
-Here a simple example with routing:
+Here an example with routing:
 
 ```tsx
 import React from 'react';

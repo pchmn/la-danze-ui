@@ -4,6 +4,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Usage',
+      collapsed: false,
       items: [
         'usage/usageIntroduction',
         {
@@ -46,6 +47,7 @@ module.exports = {
           items: [
             'api/hooks/useAnimationKey',
             'api/hooks/useLaDanzeDrawer',
+            'api/hooks/useIsMount',
           ]
         }
       ],

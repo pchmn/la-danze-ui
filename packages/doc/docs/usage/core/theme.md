@@ -2,8 +2,8 @@
 title: Theme
 ---
 
-The theme provide by **La Danze UI** is basically a [material-ui](https://next.material-ui.com/) theme. The color scheme is based on a football club colors ([SRFC](https://twitter.com/staderennais)) 🔴⚫.
-See [demo](https://pchmn.github.io/la-danze-ui/demo) for a live preview.
+The theme provided by **La Danze UI** is basically a [material-ui](https://next.material-ui.com/) theme. The color scheme is based on a football club colors ([SRFC](https://twitter.com/staderennais)) 🔴⚫.
+See [demo](https://pchmn.github.io/la-danze-ui/demo) for live preview.
 
 ## Usage
 

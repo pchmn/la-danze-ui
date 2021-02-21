@@ -2,13 +2,13 @@
 title: Animate appearance
 ---
 
-By using `MountTransition` and `AnimatePresence` (of [framer-motion](https://www.framer.com/motion/)) components you can do basic [animation](#animations-available) very easily.
+By using `MountTransition` and `AnimatePresence` (of [framer-motion](https://www.framer.com/motion/)) components you can do basic [animation](#animations-available).
 
 ## Usage
 
-You juste have to set animationType on MountTransition.
+Set animation you want with [`animationType`](#animations-available) prop of `MountTransition`.
 
-See Example:
+Example:
 
 ```tsx
 import { AnimatePresence } from 'framer-motion';

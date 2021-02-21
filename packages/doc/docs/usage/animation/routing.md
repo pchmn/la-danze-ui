@@ -2,13 +2,13 @@
 title: Animate routing
 ---
 
-Just do classic [animations](#animations-available) with [react-router-dom](https://reactrouter.com/web/guides/quick-start).
+Do classic [animations](#animations-available) with [react-router-dom](https://reactrouter.com/web/guides/quick-start).
 
 ## Basic usage
 
 Just replace your `Switch` by `AnimateSwitch`, your `Route` by `AnimateRoute` and set `animationType` prop on `AnimateSwitch` (fade by default).
 
-See Example:
+Example:
 
 ```tsx
 import React from 'react';
@@ -50,7 +50,7 @@ If you have nested routing in your app, there is a problem (fixable): when a chi
 
 To prevent this you can use `AnimateLink` (extends `NavLink` of react-router-dom) in combination with `useAnimateKey()` hook and `animationKey` prop of `AnimateSwitch` component. 
 
-See example:
+Example:
 
 ```tsx
 import React from 'react';
