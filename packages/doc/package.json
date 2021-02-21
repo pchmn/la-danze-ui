@@ -10,7 +10,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "ws -r '/la-danze-ui/(.*) -> /$1' -d build",
-    "serve:ative": "docusaurus serve",
+    "serve:native": "docusaurus serve",
     "clear": "docusaurus clear"
   },
   "dependencies": {
