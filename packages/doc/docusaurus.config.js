@@ -81,7 +81,7 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    // path.resolve(__dirname, 'plugins/dotenv.plugin'),
+  scripts: [
+    '/la-danze-ui/spa-gh-pages.js'
   ]
 };

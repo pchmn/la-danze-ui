@@ -19,8 +19,8 @@
 <h1 align="center">La Danze UI 🔴⚫</h1>
 
 <div align="center">
-React library that provides a clean UI and facilitate animations and building forms. <br />
-The main purpose of this project is to learn react and some other useful tools (vite, docusaurus, tsdx, sonar cloud, gihtub actions).
+React library that provides a clean UI and facilitates animations and building forms. <br />
+The main purpose of this project is to learn react and some other useful tools (vite, docusaurus, tsdx, auto semantic-release, github pages, gihtub actions).
 </div>
 <br />
 
@@ -38,7 +38,6 @@ yarn add la-danze-ui
 
 * material-ui (next):
   * `@material-ui/core@next`
-  * `@material-ui/icons@next`
   * `@emotion/react`
   * `@emotion/styled`
 * `react-router-dom`

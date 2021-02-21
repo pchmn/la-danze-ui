@@ -23,9 +23,15 @@
     // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
     // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
     // Otherwise, leave pathSegmentsToKeep as 0.
-    var pathSegmentsToKeep = 1;
-
     var l = window.location;
+    // This ghitub pages contains one subfolder (demo):
+    //   - https://pchmn.github.io/la-danze-ui/index.html
+    //   - https://pchmn.github.io/la-danze-ui/demo/index.html
+    // If pathname contains 'demo', pathSegmentsToKeep must be 2
+    // so we redirect to https://pchmn.github.io/la-danze-ui/demo/index.html 
+    // and not https://pchmn.github.io/la-danze-ui/index.html
+    var pathSegmentsToKeep = l.pathname.includes('demo') ? 2 : 1;
+
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
       l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +

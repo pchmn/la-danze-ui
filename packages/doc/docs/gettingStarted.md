@@ -19,7 +19,6 @@ yarn add la-danze-ui
 
 * [`material-ui`](https://next.material-ui.com/) (next)
   * `@material-ui/core@next`
-  * `@material-ui/icons@next`
   * `@emotion/react`
   * `@emotion/styled`
 * [`react-router-dom`](https://reactrouter.com/web/guides/quick-start)
