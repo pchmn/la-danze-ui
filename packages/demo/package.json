@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "APP_ENV=development vite",
     "build": "APP_ENV=production tsc --project tsconfig.build.json && vite build",
-    "serve": "ws -r '/la-danze-ui/demo/(.*) -> /$1' -d dist",
-    "serve:native": "vite preview"
+    "serve": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^1.3.4",

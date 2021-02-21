@@ -13,9 +13,9 @@ import {
 } from 'la-danze-ui';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import logo from '../logo.svg';
 import { AnimationsExample } from './AnimationsExample/AnimationsExample';
 import { FormsExample } from './FormsExample/FormsExample';
+import logo from '/assets/logo.svg';
 
 export function App() {
   const [open] = useLaDanzeDrawer();
