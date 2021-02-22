@@ -19,6 +19,17 @@ describe('<Form />', () => {
           label="Email"
         />
 
+        <FormField
+          id="prefill"
+          name="prefill"
+          as={TextField}
+          label="Prefil"
+          control={useFormValue.control}
+          helperText="error message prefill"
+          error
+          disabled
+        />
+
         <button type="submit">Validate</button>
       </Form>
     );
@@ -28,10 +39,20 @@ describe('<Form />', () => {
     const onSubmit = jest.fn();
     const container = render(<Container onSubmit={onSubmit} />);
     const emailInput = screen.getByLabelText('Email');
+    const prefillInput = screen.getByLabelText('Prefil');
     const validateButton = screen.getByText('Validate');
 
-    return { emailInput, onSubmit, validateButton, ...container };
+    return { emailInput, onSubmit, validateButton, prefillInput, container };
   };
+
+  test('It should not override <FormField> props', async () => {
+    setUp();
+    const prefillInput = screen.getByLabelText('Prefil');
+
+    expect(prefillInput).toBeInvalid();
+    expect(screen.getByText('error message prefill')).toBeInTheDocument();
+    expect(prefillInput).toBeDisabled();
+  });
 
   test('It should do nothing if form is empty', async () => {
     const { validateButton, onSubmit } = setUp();
@@ -56,6 +77,6 @@ describe('<Form />', () => {
     fireEvent.change(emailInput, { target: { value: 'good@email' } });
     fireEvent.click(validateButton);
 
-    await waitFor(() => expect(onSubmit).toHaveBeenCalledWith({ email: 'good@email' }, expect.anything()));
+    await waitFor(() => expect(onSubmit).toHaveBeenCalledWith({ email: 'good@email', prefill: '' }, expect.anything()));
   });
 });

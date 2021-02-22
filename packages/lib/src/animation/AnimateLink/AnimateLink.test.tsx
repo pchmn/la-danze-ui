@@ -2,7 +2,7 @@ import { AnimateLink } from '@la-danze-ui/animation/AnimateLink/AnimateLink';
 import { AnimateRoute } from '@la-danze-ui/animation/AnimateRoute/AnimateRoute';
 import { AnimateSwitch } from '@la-danze-ui/animation/AnimateSwitch/AnimateSwitch';
 import { useAnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
-import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
+import { renderWithRouter, RouteContainer } from '@la-danze-ui/testing/testing.utils';
 import { Button } from '@material-ui/core';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from 'react';
@@ -18,8 +18,11 @@ describe('<AnimateRoute />', () => {
         <AnimateLink to="/route1" animationKey={animationKey} noRefresh onClick={onClick} safeOnClick={safeOnClick}>
           Go to Route 1
         </AnimateLink>
+        <AnimateLink to="/route2">
+          Go to Route 2
+        </AnimateLink>
 
-        <Button component={AnimateLink} to="" />
+        <Button component={AnimateLink} to="" animationKey={animationKey} />
 
         <AnimateSwitch animationKey={animationKey}>
           <AnimateRoute exact path="/">
@@ -28,17 +31,12 @@ describe('<AnimateRoute />', () => {
           <AnimateRoute path="/route1">
             <RouteContainer routeName="route 1" />
           </AnimateRoute>
+          <AnimateRoute path="/route2">
+            <RouteContainer routeName="route 2" />
+          </AnimateRoute>
         </AnimateSwitch>
 
         <span data-testid="animationKey">{animationKey.key}</span>
-      </div>
-    );
-  };
-
-  const RouteContainer = ({ routeName }: { routeName: string }) => {
-    return (
-      <div>
-        <span data-testid="routeName">{routeName}</span>
       </div>
     );
   };
@@ -49,10 +47,11 @@ describe('<AnimateRoute />', () => {
     const container = renderWithRouter(<Container onClick={onClick} safeOnClick={safeOnClick} />, { route });
     const homeLink = screen.getByText('Go to Home');
     const route1Link = screen.getByText('Go to Route 1');
+    const route2Link = screen.getByText('Go to Route 2');
     const getRouteName = () => screen.getByTestId('routeName');
     const getAnimationKey = () => screen.getByTestId('animationKey');
 
-    return { homeLink, route1Link, getRouteName, getAnimationKey, onClick, safeOnClick, ...container };
+    return { homeLink, route1Link, getRouteName, getAnimationKey, onClick, safeOnClick, route2Link, container };
   };
 
   test('It should redirect to route 1 and update animation key', async () => {
@@ -126,6 +125,17 @@ describe('<AnimateRoute />', () => {
     await waitFor(() => {
       expect(safeOnClick).toHaveBeenCalled();
       expect(onClick).toHaveBeenCalled();
+    });
+  });
+
+  test('It should not call onClick and safeOnClick (props not specified)', async () => {
+    const { route2Link, safeOnClick, onClick } = setUp();
+
+    fireEvent.click(route2Link);
+
+    await waitFor(() => {
+      expect(safeOnClick).not.toHaveBeenCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
   });
 });

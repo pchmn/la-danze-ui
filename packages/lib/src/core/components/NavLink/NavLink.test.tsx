@@ -1,5 +1,5 @@
 import { NavLink } from '@la-danze-ui/core/components/NavLink/NavLink';
-import { renderWithRouter } from '@la-danze-ui/testing/testing.utils';
+import { renderWithRouter, RouteContainer } from '@la-danze-ui/testing/testing.utils';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React, { useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
@@ -15,6 +15,7 @@ describe('<NavLink />', () => {
     onClick: () => void;
   }) => {
     const [active, setActive] = useState(true);
+    const location = useLocation();
 
     const isActive = (_match: any | null, location: any) => {
       return location.search === '?active=true';
@@ -36,25 +37,24 @@ describe('<NavLink />', () => {
         >
           Go to Route 2
         </NavLink>
+        <NavLink to="/route3">
+          Go to Route 3
+        </NavLink>
 
         <Switch>
           <Route exact path="/">
-            <RouteContainer routeName="home" />
+            <>
+              <RouteContainer routeName="home" />
+              <span data-testid="initId">{location.key}</span>
+            </>
           </Route>
           <Route path="/route1">
-            <RouteContainer routeName="route 1" />
+            <>
+              <RouteContainer routeName="route 1" />
+              <span data-testid="initId">{location.key}</span>
+            </>
           </Route>
         </Switch>
-      </div>
-    );
-  };
-
-  const RouteContainer = ({ routeName }: { routeName: string }) => {
-    const location = useLocation();
-    return (
-      <div>
-        <span data-testid="routeName">{routeName}</span>
-        <span data-testid="initId">{location.key}</span>
       </div>
     );
   };
@@ -70,10 +70,11 @@ describe('<NavLink />', () => {
     const homeLink = screen.getByText('Go to Home');
     const route1Link = screen.getByText('Go to Route 1');
     const route2Link = screen.getByText('Go to Route 2');
+    const route3Link = screen.getByText('Go to Route 3');
     const getRouteName = () => screen.getByTestId('routeName');
     const getInitId = () => screen.getByTestId('initId');
 
-    return { homeLink, route1Link, route2Link, getRouteName, getInitId, onActive, safeOnClick, onClick, ...container };
+    return { homeLink, route1Link, route2Link, getRouteName, getInitId, onActive, safeOnClick, onClick, route3Link, container };
   };
 
   test('It should be on route home at launch', async () => {
@@ -128,6 +129,15 @@ describe('<NavLink />', () => {
       expect(safeOnClick).toHaveBeenCalled();
       expect(onClick).toHaveBeenCalled();
     });
+  });
+
+  test('It should not call onClick (prop not defined)', async () => {
+    const { route3Link, onClick } = setUp();
+
+    // home => home
+    fireEvent.click(route3Link);
+
+    await waitFor(() =>  expect(onClick).not.toHaveBeenCalled());
   });
 
   test('It should use isActive prop', async () => {

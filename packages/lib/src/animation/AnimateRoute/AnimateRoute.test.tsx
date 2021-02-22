@@ -16,12 +16,12 @@ describe('<AnimateRoute />', () => {
     );
   };
 
-  test('It should throw an error if <AnimateRoute /> is used outside <AnimateSwitch />', async () => {
+  test('It should throw an error if <AnimateRoute> is used outside <AnimateSwitch>', async () => {
     // Prevent writing to stderr during this render.
     const err = console.error;
     console.error = jest.fn();
 
-    const error = Error("You can't use <AnimateRoute /> outside a <AnimateSwitch />");
+    const error = Error(`Invariant failed: You can't use <AnimateRoute> outside <AnimateSwitch>`);
     expect(() => renderWithRouter(<ExceptionContainer />)).toThrow(error);
 
     // Restore writing to stderr.
