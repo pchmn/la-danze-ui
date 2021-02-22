@@ -3,6 +3,7 @@ import { AnimateRoutingProps } from '@la-danze-ui/animation/models/animate-routi
 import { MountTransition } from '@la-danze-ui/animation/MountTransition/MountTransition';
 import React, { useContext } from 'react';
 import { Route, RouteProps } from 'react-router-dom';
+import invariant from 'tiny-invariant';
 
 export interface AnimateRouteProps extends RouteProps, AnimateRoutingProps {}
 
@@ -16,9 +17,7 @@ export function AnimateRoute({
   fullHeight,
   ...otherProps
 }: AnimateRouteProps): JSX.Element {
-  if (!useContext(AnimateSwitchContext)) {
-    throw Error("You can't use <AnimateRoute /> outside a <AnimateSwitch />");
-  }
+  invariant(useContext(AnimateSwitchContext), `You can't use <AnimateRoute> outside <AnimateSwitch>`);
 
   return (
     <Route {...otherProps}>

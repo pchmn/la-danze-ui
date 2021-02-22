@@ -13,10 +13,10 @@ export function Form({ children, form, disabled, ...otherProps }: FormProps): JS
       // Check if child is FormikTextField
       if (React.isValidElement(child) && child.type === FormField) {
         return React.cloneElement(child, {
-          control: child?.props?.control || form.control,
-          error: child?.props?.error || Boolean(form.errors[child.props.name]?.type),
-          helperText: child?.props?.helperText || form.errors[child.props.name]?.message,
-          disabled: child?.props?.disabled || disabled
+          control: child.props.control || form.control,
+          error: child.props.error || Boolean(form.errors[child.props.name]?.type),
+          helperText: child.props.helperText || form.errors[child.props.name]?.message,
+          disabled: child.props.disabled || disabled
         });
       }
       return child;

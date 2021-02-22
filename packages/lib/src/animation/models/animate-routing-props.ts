@@ -1,11 +1,3 @@
-import { AnimationControls, TargetAndTransition, Variants } from 'framer-motion';
-import { MakeCustomValueType } from 'framer-motion/types/types';
+import { MountTransitionProps } from '@la-danze-ui/animation/MountTransition/MountTransition';
 
-export interface AnimateRoutingProps {
-  animationType?: 'scale' | 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
-  exit?: string | TargetAndTransition | string[];
-  initial?: string | boolean | MakeCustomValueType<any> | string[];
-  animate?: string | boolean | AnimationControls | TargetAndTransition | string[];
-  variants?: Variants;
-  fullHeight?: boolean;
-}
+export type AnimateRoutingProps = Pick<MountTransitionProps, 'animationType' | 'initial' | 'exit' | 'animate' | 'variants' | 'fullHeight'>;

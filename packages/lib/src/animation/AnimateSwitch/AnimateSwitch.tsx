@@ -5,6 +5,7 @@ import { AnimateRoutingProps } from '@la-danze-ui/animation/models/animate-routi
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { Switch, SwitchProps, useLocation } from 'react-router-dom';
+import invariant from 'tiny-invariant';
 
 export interface AnimateSwitchProps extends React.Attributes, SwitchProps, AnimateRoutingProps {
   animationKey?: AnimationKey;
@@ -40,7 +41,7 @@ export function AnimateSwitch({
           fullHeight: child.props.fullHeight || fullHeight
         });
       }
-      throw Error('<AnimateSwitch /> can only be used with <AnimateRoute />');
+      invariant(false, `You can't use other element than <AnimateRoute> in <AnimateSwitch>`);
     });
   }
 

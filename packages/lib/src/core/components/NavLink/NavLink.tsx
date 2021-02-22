@@ -50,7 +50,7 @@ function NavLinkComponent(
 
   useEffect(() => {
     setActive(checkActive());
-  }, [location?.pathname, location?.search]);
+  }, [location]);
 
   function handleOnClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if (checkActive() && noRefresh) {

@@ -1,9 +1,7 @@
 import { AnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
 import { NavLink } from '@la-danze-ui/core/components/NavLink/NavLink';
 import React from 'react';
-import {
-  NavLinkProps as OriginalNavLinkProps
-} from 'react-router-dom';
+import { NavLinkProps as OriginalNavLinkProps } from 'react-router-dom';
 
 export interface AnimateLinkProps extends OriginalNavLinkProps, React.RefAttributes<HTMLAnchorElement> {
   to: string;

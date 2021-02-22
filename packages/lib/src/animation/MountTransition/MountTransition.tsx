@@ -11,34 +11,33 @@ export function MountTransition({
   exit = 'out',
   initial = 'initial',
   animate = 'in',
-  animationType = 'scale',
+  animationType,
   variants,
   fullHeight,
   transition = { duration: 0.225 },
   ...otherProps
 }: React.PropsWithChildren<MountTransitionProps>): JSX.Element {
-  switch (animationType) {
-    case 'scale':
-      variants = scaleVariant;
-      break;
-    case 'fade':
-      variants = baseVariant;
-      break;
-    case 'slideUp':
-      variants = slideUpVariant;
-      break;
-    case 'slideDown':
-      variants = slideDownVariant;
-      break;
-    case 'slideLeft':
-      variants = slideLeftVariant;
-      break;
-    case 'slideRight':
-      variants = slideRightVariant;
-      break;
-    default:
-      variants = scaleVariant;
-      break;
+  if (!variants) {
+    switch (animationType) {
+      case 'scale':
+        variants = scaleVariant;
+        break;
+      case 'slideUp':
+        variants = slideUpVariant;
+        break;
+      case 'slideDown':
+        variants = slideDownVariant;
+        break;
+      case 'slideLeft':
+        variants = slideLeftVariant;
+        break;
+      case 'slideRight':
+        variants = slideRightVariant;
+        break;
+      case 'fade':
+          variants = baseVariant;
+          break;
+    }
   }
 
   return (
