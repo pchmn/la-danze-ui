@@ -24,7 +24,7 @@ function App() {
 
 ## Props
 
-> Extends [`NavLink`](api/components/NavLink.mdx) props
+> Extends la-danze-ui [`NavLink`](api/components/NavLink.mdx) props
 
 Additional props:
 
@@ -33,6 +33,7 @@ export const componentProps = [
   {
     name: 'animationKey',
     type: 'AnimationKey',
+    required: true,
     description: <>Override <code>key</code> prop. Use it only if you have nested routes. It will prevent parent route to re render.</>
   },
 ];

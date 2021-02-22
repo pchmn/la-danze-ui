@@ -7,22 +7,22 @@ See [demo](https://pchmn.github.io/la-danze-ui/demo) for live preview.
 
 ## Usage
 
-To use it, just wrapp your app with `LaDanzeTheme` and that's it:
+To use it, just wrapp your app with `Theme` and that's it:
 
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LaDanzeTheme  } from 'la-danze-ui';
+import { Theme  } from 'la-danze-ui';
 
 function App() {  
   return (
-    <LaDanzeTheme>
+    <Theme>
       <div>my app</div>
-    </LaDanzeTheme>
+    </Theme>
   );
 }
 ```
 
 ## API
-* [`LaDanzeTheme`](api/components/LaDanzeTheme.mdx)
+* [`Theme`](api/components/Theme.mdx)
 

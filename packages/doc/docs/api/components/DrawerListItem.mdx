@@ -7,7 +7,7 @@ hide_title: true
 
 This component extends `ListItem` component of [material-ui](https://next.material-ui.com/). It also provide props for routing. See props.
 
-It is meant to be used inside `LaDanzeDrawer`.
+> Can't be used outside [`<Drawer>`](api/components/Drawer.mdx).
 
 ## Example
 
@@ -43,6 +43,7 @@ export const componentProps = [
   {
     name: 'to',
     type: 'string',
+    required: true,
     description: <>See react-router-dom <a href="https://reactrouter.com/web/api/Link">doc</a>.</>
   },
   {
@@ -58,7 +59,7 @@ export const componentProps = [
   {
     name: 'isActive',
     type: 'function',
-    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/NavLink">doc</a>.<br /><code>(match: any, location: any) => boolean</code></>
+    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/NavLink">doc</a>.<br /><code>(match: match%3CParams%3E | null, location: Location%3Cunknown%3E): boolean</code></>
   },
   {
     name: 'onActive',

@@ -6,9 +6,9 @@ title: Drawer
 
 ## Basic Usage
 
-First your app must be wrapped by `LaDanzeTheme` (see [doc](usage/core/theme.md)).
+First your app must be wrapped by `Theme` (see [doc](usage/core/theme.md)).
 
-Then you have to use `DrawerTemplate` in combination with `LaDanzeDrawer` to make it possible. You should use `DrawerListItem` component which extends [material-ui](https://next.material-ui.com/) `ListItem` in your drawer.
+Then you have to use `DrawerTemplate` in combination with `Drawer` to make it possible. You should use `DrawerListItem` component which extends [material-ui](https://next.material-ui.com/) `ListItem` in your drawer.
 
 Here an example with routing:
 
@@ -19,10 +19,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { List, ListItemIcon, ListItemText } from '@material-ui/core';
 import logo from './logo.svg';
 import { 
-  LaDanzeTheme,
+  Theme,
   DrawerTemplate,
   DrawerContainer ,
-  LaDanzeDrawer,
+  Drawer,
   DrawerListItem,
   MainContainer
 } from 'la-danze-ui';
@@ -30,11 +30,11 @@ import {
 function App() {  
   return (
     <BrowserRouter>
-      <LaDanzeTheme>
+      <Theme>
         <DrawerTemplate>
 
           <DrawerContainer>
-            <LaDanzeDrawer logo={logo} title="Drawer">
+            <Drawer logo={logo} title="Drawer">
               <List>
                 <DrawerListItem to="/" exact title="Home">
                   <ListItemIcon>...</ListItemIcon>
@@ -45,7 +45,7 @@ function App() {
                   <ListItemText primary="Route 1" />
                 </DrawerListItem>
               </List>
-            </LaDanzeDrawer>
+            </Drawer>
           </DrawerContainer>
 
           <MainContainer>
@@ -56,7 +56,7 @@ function App() {
           </MainContainer>
 
         </DrawerTemplate>
-      </LaDanzeTheme>
+      </Theme>
     </BrowserRouter>
   );
 }
@@ -75,10 +75,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { List, ListItemIcon, ListItemText } from '@material-ui/core';
 import { 
-  LaDanzeTheme,
+  Theme,
   DrawerTemplate,
   DrawerContainer ,
-  LaDanzeDrawer,
+  Drawer,
   DrawerListItem,
   MainContainer,
   useAnimationKey,
@@ -94,11 +94,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <LaDanzeTheme>
+      <Theme>
         <DrawerTemplate>
 
           <DrawerContainer>
-            <LaDanzeDrawer logo={logo} title="La Danze UI">
+            <Drawer logo={logo} title="La Danze UI">
               // Set animationKey prop on DrawerListItems
               <List>
                 <DrawerListItem to="/" exact title="Home" animationKey={animationKey}>
@@ -110,7 +110,7 @@ function App() {
                   <ListItemText primary="Nested Routes" />
                 </DrawerListItem>
               </List>
-            </LaDanzeDrawer>
+            </Drawer>
           </DrawerContainer>
 
           <MainContainer>
@@ -122,7 +122,7 @@ function App() {
           </MainContainer>
 
         </DrawerTemplate>
-      </LaDanzeTheme>
+      </Theme>
     </BrowserRouter>    
   );
 }
@@ -151,9 +151,9 @@ function NestedRoutes() {
 ```
 
 ## API
-* [`LaDanzeTheme`](api/components/LaDanzeTheme.mdx)
+* [`Theme`](api/components/Theme.mdx)
 * [`DrawerTemplate`](api/components/DrawerTemplate.mdx)
-* [`LaDanzeDrawer`](api/components/LaDanzeDrawer.mdx)
+* [`Drawer`](api/components/Drawer.mdx)
 * [`DrawerListItem`](api/components/DrawerListItem.mdx)
 * [`AnimateSwitch`](api/components/AnimateSwitch.mdx)
 * [`AnimateRoute`](api/components/AnimateRoute.mdx)

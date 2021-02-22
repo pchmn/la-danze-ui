@@ -48,7 +48,7 @@ export const additionalProps = [
     name: 'animationType',
     type: [`'fade'`, `'scale'`, `'slideUp'`, `'slideDown'`, `'slideLeft'`, `'slideRight'`],
     default: `'fade'`,
-    description: <>	Animation type of the div. Overrides <code>variants</code> prop.</>
+    description: <>Animation type of the div. Overrides <code>variants</code> prop.</>
   }
 ];
 
@@ -89,7 +89,7 @@ export const defaultProps = [
   {
     name: 'style',
     type: ['MotionStyle'],
-    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.style">doc</a>.</>
+    description: <>See framer-motion <a href="https://www.framer.com/api/motion/component/#motionprops.style">doc</a>. Overridden by <code>animationType</code> prop.</>
   },
 ];
 

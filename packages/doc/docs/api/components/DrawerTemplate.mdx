@@ -7,6 +7,8 @@ hide_title: true
 
 This component will create a template with a drawer. It must contain `DrawerContainer` and `MainContainer` as child.
 
+> Can't be used outside [`<Theme>`](api/components/Theme.mdx).
+
 ## Example
 
 ```jsx
@@ -44,6 +46,8 @@ export const drawerTemplateProps = [
 
 ## `DrawerContainer`
 
+> Can't be used outside`<DrawerTemplate>`.
+
 ### Props
 
 export const drawerContainerProps = [
@@ -59,6 +63,8 @@ export const drawerContainerProps = [
 
 
 ## `MainContainer`
+
+> Can't be used outside`<DrawerTemplate>`.
 
 ### Props
 

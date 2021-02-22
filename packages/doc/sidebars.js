@@ -28,9 +28,9 @@ module.exports = {
           type: 'category',
           label: 'Components',
           items: [
-            'api/components/LaDanzeTheme',
+            'api/components/Theme',
             'api/components/DrawerTemplate',
-            'api/components/LaDanzeDrawer',
+            'api/components/Drawer',
             'api/components/DrawerListItem',
             'api/components/AnimateSwitch',
             'api/components/AnimateRoute',
@@ -46,7 +46,7 @@ module.exports = {
           label: 'Hooks',
           items: [
             'api/hooks/useAnimationKey',
-            'api/hooks/useLaDanzeDrawer',
+            'api/hooks/useOpenDrawer',
             'api/hooks/useIsMount',
           ]
         }
