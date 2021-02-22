@@ -18,6 +18,18 @@
     "paths": {
       "la-danze-ui": [
         "../lib/src/index"
+      ],
+      "@la-danze-ui/core/*": [
+        "../lib/src/core/*"
+      ],
+      "@la-danze-ui/animation/*": [
+        "../lib/src/animation/*"
+      ],
+      "@la-danze-ui/form/*": [
+        "../lib/src/form/*"
+      ],
+      "@la-danze-ui/testing/*": [
+        "../lib/src/testing/*"
       ]
     }
   },

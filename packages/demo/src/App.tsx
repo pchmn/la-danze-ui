@@ -2,14 +2,13 @@ import { List, ListItemIcon, ListItemText, SvgIcon } from '@material-ui/core';
 import {
   AnimateRoute,
   AnimateSwitch,
+  Drawer,
   DrawerContainer,
   DrawerListItem,
   DrawerTemplate,
-  LaDanzeDrawer,
-  LaDanzeTheme,
-  MainContainer,
+  MainContainer, Theme,
   useAnimationKey,
-  useLaDanzeDrawer
+  useOpenDrawer
 } from 'la-danze-ui';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
@@ -18,14 +17,14 @@ import { FormsExample } from './FormsExample/FormsExample';
 import logo from '/assets/logo.svg';
 
 export function App() {
-  const [open] = useLaDanzeDrawer();
+  const [open] = useOpenDrawer();
   const animationKey = useAnimationKey();
 
   console.log('drawer open', open);
 
-  function Drawer() {
+  function drawer() {
     return (
-      <LaDanzeDrawer logo={logo} title="La Danze UI">
+      <Drawer logo={logo} title="La Danze UI">
         <List>
           <DrawerListItem animationKey={animationKey} to="/forms" title="Forms">
             <ListItemIcon>
@@ -44,14 +43,14 @@ export function App() {
             <ListItemText primary="Animations" />
           </DrawerListItem>
         </List>
-      </LaDanzeDrawer>
+      </Drawer>
     );
   }
 
   return (
-    <LaDanzeTheme>
+    <Theme>
       <DrawerTemplate>
-        <DrawerContainer>{Drawer()}</DrawerContainer>
+        <DrawerContainer>{drawer()}</DrawerContainer>
 
         <MainContainer>
           <AnimateSwitch animationType="fade" animationKey={animationKey} exit="out">
@@ -67,6 +66,6 @@ export function App() {
           </AnimateSwitch>
         </MainContainer>
       </DrawerTemplate>
-    </LaDanzeTheme>
+    </Theme>
   );
 }

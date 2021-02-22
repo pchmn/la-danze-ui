@@ -15,7 +15,17 @@
     "source.fixAll.eslint": true
   },
   "eslint.workingDirectories": [
-    "./packages/demo",
-    "./packages/lib"
+    {
+      "directory": "./packages/demo",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/lib",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "./packages/doc",
+      "changeProcessCWD": true
+    }
   ]
 }
