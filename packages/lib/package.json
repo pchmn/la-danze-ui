@@ -2,7 +2,7 @@
   "name": "la-danze-ui",
   "description": "React library that provides a clean UI and facilitate animations and building forms",
   "author": "pchmn",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/la-danze-ui.esm.js",

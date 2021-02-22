@@ -1,3 +1,21 @@
+# [1.0.0](https://github.com/pchmn/la-danze-ui/compare/v0.0.13...v1.0.0) (2021-02-22)
+
+
+### Features
+
+* clean code ([ca5fbc9](https://github.com/pchmn/la-danze-ui/commit/ca5fbc9792a95840bda527d649603b81be568306))
+
+
+### BREAKING CHANGES
+
+* components renaming, more control with react context
+
+* components renamed: `LaDanzeTheme` => `Theme`, `LaDanzeDrawer` => `Drawer`, `useLaDanzeDrawer()` => `useOpenDrawer()`
+* components context:
+  * `<DrawerListItem>` can't be used outside `<Drawer>` (and `Theme`)
+  * `<Drawer>` can't be used outside `<DrawerContainer>`  (and `Theme`)
+  * `<DrawerTemplate>` can't be used outside `<Theme>`
+
 ## [0.0.13](https://github.com/pchmn/la-danze-ui/compare/v0.0.12...v0.0.13) (2021-02-21)
 
 
