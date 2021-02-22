@@ -73,10 +73,7 @@ export function DrawerListItem({
     invariant(theme, `You can't use <DrawerListItem> outside <Theme> or material-ui <Theme.Provider>`);
     return theme.breakpoints.down('md');
   });
-  invariant(
-    useContext(DrawerContext) === 'drawer',
-    `You can't use <DrawerListItem> outside <Drawer>`
-  );
+  invariant(useContext(DrawerContext) === 'drawer', `You can't use <DrawerListItem> outside <Drawer>`);
   const classes = useStyles();
   const tooltipClasses = useTooltipStyles();
   const [open, setOpen] = useOpenDrawer();
@@ -92,11 +89,11 @@ export function DrawerListItem({
     }
   }
 
-  function handleOnActive(active: boolean) {
+  function handleOnActive(activeStatus: boolean) {
     if (isMount) {
-      setActive(active);
+      setActive(activeStatus);
       if (onActive) {
-        onActive(active);
+        onActive(activeStatus);
       }
     }
   }

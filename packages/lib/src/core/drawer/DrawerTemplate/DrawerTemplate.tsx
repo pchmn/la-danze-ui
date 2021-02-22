@@ -35,12 +35,11 @@ export function DrawerTemplate({ children }: React.PropsWithChildren<React.React
     invariant(theme, `You can't use <DrawerTemplate> outside <Theme> or material-ui <Theme.Provider>`);
     return theme.breakpoints.down('md');
   });
-  const { drawerContainer, mainContainer } = getContainers();
+  let drawerContainer: any;
+  let mainContainer: any;
+  getContainers();
 
   function getContainers() {
-    let drawerContainer: any;
-    let mainContainer: any;
-
     React.Children.forEach(children, (child) => {
       if (React.isValidElement(child)) {
         if (child.type === DrawerContainer) {
@@ -58,7 +57,6 @@ export function DrawerTemplate({ children }: React.PropsWithChildren<React.React
 
     invariant(drawerContainer, `<DrawerTemplate> must contains a <DrawerContainer>`);
     invariant(mainContainer, `<DrawerTemplate> must contains a <MainContainer>`);
-    return { drawerContainer, mainContainer };
   }
 
   return (
