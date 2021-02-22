@@ -104,7 +104,7 @@ jobs:
   coverage:
     name: Coverage
     # Skip if it is a release commit (already passed during precedent workflow that triggered this release)
-    if: !startsWith(github.event.head_commit.message, 'chore(release):')
+    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
     needs: build
     runs-on: ubuntu-latest
     steps:
