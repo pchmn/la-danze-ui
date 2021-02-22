@@ -101,8 +101,10 @@ jobs:
 
 
   # Coverage (lib package)  
-  sonarcloud:
+  coverage:
     name: Coverage
+    # Skip if it is a release commit (already passed during precedent workflow that triggered this release)
+    if: !startsWith(github.event.head_commit.message, 'chore(release):')
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -122,18 +124,25 @@ jobs:
     #    Download coverage artifacts 
     # ---------------------------------- 
 
-    # Run sonar scan
-    - name: SONAR
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
     # Update coverage file to codecov
     - name: CODECOV
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./lcov.info
+        files: lcov.info
+
+    # Codacy analysis
+    - name: CODACY
+      uses: codacy/codacy-coverage-reporter-action@master
+      with:
+        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        coverage-reports: lcov.info
+
+    # Run sonar scan
+    - name: SONAR
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
   # Release lib package
