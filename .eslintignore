@@ -1,4 +1,4 @@
 node_modules
 *.config.(j|t)s
 .eslintrc.js
-packages/doc
+packages/la-danze-ui-docs

@@ -4,103 +4,98 @@ on:
   push:
     # Run on all branches excepted gh-pages
     branches:
-      - '**'
-      - '!gh-pages'
+      - "**"
+      - "!gh-pages"
     # Ignore all tags, because release commits (where tags are) already trigged workflow
     # so it prevents workflow to be launched twice for same changes
     tags-ignore:
-      - '*.*'
+      - "*.*"
     # Don't run when files commited are only doc files
     paths-ignore:
-      - '**.md'
-      - '.github/doc/**'
+      - "**.md"
+      - ".github/doc/**"
   pull_request:
     # Run only on main branch
     branches:
-      - 'main'
+      - "main"
     # Ignore all tags, because release commits (where tags are) already trigged workflow
     # so it prevents workflow to be launched twice for same changes
     tags-ignore:
-      - '*.*'
-    # Don't run when files commited are only doc files  
+      - "*.*"
+    # Don't run when files commited are only doc files
     paths-ignore:
-      - '**.md'
-      - '.github/doc/**'
-
+      - "**.md"
+      - ".github/doc/**"
 
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-
 jobs:
-
   # Build and Test
   build:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
-    
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ env.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
 
-    # ---------------------------------- 
-    #           Yarn cache 
-    # ----------------------------------   
-    - uses: actions/cache@v2
-      id: yarn-cache
-      with:
-        path: |
-          node_modules
-          */*/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    # ---------------------------------- 
-    #           Yarn cache 
-    # ----------------------------------          
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
 
-    # Install dependencies
-    - name: INSTALL
-      # Install dependencies only if cache was not found to accelerate workflow
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: yarn install
+      # Install dependencies
+      - name: INSTALL
+        # Install dependencies only if cache was not found to accelerate workflow
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
 
-    # Build all packages (lib, demo, doc)
-    - name: BUILD
-      run: yarn build:ci
+      # Build all packages (lib, demo, doc)
+      - name: BUILD
+        run: yarn build:ci
 
-    # Test lib package
-    - name: TEST
-      run: yarn test:ci:lib
+      # Test lib package
+      - name: TEST
+        run: yarn test:ci:lib
 
-    # ---------------------------------- 
-    #         Upload artifacts 
-    # ----------------------------------  
-    - uses: actions/upload-artifact@v2
-      with:
-        name: coverage
-        path: packages/la-danze-ui/coverage/lcov.info
+      # ----------------------------------
+      #         Upload artifacts
+      # ----------------------------------
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: packages/la-danze-ui/coverage/lcov.info
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: lib-dist
-        path: packages/la-danze-ui/dist/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lib-dist
+          path: packages/la-danze-ui/dist/
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: dist
-        path: dist/
-    # ---------------------------------- 
-    #         Upload artifacts 
-    # ----------------------------------         
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist/
+    # ----------------------------------
+    #         Upload artifacts
+    # ----------------------------------
 
-
-  # Coverage (lib package)  
+  # Coverage (lib package)
   coverage:
     name: Coverage
     # Skip if it is a release commit (already passed during precedent workflow that triggered this release)
@@ -108,42 +103,40 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ env.GITHUB_TOKEN }}
 
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        token: ${{ env.GITHUB_TOKEN }}
+      # ----------------------------------
+      #    Download coverage artifacts
+      # ----------------------------------
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage
+      # ----------------------------------
+      #    Download coverage artifacts
+      # ----------------------------------
 
-    # ---------------------------------- 
-    #    Download coverage artifacts 
-    # ---------------------------------- 
-    - uses: actions/download-artifact@v2
-      with:
-        name: coverage
-    # ---------------------------------- 
-    #    Download coverage artifacts 
-    # ---------------------------------- 
+      # Update coverage file to codecov
+      - name: CODECOV
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info
 
-    # Update coverage file to codecov
-    - name: CODECOV
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: lcov.info
+      # Codacy analysis
+      - name: CODACY
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: lcov.info
 
-    # Codacy analysis
-    - name: CODACY
-      uses: codacy/codacy-coverage-reporter-action@master
-      with:
-        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-        coverage-reports: lcov.info
-
-    # Run sonar scan
-    - name: SONAR
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
+      # Run sonar scan
+      - name: SONAR
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   # Release lib package
   release:
@@ -154,51 +147,49 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
 
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ env.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12'
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
 
-    # ---------------------------------- 
-    #           Yarn cache 
-    # ----------------------------------
-    - uses: actions/cache@v2
-      id: yarn-cache
-      with:
-        path: |
-          node_modules
-          */*/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-    # ---------------------------------- 
-    #           Yarn cache 
-    # ----------------------------------
+      # Install dependencies
+      - name: INSTALL
+        # Install dependencies only if cache was not found to accelerate workflow
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
 
-    # Install dependencies  
-    - name: INSTALL
-      # Install dependencies only if cache was not found to accelerate workflow
-      if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: yarn install
+      # Copy README.md to lib package (for npm)
+      - name: COPY README.md
+        run: cp README.md packages/la-danze-ui/
 
-    # Copy README.md to lib package (for npm)  
-    - name: COPY README.md
-      run: cp README.md packages/la-danze-ui/
-
-    # Release  
-    - name: RELEASE
-      run: yarn semantic-release
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}   
-        GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}   
-        GIT_COMMITTER_NAME: ${{ secrets.GIT_AUTHOR_NAME }}   
-        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}   
-
+      # Release
+      - name: RELEASE
+        run: yarn semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
 
   # Deploy to gh pages
   deploy:
@@ -214,31 +205,30 @@ jobs:
       name: pchmn.github.io/la-danze-ui
       url: https://pchmn.github.io/la-danze-ui/
     steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
 
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ env.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
 
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12'
+      # ----------------------------------
+      #     Download dist artifacts
+      # ----------------------------------
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist/
+      # ----------------------------------
+      #     Download dist artifacts
+      # ----------------------------------
 
-    # ---------------------------------- 
-    #     Download dist artifacts 
-    # ----------------------------------
-    - uses: actions/download-artifact@v2
-      with:
-        name: dist
-        path: dist/
-    # ---------------------------------- 
-    #     Download dist artifacts 
-    # ----------------------------------
-
-    # Deploy dist folder to gh pages  
-    - name: DEPLOY
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ env.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        user_name: ${{ secrets.GIT_AUTHOR_NAME }} 
-        user_email: ${{ secrets.GIT_AUTHOR_EMAIL }}
+      # Deploy dist folder to gh pages
+      - name: DEPLOY
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ env.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          user_name: ${{ secrets.GIT_AUTHOR_NAME }}
+          user_email: ${{ secrets.GIT_AUTHOR_EMAIL }}

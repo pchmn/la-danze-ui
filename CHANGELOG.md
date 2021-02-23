@@ -8,8 +8,6 @@
 
 ### BREAKING CHANGES
 
-* components renaming, more control with react context
-
 * components renamed: `LaDanzeTheme` => `Theme`, `LaDanzeDrawer` => `Drawer`, `useLaDanzeDrawer()` => `useOpenDrawer()`
 * components context:
   * `<DrawerListItem>` can't be used outside `<Drawer>` (and `Theme`)
