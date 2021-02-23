@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "husky install && rimraf ./.git/hooks && cp -r ./.husky/hooks/ ./.git/hooks/",
+    "postinstall": "rm -rf ./.git/hooks && cp -r ./.githooks/ ./.git/hooks/",
     "dev:lib": "yarn --cwd packages/la-danze-ui start",
     "build:lib": "yarn --cwd packages/la-danze-ui build",
     "test:lib": "yarn --cwd packages/la-danze-ui test",
@@ -46,7 +46,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "framer-motion": "^3.0.0",
-    "husky": "^5.0.9",
     "local-web-server": "^4.2.1",
     "prettier": "^2.2.1",
     "react": "^17.0.0",
