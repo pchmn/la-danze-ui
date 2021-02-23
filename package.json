@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "postinstall": "husky install && rimraf ./.git/hooks && symlink-dir ./.husky ./.git/hooks",
+    "postinstall": "husky install && rimraf ./.git/hooks && cp -r ./.husky/hooks/ ./.git/hooks/",
     "dev:lib": "yarn --cwd packages/la-danze-ui start",
     "build:lib": "yarn --cwd packages/la-danze-ui build",
     "test:lib": "yarn --cwd packages/la-danze-ui test",
