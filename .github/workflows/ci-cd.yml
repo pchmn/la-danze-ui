@@ -84,12 +84,12 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: coverage
-        path: packages/lib/coverage/lcov.info
+        path: packages/la-danze-ui/coverage/lcov.info
 
     - uses: actions/upload-artifact@v2
       with:
         name: lib-dist
-        path: packages/lib/dist/
+        path: packages/la-danze-ui/dist/
 
     - uses: actions/upload-artifact@v2
       with:
@@ -187,7 +187,7 @@ jobs:
 
     # Copy README.md to lib package (for npm)  
     - name: COPY README.md
-      run: cp README.md packages/lib/
+      run: cp README.md packages/la-danze-ui/
 
     # Release  
     - name: RELEASE
