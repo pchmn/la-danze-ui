@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('./config');
 
 module.exports = {
@@ -14,23 +15,23 @@ module.exports = {
     sidebarCollapsible: true,
     colorMode: {
       defaultMode: 'dark',
-      disableSwitch: true,
+      disableSwitch: true
     },
     prism: {
-      theme: require('prism-react-renderer/themes/dracula'),
+      theme: require('prism-react-renderer/themes/dracula')
     },
     navbar: {
       title: `La Danze UI`,
       logo: {
         alt: 'La Danze UI logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.svg'
       },
       items: [
         {
           to: `docs/${config.LA_DANZE_UI_VERSION}`,
           activeBasePath: 'docs',
           label: 'Docs',
-          position: 'left',
+          position: 'left'
         },
         // {
         //   type: 'docsVersion',
@@ -41,19 +42,19 @@ module.exports = {
         {
           href: 'https://pchmn.github.io/la-danze-ui/demo',
           label: 'Demo',
-          position: 'right',
+          position: 'right'
         },
         {
           href: 'https://github.com/pchmn/la-danze-ui',
           label: 'GitHub',
-          position: 'right',
-        },
-      ],
+          position: 'right'
+        }
+      ]
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} La Danze UI Built with Docusaurus.`,
-    },
+      copyright: `Copyright © ${new Date().getFullYear()} La Danze UI Built with Docusaurus.`
+    }
   },
   presets: [
     [
@@ -62,8 +63,8 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/pchmn/la-danze-ui/edit/main/packages/doc/',
-          lastVersion: "current",
+          editUrl: 'https://github.com/pchmn/la-danze-ui/edit/main/packages/la-danze-ui-docs/',
+          lastVersion: 'current',
           versions: {
             current: {
               label: config.LA_DANZE_UI_VERSION,
@@ -77,12 +78,10 @@ module.exports = {
         //   editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/blog/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      },
-    ],
+          customCss: require.resolve('./src/css/custom.css')
+        }
+      }
+    ]
   ],
-  scripts: [
-    '/la-danze-ui/spa-gh-pages.js'
-  ]
+  scripts: ['/la-danze-ui/spa-gh-pages.js']
 };

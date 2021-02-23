@@ -17,28 +17,28 @@
     "isolatedModules": true,
     "paths": {
       "la-danze-ui": [
-        "../lib/src/index"
+        "../la-danze-ui/src/index"
       ],
       "@la-danze-ui/core/*": [
-        "../lib/src/core/*"
+        "../la-danze-ui/src/core/*"
       ],
       "@la-danze-ui/animation/*": [
-        "../lib/src/animation/*"
+        "../la-danze-ui/src/animation/*"
       ],
       "@la-danze-ui/form/*": [
-        "../lib/src/form/*"
+        "../la-danze-ui/src/form/*"
       ],
       "@la-danze-ui/testing/*": [
-        "../lib/src/testing/*"
+        "../la-danze-ui/src/testing/*"
       ]
     }
   },
   "include": [
     "./src",
-    "../lib/src",
+    "../la-danze-ui/src",
     "typings.d.ts"
   ],
   "exclude": [
-    "../lib/src/**/*.test.tsx",
+    "../la-danze-ui/src/**/*.test.tsx",
   ]
 }

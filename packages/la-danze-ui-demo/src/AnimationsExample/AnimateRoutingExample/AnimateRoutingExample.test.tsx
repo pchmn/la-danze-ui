@@ -1,6 +1,6 @@
 // import React from 'react';
-// import '../../lib/animation/AnimateSwitch/node_modules/@testing-library/jest-dom/extend-expect';
-// import { render, screen } from '../../lib/animation/AnimateSwitch/node_modules/@testing-library/react';
+// import '../../la-danze-ui/animation/AnimateSwitch/node_modules/@testing-library/jest-dom/extend-expect';
+// import { render, screen } from '../../la-danze-ui/animation/AnimateSwitch/node_modules/@testing-library/react';
 // import AnimationsExample from './AnimationsExample';
 
 // describe('<AnimationsExample />', () => {
@@ -13,3 +13,4 @@
 //   });
 // });
 export { };
+
