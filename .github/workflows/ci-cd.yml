@@ -84,7 +84,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: lib-dist
+          name: la-danze-ui-dist
           path: packages/la-danze-ui/dist/
 
       - uses: actions/upload-artifact@v2
@@ -169,6 +169,17 @@ jobs:
             ${{ runner.os }}-yarn-
       # ----------------------------------
       #           Yarn cache
+      # ----------------------------------
+
+      # ----------------------------------
+      #     Download dist artifacts
+      # ----------------------------------
+      - uses: actions/download-artifact@v2
+        with:
+          name: la-danze-ui-dist
+          path: packages/la-danze-ui/dist/
+      # ----------------------------------
+      #     Download dist artifacts
       # ----------------------------------
 
       # Install dependencies
