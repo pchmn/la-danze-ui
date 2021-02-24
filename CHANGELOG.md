@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/pchmn/la-danze-ui/compare/v1.0.0...v1.0.1) (2021-02-24)
+
+
+### Bug Fixes
+
+* problem with types ([c0249c5](https://github.com/pchmn/la-danze-ui/commit/c0249c55edc34a08c8f3944790fb66a7bdb191ef))
+
 # [1.0.0](https://github.com/pchmn/la-danze-ui/compare/v0.0.13...v1.0.0) (2021-02-22)
 
 
