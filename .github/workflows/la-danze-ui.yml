@@ -1,4 +1,6 @@
-name: La Danze UI CI/CD
+# This workflow is made for la-danze-ui library
+# So it focuses only on packages/la-danze-ui
+name: La Danze UI
 
 on:
   push:
@@ -66,11 +68,11 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      # Build all packages (lib, demo, doc)
+      # Build lib (packages/la-danze-ui)
       - name: BUILD
-        run: yarn build:ci
+        run: yarn build:lib
 
-      # Test lib package
+      # Test lib (packages/la-danze-ui)
       - name: TEST
         run: yarn test:ci:lib
 
@@ -86,20 +88,13 @@ jobs:
         with:
           name: la-danze-ui-dist
           path: packages/la-danze-ui/dist/
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: dist/
-    # ----------------------------------
-    #         Upload artifacts
-    # ----------------------------------
+      # ----------------------------------
+      #         Upload artifacts
+      # ----------------------------------
 
   # Coverage (lib package)
   coverage:
     name: Coverage
-    # Skip if it is a release commit (already passed during precedent workflow that triggered this release)
-    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -142,8 +137,7 @@ jobs:
   release:
     name: Release
     # Launch only on main branch
-    # Skip if it is a release commit (this job created it)
-    if: github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -201,45 +195,3 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
-
-  # Deploy to gh pages
-  deploy:
-    name: Deploy
-    # Deploy only if it is a release commit
-    # or if commit message contains [deploy] option
-    if: startsWith(github.event.head_commit.message, 'chore(release):') || contains(github.event.head_commit.message, '[deploy]')
-    needs: build
-    runs-on: ubuntu-latest
-    # Manual deployment
-    # See https://devblogs.microsoft.com/devops/i-need-manual-approvers-for-github-actions-and-i-got-them-now/
-    environment:
-      name: pchmn.github.io/la-danze-ui
-      url: https://pchmn.github.io/la-danze-ui/
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ env.GITHUB_TOKEN }}
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "12"
-
-      # ----------------------------------
-      #     Download dist artifacts
-      # ----------------------------------
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist/
-      # ----------------------------------
-      #     Download dist artifacts
-      # ----------------------------------
-
-      # Deploy dist folder to gh pages
-      - name: DEPLOY
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ env.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          user_name: ${{ secrets.GIT_AUTHOR_NAME }}
-          user_email: ${{ secrets.GIT_AUTHOR_EMAIL }}
