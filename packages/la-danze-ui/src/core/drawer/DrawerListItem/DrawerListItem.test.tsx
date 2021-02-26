@@ -1,7 +1,7 @@
 import { Drawer } from '@la-danze-ui/core/drawer/Drawer/Drawer';
 import { DrawerListItem } from '@la-danze-ui/core/drawer/DrawerListItem/DrawerListItem';
 import { DrawerContainer, DrawerTemplate, MainContainer } from '@la-danze-ui/core/drawer/DrawerTemplate/DrawerTemplate';
-import { Theme } from '@la-danze-ui/core/theme/Theme';
+import { Theme } from '@la-danze-ui/core/theme/Theme/Theme';
 import { mockMediaQueries, renderWithRouter, RouteContainer } from '@la-danze-ui/testing/testing.utils';
 import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -12,30 +12,45 @@ import invariant from 'tiny-invariant';
 import { useOpenDrawer } from '../hooks/useOpenDrawer.hook';
 
 describe('<DrawerListItem />', () => {
-  const Container = ({theme = true, drawer = true, onClick, onActive}: { theme?: boolean, onClick: () => void; onActive: (active: boolean) => void, drawer?: boolean }) => {
+  const Container = ({
+    theme = true,
+    drawer = true,
+    onClick,
+    onActive
+  }: {
+    theme?: boolean;
+    onClick: () => void;
+    onActive: (active: boolean) => void;
+    drawer?: boolean;
+  }) => {
     const [open, setOpen] = useOpenDrawer();
 
     const content = () => {
       if (theme && drawer) {
         return (
           <DrawerTemplate>
-            <DrawerContainer><Drawer logo="logo" title="title">{drawerContent}</Drawer></DrawerContainer>
+            <DrawerContainer>
+              <Drawer logo="logo" title="title">
+                {drawerContent}
+              </Drawer>
+            </DrawerContainer>
             <MainContainer>
               <Switch>
-                <Route exact path="/"><RouteContainer routeName="home" /></Route>
-                <Route path="/route1"><RouteContainer routeName="route 1" /></Route>
+                <Route exact path="/">
+                  <RouteContainer routeName="home" />
+                </Route>
+                <Route path="/route1">
+                  <RouteContainer routeName="route 1" />
+                </Route>
               </Switch>
               <span data-testid="drawerOpenStatus">{open ? 'open' : 'close'}</span>
             </MainContainer>
-          </DrawerTemplate>);
+          </DrawerTemplate>
+        );
       }
-      return (
-        <>
-          {drawerContent}
-        </>
-      );
+      return <>{drawerContent}</>;
     };
-    
+
     const drawerContent = (
       <>
         <Button onClick={() => setOpen(!open)}>toggle drawer</Button>
@@ -48,21 +63,14 @@ describe('<DrawerListItem />', () => {
       </>
     );
 
-    return (
-      <>
-        {theme 
-          ? <Theme>{content()}</Theme>
-          : content()
-        }
-      </>
-    );
+    return <>{theme ? <Theme>{content()}</Theme> : content()}</>;
   };
 
-  const setUp = ({ route, ...props }: { route?: string, theme?: boolean, drawer?: boolean }) => {
+  const setUp = ({ route, ...props }: { route?: string; theme?: boolean; drawer?: boolean }) => {
     const onClick = jest.fn();
     const onActive = jest.fn();
     const container = renderWithRouter(<Container {...props} onClick={onClick} onActive={onActive} />, { route });
-    const toggleDrawerButton = screen.getByText('toggle drawer')
+    const toggleDrawerButton = screen.getByText('toggle drawer');
     const homeItem = screen.getByText('Go to home');
     const homeLink = screen.getByText('Go to home').closest('a');
     const route1Link = screen.getByText('Go to route 1').closest('a');
@@ -72,7 +80,7 @@ describe('<DrawerListItem />', () => {
     invariant(homeLink, 'Error render');
     invariant(route1Link, 'Error render');
 
-    return { 
+    return {
       homeLink,
       route1Link,
       routeName,
@@ -82,7 +90,7 @@ describe('<DrawerListItem />', () => {
       homeLinkTooltip,
       homeItem,
       toggleDrawerButton,
-      container 
+      container
     };
   };
 
@@ -91,8 +99,10 @@ describe('<DrawerListItem />', () => {
     const err = console.error;
     console.error = jest.fn();
 
-    const error = Error(`Invariant failed: You can't use <DrawerListItem> outside <Theme> or material-ui <Theme.Provider>`);
-    expect(() => setUp({theme: false})).toThrow(error);
+    const error = Error(
+      `Invariant failed: You can't use <DrawerListItem> outside <Theme> or material-ui <Theme.Provider>`
+    );
+    expect(() => setUp({ theme: false })).toThrow(error);
 
     // Restore writing to stderr.
     console.error = err;
@@ -104,7 +114,7 @@ describe('<DrawerListItem />', () => {
     console.error = jest.fn();
 
     const error = Error(`Invariant failed: You can't use <DrawerListItem> outside <Drawer>`);
-    expect(() => setUp({drawer: false})).toThrow(error);
+    expect(() => setUp({ drawer: false })).toThrow(error);
 
     // Restore writing to stderr.
     console.error = err;
@@ -124,7 +134,7 @@ describe('<DrawerListItem />', () => {
       expect(routeName).toHaveTextContent('home');
       expect(homeLink).toHaveClass('active');
       expect(onActive).toHaveBeenCalledWith(true);
-    })
+    });
   });
 
   test('It should not call onActive and onClick (props not specified)', async () => {
@@ -135,7 +145,7 @@ describe('<DrawerListItem />', () => {
     await waitFor(() => {
       expect(routeName).toHaveTextContent('route 1');
       expect(route1Link).toHaveClass('active');
-    })
+    });
   });
 
   test('It should call onClick event', async () => {

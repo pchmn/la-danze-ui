@@ -169,10 +169,7 @@ export function Drawer({ children, logo, title }: React.PropsWithChildren<Drawer
     invariant(theme, `You can't use <Drawer> outside <LaDanzeTheme> or material-ui <Theme.Provider>`);
     return theme.breakpoints.down('md');
   });
-  invariant(
-    useContext(DrawerContext) === 'drawerContainer',
-    `You can't use <Drawer> outside a <DrawerContainer>`
-  );
+  invariant(useContext(DrawerContext) === 'drawerContainer', `You can't use <Drawer> outside a <DrawerContainer>`);
   const [open, setOpen] = useOpenDrawer();
   const classes = useStyles();
 

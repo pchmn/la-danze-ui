@@ -25,6 +25,7 @@ export function AnimateSwitch({
   ...otherProps
 }: AnimateSwitchProps): JSX.Element {
   if (!location) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     location = useLocation();
   }
 

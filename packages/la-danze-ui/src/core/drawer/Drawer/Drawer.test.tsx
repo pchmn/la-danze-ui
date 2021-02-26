@@ -1,6 +1,6 @@
 import { Drawer } from '@la-danze-ui/core/drawer/Drawer/Drawer';
 import { DrawerContainer, DrawerTemplate, MainContainer } from '@la-danze-ui/core/drawer/DrawerTemplate/DrawerTemplate';
-import { Theme } from '@la-danze-ui/core/theme/Theme';
+import { Theme } from '@la-danze-ui/core/theme/Theme/Theme';
 import { mockMediaQueries } from '@la-danze-ui/testing/testing.utils';
 // eslint-disable-next-line prettier/prettier
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
