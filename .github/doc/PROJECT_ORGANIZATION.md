@@ -62,7 +62,7 @@ It is triggered for every push or pull request with a commit message different f
 Every "**_chore(release): {version} [skip ci]_**" commit are pushed during _Release_ job if there is a new release to publish (code stays the same).   
 "**_[skip ci]_**" option is set in commit message so workflow will not be triggered.
 
-![la-danze-ui.workflow](la-danze-ui.workflow.png)
+![la-danze-ui.workflow](la-danze-ui.workflow.PNG)
 
 * **Build and Test**:
   
@@ -84,7 +84,7 @@ This workflow is dedicated for deployment of docs and demo to github pages (http
 So it focuses on `packages/la-danze-ui-docs` and `packages/la-danze-ui-demo`.   
 It is triggered only on github release creation (made by library workflow).
 
-![github-pages.workflow](github-pages.workflow.png)
+![github-pages.workflow](github-pages.workflow.PNG)
 
 * **Build**:
   
