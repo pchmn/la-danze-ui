@@ -12,6 +12,9 @@ export function PropsTable({ componentProps }: { componentProps: PropsDetail[] }
 
   function getType(type: string | string[]) {
     if (Array.isArray(type)) {
+      if (type.length <= 2) {
+        return type.join(' | ');
+      }
       return type.map((item, index) => {
         if (index === 0) {
           return item;

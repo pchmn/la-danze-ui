@@ -73,3 +73,7 @@
   border-radius: 2px;
   word-break: break-word;
 }
+
+table th, table td {
+  border-color: #60677082;
+}

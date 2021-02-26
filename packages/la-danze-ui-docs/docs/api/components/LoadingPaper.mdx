@@ -1,0 +1,47 @@
+---
+title: LoadingPaper
+hide_title: true
+---
+
+# `LoadingPaper`
+
+This component extends material-ui [`Paper`](https://next.material-ui.com/components/paper/#main-content). It adds a `pending` prop, to show a progress bar at the top of `<Paper>`.   
+See [demo](https://pchmn.github.io/la-danze-ui/demo/forms).
+
+
+## Example
+
+```jsx
+import { LoadingPaper } from 'la-danze-ui';
+
+function App() {
+  return (
+    <LoadingPaper pending={true}>
+      content
+    </LoadingPaper>
+  );
+}
+```
+
+## Props
+
+> Extends material-ui [`Paper`](https://next.material-ui.com/api/paper/) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'pending',
+    type: 'boolean',
+    description: <>Weither to show progress or not.</>
+  },
+  {
+    name: 'progressColor',
+    type: [`'primary'`, `'secondary'`],
+    default: `'secondary'`,
+    description: <>Theme color of progress bar.</>
+  },
+];
+
+<PropsTable componentProps={componentProps} />

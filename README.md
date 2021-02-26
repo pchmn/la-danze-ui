@@ -9,7 +9,7 @@
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pchmn/la-danze-ui/blob/main/LICENSE)
 [![npm latest package](https://img.shields.io/npm/v/la-danze-ui/latest.svg)](https://www.npmjs.com/package/la-danze-ui)
-[![la danze ui cicd](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml)
+[![la danze ui cicd](https://github.com/pchmn/la-danze-ui/actions/workflows/la-danze-ui.yml/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions/workflows/la-danze-ui.yml)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=la-danze-ui&metric=coverage)](https://sonarcloud.io/dashboard?id=la-danze-ui)
 [![codecov.io](https://codecov.io/gh/pchmn/la-danze-ui/coverage.svg?branch=main)](https://codecov.io/gh/pchmn/la-danze-ui?branch=master)
 <!-- [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4c695ce061c34c1bb1698acc19278f0e)](https://www.codacy.com/gh/pchmn/la-danze-ui/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pchmn/la-danze-ui&amp;utm_campaign=Badge_Grade) -->
@@ -54,16 +54,16 @@ Just a quick example that shows how to apply **La Danze UI** theme to your app:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Paper, Typography } from "@material-ui/core";
-import { LaDanzeTheme  } from 'la-danze-ui';
+import { Theme  } from 'la-danze-ui';
 
 function App() {  
   return (
-    <LaDanzeTheme>
+    <Theme>
       <Paper>
         <Typography variant="h2">Themed h2</Typography>
         <Button>Themed button</Button>
       </Paper>
-    </LaDanzeTheme>
+    </Theme>
   );
 }
 ```

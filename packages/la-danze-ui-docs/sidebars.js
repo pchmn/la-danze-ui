@@ -38,6 +38,7 @@ module.exports = {
             'api/components/MountTransition',
             'api/components/Form',
             'api/components/FormField',
+            'api/components/LoadingPaper',
             'api/components/NavLink',
           ]
         },

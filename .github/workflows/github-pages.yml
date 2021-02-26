@@ -3,14 +3,8 @@
 name: Github Pages
 
 on:
-  push:
-    # Run on each tags version
-    tags:
-      - v*.*.*
-  pull_request:
-    # Run on each tags version
-    tags:
-      - v*.*.*
+  release:
+    types: [created]
 
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
