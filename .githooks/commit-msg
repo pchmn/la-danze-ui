@@ -5,4 +5,4 @@ then
     yarn global add commitlint
 fi
 
-commitlint --edit "$1"
+commitlint --config commitlint.config.js --edit "$1"

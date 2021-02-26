@@ -5,6 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Tooltip from '@material-ui/core/Tooltip';
 import { ResizeSensor } from 'css-element-queries';
+import { LoadingPaper } from 'la-danze-ui';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 import React, { useEffect, useState } from 'react';
@@ -29,7 +30,7 @@ export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndS
 
     if (paperElt && actionBarElt && sourCodeElt) {
       // When "demo" resizes, resize source code as well so they have the same height
-      new ResizeSensor(paperElt, function () {
+      new ResizeSensor(paperElt, () => {
         (sourCodeElt as HTMLElement).style.height = `${paperElt.clientHeight - actionBarElt.clientHeight}px`;
         (sourCodeElt as HTMLElement).style.display = 'block';
       });
@@ -79,10 +80,12 @@ export function Header({ children }: React.PropsWithChildren<any>): JSX.Element 
   );
 }
 
-export function Demo({ children }: React.PropsWithChildren<any>): JSX.Element {
+export function Demo({ children, pending }: React.PropsWithChildren<{ pending?: boolean }>): JSX.Element {
   return (
     <Grid item md={6} xs={12}>
-      <Paper className={`${styles.demo} paperContainer`}>{children}</Paper>
+      <LoadingPaper className={`${styles.demo} paperContainer`} pending={pending}>
+        {children}
+      </LoadingPaper>
     </Grid>
   );
 }
@@ -134,22 +137,22 @@ export function SourceCode({
   return (
     <Grid item md={6} xs={12}>
       <Paper
-        className={`${styles.sourceCodePaper} sourCodePaper`}
+        className={`${styles.sourceCodePaper} paperContainer paperFullWidth`}
         style={height !== -1 ? { height: 'auto' } : { height }}
       >
         <div className={styles.actionBar}>
           <Tooltip title="Show full source on Github">
             <IconButton aria-label="copy" onClick={openGithubSource}>
-            <SvgIcon fontSize="small">
+              <SvgIcon fontSize="small">
                 <GithubIcon />
-            </SvgIcon>
+              </SvgIcon>
             </IconButton>
           </Tooltip>
           <Tooltip title="Copy the source">
             <IconButton aria-label="copy" onClick={copyToCliboard}>
               <SvgIcon fontSize="small">
                 <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z" />
-              </SvgIcon> 
+              </SvgIcon>
             </IconButton>
           </Tooltip>
         </div>

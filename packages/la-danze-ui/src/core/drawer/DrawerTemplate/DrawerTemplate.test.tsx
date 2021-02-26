@@ -1,4 +1,4 @@
-import { Theme } from '@la-danze-ui/core/theme/Theme';
+import { Theme } from '@la-danze-ui/core/theme/Theme/Theme';
 import { mockMediaQueries } from '@la-danze-ui/testing/testing.utils';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';

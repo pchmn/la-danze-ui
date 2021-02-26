@@ -1,10 +1,10 @@
-import { ThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import StyledEngineProvider from '@material-ui/core/StyledEngineProvider';
 import React from 'react';
-import './theme.scss';
+import '../theme.scss';
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   palette: {
     mode: 'dark',
     primary: {
@@ -23,11 +23,11 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
+      'Segoe UI',
       'Work Sans',
       'Open Sans',
       'sans-serif',
       'BlinkMacSystemFont',
-      'Segoe UI',
       'Roboto',
       'Helvetica Neue',
       'Arial'
@@ -55,7 +55,10 @@ const theme = createMuiTheme({
         // Name of the slot
         root: {
           // Some CSS
-          padding: '3rem'
+          padding: '3rem',
+          '@media screen and (max-width: 600px)': {
+            padding: '2.5rem'
+          }
         }
       }
     },

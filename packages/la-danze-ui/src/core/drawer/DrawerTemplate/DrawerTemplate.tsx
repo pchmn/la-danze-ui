@@ -22,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(6),
     [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(2),
-      paddingTop: theme.spacing(4)
+      padding: `${theme.spacing(4)} ${theme.spacing(2)}`
     },
     height: 'fit-content'
   }

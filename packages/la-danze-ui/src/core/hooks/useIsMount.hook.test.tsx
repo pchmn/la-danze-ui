@@ -5,9 +5,7 @@ import React from 'react';
 describe('useIsMount()', () => {
   const Container = () => {
     const isMount = useIsMount();
-    return (
-      <div data-testid="isMount">{`${isMount}`}</div>
-    );
+    return <div data-testid="isMount">{`${isMount}`}</div>;
   };
 
   test('It should render theme', async () => {

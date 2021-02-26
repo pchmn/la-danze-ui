@@ -18,7 +18,7 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
         <Header>
           <h1>Animate routing</h1>
           <span>
-            Example of routing animations using <pre>AnimateSwitch</pre> and <pre>AnimateRoute</pre> components.
+            Example of routing animations using <code>AnimateSwitch</code> and <code>AnimateRoute</code> components.
           </span>
         </Header>
 

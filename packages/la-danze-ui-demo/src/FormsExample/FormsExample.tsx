@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import LoadingButton from '@material-ui/lab/LoadingButton';
 import { Form, FormField } from 'la-danze-ui';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -38,15 +38,15 @@ export function FormsExample(): JSX.Element {
       <DemoAndSource id="FormsExample">
         <Header>
           <h1>
-            <pre>Form</pre> and <pre>FormField</pre>
+            <code>Form</code> and <code>FormField</code>
           </h1>
           <span>
-            Example of form using <pre>react-hook-form</pre> and <pre>yup</pre> by implementing <pre>Form</pre> and{' '}
-            <pre>FormField</pre> components.
+            Example of form using <code>react-hook-form</code> and <code>yup</code> by implementing <code>Form</code>{' '}
+            and <code>FormField</code> components.
           </span>
         </Header>
 
-        <Demo>
+        <Demo pending={loading}>
           <Form form={form} onSubmit={form.handleSubmit(onSubmit)} disabled={loading}>
             <FormField className={styles.textField} name="email" as={TextField} label="Email" />
             <FormField className={styles.textField} name="username" as={TextField} label="Username" />
@@ -61,15 +61,15 @@ export function FormsExample(): JSX.Element {
               label="Confirm password"
             />
 
-            <Button
-              className={styles.submitButton}
-              disabled={loading}
+            <LoadingButton
+              className={styles.submitLoadingButton}
+              pending={loading}
               variant="contained"
               color="primary"
               type="submit"
             >
               Validate
-            </Button>
+            </LoadingButton>
           </Form>
         </Demo>
 

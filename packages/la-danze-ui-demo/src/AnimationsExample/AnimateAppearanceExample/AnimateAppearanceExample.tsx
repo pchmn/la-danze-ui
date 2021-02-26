@@ -28,9 +28,9 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
     <div className={`${styles.animateAppearance} ${className}`} {...props}>
       <DemoAndSource id="AnimationsExample">
         <Header>
-          <h1>Animate (dis)appearance</h1>
+          <h1>Animate appearance</h1>
           <span>
-            Example of (dis)appearance animations using <pre>AnimatePresence</pre> and <pre>MountTransition</pre>{' '}
+            Example of (dis)appearance animations using <code>AnimatePresence</code> and <code>MountTransition</code>{' '}
             component.
           </span>
         </Header>
