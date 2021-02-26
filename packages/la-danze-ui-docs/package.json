@@ -1,0 +1,46 @@
+{
+  "name": "la-danze-ui-doc",
+  "version": "1.0.2",
+  "author": "pchmn",
+  "license": "MIT",
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "dev": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "serve": "ws -r '/la-danze-ui/(.*) -> /$1' -d build",
+    "serve:native": "docusaurus serve",
+    "clear": "docusaurus clear"
+  },
+  "dependencies": {
+    "@docusaurus/core": "2.0.0-alpha.70",
+    "@docusaurus/preset-classic": "2.0.0-alpha.70",
+    "@mdx-js/react": "^1.6.21",
+    "clsx": "^1.1.1",
+    "docusaurus2-dotenv": "^1.4.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.16",
+    "babel-plugin-inline-dotenv": "^1.6.0",
+    "babel-plugin-transform-define": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0",
+    "sass": "^1.32.5"
+  }
+}

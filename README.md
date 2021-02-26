@@ -9,9 +9,10 @@
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pchmn/la-danze-ui/blob/main/LICENSE)
 [![npm latest package](https://img.shields.io/npm/v/la-danze-ui/latest.svg)](https://www.npmjs.com/package/la-danze-ui)
-[![example branch parameter](https://github.com/pchmn/la-danze-ui/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions)
-
+[![la danze ui cicd](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml/badge.svg?branch=main)](https://github.com/pchmn/la-danze-ui/actions/workflows/ci-cd.yml)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=la-danze-ui&metric=coverage)](https://sonarcloud.io/dashboard?id=la-danze-ui)
+[![codecov.io](https://codecov.io/gh/pchmn/la-danze-ui/coverage.svg?branch=main)](https://codecov.io/gh/pchmn/la-danze-ui?branch=master)
+<!-- [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4c695ce061c34c1bb1698acc19278f0e)](https://www.codacy.com/gh/pchmn/la-danze-ui/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pchmn/la-danze-ui&amp;utm_campaign=Badge_Grade) -->
 
 </div>
 
@@ -19,8 +20,8 @@
 <h1 align="center">La Danze UI 🔴⚫</h1>
 
 <div align="center">
-React library that provides a clean UI and facilitate animations and building forms. <br />
-The main purpose of this project is to learn react and some other useful tools (vite, docusaurus, tsdx, sonar cloud, gihtub actions).
+React library that provides a clean UI and facilitates animations and building forms. <br />
+The main purpose of this project is to learn react and some other useful tools (vite, docusaurus, tsdx, auto semantic-release, github pages, gihtub actions).
 </div>
 <br />
 
@@ -38,7 +39,6 @@ yarn add la-danze-ui
 
 * material-ui (next):
   * `@material-ui/core@next`
-  * `@material-ui/icons@next`
   * `@emotion/react`
   * `@emotion/styled`
 * `react-router-dom`
@@ -77,11 +77,6 @@ See [docs website](https://pchmn.github.io/la-danze-ui/).
 ## Demo
 See [live preview](https://pchmn.github.io/la-danze-ui/demo).
 
-## License
-
-This project is licensed under the terms of the
-[MIT license](/LICENSE).
-
 ## Libraries used
 
 **La Danze UI** uses and requires these dependencies:
@@ -91,6 +86,12 @@ This project is licensed under the terms of the
 * [Framer motion](https://www.framer.com/motion/)
 * [React Hook Form](https://react-hook-form.com/)
 
+## License
+
+This project is licensed under the terms of the
+[MIT license](https://github.com/pchmn/la-danze-ui/blob/main/LICENSE).
+
+
 ## Project organizaton
 
-See little explanation of this project [organization](.github/PROJECT_ORGANIZATION.md).
+See little explanation of this project [organization](https://github.com/pchmn/la-danze-ui/blob/main/.github/doc/PROJECT_ORGANIZATION.md).

@@ -1,0 +1,44 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "esnext"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "la-danze-ui": [
+        "../la-danze-ui/src/index"
+      ],
+      "@la-danze-ui/core/*": [
+        "../la-danze-ui/src/core/*"
+      ],
+      "@la-danze-ui/animation/*": [
+        "../la-danze-ui/src/animation/*"
+      ],
+      "@la-danze-ui/form/*": [
+        "../la-danze-ui/src/form/*"
+      ],
+      "@la-danze-ui/testing/*": [
+        "../la-danze-ui/src/testing/*"
+      ]
+    }
+  },
+  "include": [
+    "./src",
+    "../la-danze-ui/src",
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "../la-danze-ui/src/**/*.test.tsx",
+  ]
+}

@@ -1,0 +1,86 @@
+---
+title: DrawerListItem
+hide_title: true
+---
+
+# `DrawerListItem`
+
+This component extends `ListItem` component of [material-ui](https://next.material-ui.com/). It also provide props for routing. See props.
+
+> Can't be used outside [`<Drawer>`](api/components/Drawer.mdx).
+
+## Example
+
+```jsx
+import { List, ListItemIcon, ListItemText } from '@material-ui/core';
+import { DrawerListItem } from 'la-danze-ui';
+
+function App() {
+  return (
+    ...
+    <DrawerListItem to="/" exact title="Home">
+      <ListItemIcon>...</ListItemIcon>
+      <ListItemText primary="Home" />
+    </DrawerListItem>
+    ...
+  );
+}
+```
+
+## Props
+
+> Extends [`ListItem`](https://next.material-ui.com/api/list-item/) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'title',
+    type: 'string',
+    description: 'The title of the tooltip when drawer is closed.'
+  },
+  {
+    name: 'to',
+    type: 'string',
+    required: true,
+    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/Link">doc</a>.</>
+  },
+  {
+    name: 'exact',
+    type: 'boolean',
+    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/NavLink">doc</a>.</>
+  },
+  {
+    name: 'strict',
+    type: 'boolean',
+    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/NavLink">doc</a>.</>
+  },
+  {
+    name: 'isActive',
+    type: 'function',
+    description: <>See react-router-dom <a href="https://reactrouter.com/web/api/NavLink">doc</a>.<br /><code>(match: match%3CParams%3E | null, location: Location%3Cunknown%3E): boolean</code></>
+  },
+  {
+    name: 'onActive',
+    type: 'function',
+    description: <>Event fired when active state changes.<br /><code>(active: boolean) => void</code></>
+  },
+  {
+    name: 'animationKey',
+    type: 'AnimationKey',
+    description: <>Use it only if you have nested routes. It will prevent parent route from re rendering.</>
+  },
+  {
+    name: 'noRefresh',
+    type: 'boolean',
+    description: <>If set to <code>true</code> it will prevent current route from refreshing on click.</>
+  },
+  {
+    name: 'safeOnClick',
+    type: 'function',
+    description: <>Onclick event fired only when there is a route change by clicking on item. <code>noRefresh</code> must be <code>true</code>.<br /><code>(event: React.MouseEvent&lt;HTMLAnchorElement, MouseEvent&gt;) => void</code></>
+  }
+];
+
+<PropsTable componentProps={componentProps} />

@@ -1,0 +1,38 @@
+{
+  "branches": ["main", "next"],
+  "plugins": [
+    ["@semantic-release/commit-analyzer", {
+      "preset": "angular",
+      "releaseRules": [
+        {"scope": "demo", "release": false}
+      ]
+    }],
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    ["@semantic-release/npm", {
+      "pkgRoot": "packages/la-danze-ui"
+    }],
+    ["./.github/scripts/semantic-release.plugin.js", {
+      "files": [
+        {
+          "path": "config.js",
+          "versionKey": "LA_DANZE_UI_VERSION"
+        },
+        "package.json",
+        "packages/la-danze-ui-docs/package.json",
+        "packages/la-danze-ui-demo/package.json",
+      ]
+    }],
+    ["@semantic-release/git", {
+      "assets": [
+        "package.json",
+        "packages/la-danze-ui/package.json",
+        "packages/la-danze-ui-docs/package.json",
+        "packages/la-danze-ui-demo/package.json",
+        "config.js",
+        "CHANGELOG.md"
+      ],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }]
+  ]
+}

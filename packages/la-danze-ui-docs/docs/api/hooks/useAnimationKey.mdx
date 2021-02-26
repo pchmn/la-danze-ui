@@ -1,0 +1,23 @@
+---
+title: useAnimationKey
+hide_title: true
+---
+
+# `useAnimationKey()`
+
+This hook returns an unique [`AnimationKey`](https://github.com/pchmn/la-danze-ui/blob/main/packages/la-danze-ui/src/animation/hooks/useAnimationKey.hook.tsx).
+
+It is only useful if you have nested routes in your app. It will help prevent parent route to re render when child route changes. See [explanation](usage/animation/routing.md#nested-routing).
+
+
+## Example
+
+```tsx
+import { useAnimationKey } from 'la-danze-ui';
+...
+
+function App() {
+  const animationKey = useAnimationKey();
+  ...
+}
+```

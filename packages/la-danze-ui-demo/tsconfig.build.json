@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": false,
+    "baseUrl": ".",
+    "paths": {
+      "la-danze-ui": [
+        "../la-danze-ui/dist"
+      ]
+    }
+  },
+  "include": [
+    "./src",
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.tsx"
+  ]
+}

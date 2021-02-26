@@ -1,0 +1,197 @@
+# This workflow is made for la-danze-ui library
+# So it focuses only on packages/la-danze-ui
+name: La Danze UI
+
+on:
+  push:
+    # Run on all branches excepted gh-pages
+    branches:
+      - "**"
+      - "!gh-pages"
+    # Ignore all tags, because release commits (where tags are) already trigged workflow
+    # so it prevents workflow to be launched twice for same changes
+    tags-ignore:
+      - "*.*"
+    # Don't run when files commited are only doc files
+    paths-ignore:
+      - "**.md"
+      - ".github/doc/**"
+  pull_request:
+    # Run only on main branch
+    branches:
+      - "main"
+    # Ignore all tags, because release commits (where tags are) already trigged workflow
+    # so it prevents workflow to be launched twice for same changes
+    tags-ignore:
+      - "*.*"
+    # Don't run when files commited are only doc files
+    paths-ignore:
+      - "**.md"
+      - ".github/doc/**"
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+jobs:
+  # Build and Test
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+
+      # Install dependencies
+      - name: INSTALL
+        # Install dependencies only if cache was not found to accelerate workflow
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Build lib (packages/la-danze-ui)
+      - name: BUILD
+        run: yarn build:lib
+
+      # Test lib (packages/la-danze-ui)
+      - name: TEST
+        run: yarn test:ci:lib
+
+      # ----------------------------------
+      #         Upload artifacts
+      # ----------------------------------
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: packages/la-danze-ui/coverage/lcov.info
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: la-danze-ui-dist
+          path: packages/la-danze-ui/dist/
+      # ----------------------------------
+      #         Upload artifacts
+      # ----------------------------------
+
+  # Coverage (lib package)
+  coverage:
+    name: Coverage
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ env.GITHUB_TOKEN }}
+
+      # ----------------------------------
+      #    Download coverage artifacts
+      # ----------------------------------
+      - uses: actions/download-artifact@v2
+        with:
+          name: coverage
+      # ----------------------------------
+      #    Download coverage artifacts
+      # ----------------------------------
+
+      # Update coverage file to codecov
+      - name: CODECOV
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info
+
+      # Codacy analysis
+      - name: CODACY
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: lcov.info
+
+      # Run sonar scan
+      - name: SONAR
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # Release lib package
+  release:
+    name: Release
+    # Launch only on main branch
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      # ----------------------------------
+      #           Yarn cache
+      # ----------------------------------
+
+      # ----------------------------------
+      #     Download dist artifacts
+      # ----------------------------------
+      - uses: actions/download-artifact@v2
+        with:
+          name: la-danze-ui-dist
+          path: packages/la-danze-ui/dist/
+      # ----------------------------------
+      #     Download dist artifacts
+      # ----------------------------------
+
+      # Install dependencies
+      - name: INSTALL
+        # Install dependencies only if cache was not found to accelerate workflow
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Copy README.md to lib package (for npm)
+      - name: COPY README.md
+        run: cp README.md packages/la-danze-ui/
+
+      # Release
+      - name: RELEASE
+        run: yarn semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.GIT_AUTHOR_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}

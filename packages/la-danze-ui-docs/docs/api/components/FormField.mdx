@@ -1,0 +1,59 @@
+---
+title: FormField
+hide_title: true
+---
+
+# `FormField`
+
+This component extends `Controller` component of [react-hook-form](https://react-hook-form.com/) and is meant to be used with [material-ui](https://next.material-ui.com/) components.
+
+> Can't be used outside [`<Form>`](api/components/Form.mdx).
+
+## Example
+
+```tsx
+import { useForm } from 'react-hook-form';
+import TextField from '@material-ui/core/TextField';
+import { Form, FormField } from 'la-danze-ui';
+
+function App() {
+  const form = useForm();
+
+  return (
+    <Form form={form}>
+      <FormField
+        name="email"
+        as={TextField}
+        rules={{ required: { value: true, message: 'Email is required' } }} />
+      ...
+    </Form>
+  );
+}
+```
+
+## Props
+
+> Extends [`Controller`](https://react-hook-form.com/api#Controller) props
+
+Additional props:
+
+import {PropsTable} from '/src/components/PropsTable';
+export const additionalProps = [
+  {
+    name: 'error',
+    type: 'boolean',
+    description: 'Weither field is in error or not.'
+  },
+  {
+    name: 'helperText',
+    type: 'string',
+    description: 'Error message to display.'
+  },
+  {
+    name: 'disabled',
+    type: 'boolean',
+    description: 'Weither field is disabled or not.'
+  },
+];
+
+<PropsTable componentProps={additionalProps} />
