@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/pchmn/la-danze-ui/compare/v1.0.2...v1.1.0) (2021-02-26)
+
+
+### Features
+
+* add `LoadingPaper` component ([6e59305](https://github.com/pchmn/la-danze-ui/commit/6e59305941059fb4475ba72500a0f0f9a84ca203))
+* improve theme ([6e7d397](https://github.com/pchmn/la-danze-ui/commit/6e7d3972332f4d9d29fdf8840c5ffc65ec99cfb7))
+
 ## [1.0.2](https://github.com/pchmn/la-danze-ui/compare/v1.0.1...v1.0.2) (2021-02-24)
 
 
