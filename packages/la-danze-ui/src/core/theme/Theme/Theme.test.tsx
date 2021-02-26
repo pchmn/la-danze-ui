@@ -1,6 +1,6 @@
-import { Theme } from '@la-danze-ui/core/theme/Theme';
+import { Theme } from '@la-danze-ui/core/theme/Theme/Theme/Theme';
 import { render, screen, waitFor } from '@testing-library/react';
-import React from "react";
+import React from 'react';
 
 describe('<LaDanzeTheme />', () => {
   const Container = () => {
