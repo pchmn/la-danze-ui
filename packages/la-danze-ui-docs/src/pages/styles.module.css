@@ -6,7 +6,7 @@
  * and scoped locally.
  */
  body {
-  font-family: 'Work Sans', sans-serif;
+  /* font-family: 'Work Sans', sans-serif; */
   background: var(--ifm-background-color);
  }
 

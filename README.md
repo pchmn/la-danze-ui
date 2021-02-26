@@ -54,16 +54,16 @@ Just a quick example that shows how to apply **La Danze UI** theme to your app:
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Paper, Typography } from "@material-ui/core";
-import { LaDanzeTheme  } from 'la-danze-ui';
+import { Theme  } from 'la-danze-ui';
 
 function App() {  
   return (
-    <LaDanzeTheme>
+    <Theme>
       <Paper>
         <Typography variant="h2">Themed h2</Typography>
         <Button>Themed button</Button>
       </Paper>
-    </LaDanzeTheme>
+    </Theme>
   );
 }
 ```
