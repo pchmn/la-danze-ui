@@ -95,8 +95,6 @@ jobs:
   # Coverage (lib package)
   coverage:
     name: Coverage
-    # Skip if it is a release commit (already passed during precedent workflow that triggered this release)
-    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -139,8 +137,7 @@ jobs:
   release:
     name: Release
     # Launch only on main branch
-    # Skip if it is a release commit (this job created it)
-    if: github.ref == 'refs/heads/main' && !startsWith(github.event.head_commit.message, 'chore(release):')
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     steps:
