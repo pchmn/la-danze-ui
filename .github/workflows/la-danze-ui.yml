@@ -12,10 +12,11 @@ on:
     # so it prevents workflow to be launched twice for same changes
     tags-ignore:
       - "*.*"
-    # Don't run when files commited are only doc files
-    paths-ignore:
-      - "**.md"
-      - ".github/doc/**"
+    # Run only if files modified are in lib package
+    # or workflow changes
+    paths:
+      - "packages/la-danze-ui/**"
+      - ".github/workflows/la-danze-ui.yml"
   pull_request:
     # Run only on main branch
     branches:
@@ -24,10 +25,11 @@ on:
     # so it prevents workflow to be launched twice for same changes
     tags-ignore:
       - "*.*"
-    # Don't run when files commited are only doc files
-    paths-ignore:
-      - "**.md"
-      - ".github/doc/**"
+    # Run only if files modified are in lib package
+    # or workflow changes
+    paths:
+      - "packages/la-danze-ui/**"
+      - ".github/workflows/la-danze-ui.yml"
 
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
