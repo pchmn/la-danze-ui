@@ -4,7 +4,28 @@ name: Github Pages
 
 on:
   release:
+    # Run every time a github release is created
     types: [created]
+  push:
+    # Run only on main branch
+    branches:
+      - "main"
+    # Run only if files modified are in docs or demo packages
+    # or workflow changes
+    paths:
+      - "packages/la-danze-ui-demo/**"
+      - "packages/la-danze-ui-docs/**"
+      - ".github/workflows/github-pages.yml"
+  pull_request:
+    # Run only on main branch
+    branches:
+      - "main"
+    # Run only if files modified are in docs or demo packages
+    # or workflow changes
+    paths:
+      - "packages/la-danze-ui-demo/**"
+      - "packages/la-danze-ui-docs/**"
+      - ".github/workflows/github-pages.yml"
 
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -13,6 +34,9 @@ jobs:
   # Build
   build:
     name: Build
+    # Build only if commit message contains "[deploy]" option
+    # Either it will stop workflow because deploy job needs build job
+    if: "contains(github.event.head_commit.message, '[deploy]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
