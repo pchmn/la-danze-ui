@@ -33,12 +33,6 @@ module.exports = {
           label: 'Docs',
           position: 'left'
         },
-        // {
-        //   type: 'docsVersion',
-        //   position: 'left',
-        //   // to: "/path // by default, link to active/latest version
-        //   // label: "label" // by default, show active/latest version label
-        // },
         {
           href: 'https://pchmn.github.io/la-danze-ui/demo',
           label: 'Demo',
