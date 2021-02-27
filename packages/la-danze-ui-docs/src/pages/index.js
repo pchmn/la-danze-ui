@@ -10,10 +10,9 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Dark UI',
-    // imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        La Danze UI provides a <a href="https://material-ui.com/">Material-ui</a> theme. <br />
+        La Danze UI provides a <a href="https://material-ui.com/">Material-ui</a> theme and a built-in drawer. <br />
         This is a dark theme based on a football club colors (<a href="https://www.staderennais.com/">SRFC</a>). <br />
         Basically red and black 🔴⚫.
       </>
@@ -21,7 +20,6 @@ const features = [
   },
   {
     title: 'Manage forms',
-    // imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
         Simplify use of <a href="https://react-hook-form.com/">React Hook Form</a>. <br />
@@ -31,7 +29,6 @@ const features = [
   },
   {
     title: 'Show animations',
-    // imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
         Animate routing or appearance very fastly with basic animations (fading, sliding, ...). <br />
