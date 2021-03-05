@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/pchmn/la-danze-ui/compare/v1.2.0...v1.2.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* css imported with lib ([2614a83](https://github.com/pchmn/la-danze-ui/commit/2614a83bc5e09e92de9a76c5ad3db4ee380920b0))
+
 # [1.2.0](https://github.com/pchmn/la-danze-ui/compare/v1.1.0...v1.2.0) (2021-03-05)
 
 
