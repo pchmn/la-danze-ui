@@ -2,5 +2,5 @@ import { MountTransitionProps } from '@la-danze-ui/animation/MountTransition/Mou
 
 export type AnimateRoutingProps = Pick<
   MountTransitionProps,
-  'animationType' | 'initial' | 'exit' | 'animate' | 'variants' | 'fullHeight'
+  'animationType' | 'initial' | 'exit' | 'animate' | 'variants' | 'fullHeight' | 'style'
 >;
