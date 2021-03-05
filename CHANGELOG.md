@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/pchmn/la-danze-ui/compare/v1.2.1...v1.2.2) (2021-03-05)
+
+
+### Bug Fixes
+
+* accept `style` prop and fix `fullHeight` prop on animation components ([85b0a2c](https://github.com/pchmn/la-danze-ui/commit/85b0a2c992cecde4d0ff78542768593a57a26040))
+
 ## [1.2.1](https://github.com/pchmn/la-danze-ui/compare/v1.2.0...v1.2.1) (2021-03-05)
 
 
