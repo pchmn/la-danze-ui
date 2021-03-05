@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/pchmn/la-danze-ui/compare/v1.1.0...v1.2.0) (2021-03-05)
+
+
+### Bug Fixes
+
+* eslint and styles ([3feae48](https://github.com/pchmn/la-danze-ui/commit/3feae48a778bc692ec0f311cda2f164fde7ec519))
+
+
+### Features
+
+* add new components, improve others ([3c1fb32](https://github.com/pchmn/la-danze-ui/commit/3c1fb324094cf51fc0fcb99ee2b4c8b058d5c681))
+
 # [1.1.0](https://github.com/pchmn/la-danze-ui/compare/v1.0.2...v1.1.0) (2021-02-26)
 
 
