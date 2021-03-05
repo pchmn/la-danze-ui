@@ -1,3 +1,30 @@
+## [1.2.1](https://github.com/pchmn/la-danze-ui/compare/v1.2.0...v1.2.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* css imported with lib ([2614a83](https://github.com/pchmn/la-danze-ui/commit/2614a83bc5e09e92de9a76c5ad3db4ee380920b0))
+
+# [1.2.0](https://github.com/pchmn/la-danze-ui/compare/v1.1.0...v1.2.0) (2021-03-05)
+
+
+### Bug Fixes
+
+* eslint and styles ([3feae48](https://github.com/pchmn/la-danze-ui/commit/3feae48a778bc692ec0f311cda2f164fde7ec519))
+
+
+### Features
+
+* add new components, improve others ([3c1fb32](https://github.com/pchmn/la-danze-ui/commit/3c1fb324094cf51fc0fcb99ee2b4c8b058d5c681))
+
+# [1.1.0](https://github.com/pchmn/la-danze-ui/compare/v1.0.2...v1.1.0) (2021-02-26)
+
+
+### Features
+
+* add `LoadingPaper` component ([6e59305](https://github.com/pchmn/la-danze-ui/commit/6e59305941059fb4475ba72500a0f0f9a84ca203))
+* improve theme ([6e7d397](https://github.com/pchmn/la-danze-ui/commit/6e7d3972332f4d9d29fdf8840c5ffc65ec99cfb7))
+
 ## [1.0.2](https://github.com/pchmn/la-danze-ui/compare/v1.0.1...v1.0.2) (2021-02-24)
 
 

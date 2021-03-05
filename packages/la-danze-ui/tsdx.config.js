@@ -29,8 +29,7 @@ module.exports = {
         // Append to <head /> as code running
         inject: true,
         // Keep it as false since we don't extract to css file anymore
-        extract: false,
-        modules: true,
+        extract: false
       })
     );
 
