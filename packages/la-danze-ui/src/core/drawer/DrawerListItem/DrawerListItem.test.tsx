@@ -60,6 +60,9 @@ describe('<DrawerListItem />', () => {
         <DrawerListItem to="/route1" title="Go to route 1 tooltip">
           <ListItemText primary="Go to route 1" />
         </DrawerListItem>
+        <DrawerListItem href="https://pchmn.github.io/la-danze-ui/" title="Go to la danze ui">
+          <ListItemText primary="Go to la danze ui" />
+        </DrawerListItem>
       </>
     );
 
@@ -74,6 +77,7 @@ describe('<DrawerListItem />', () => {
     const homeItem = screen.getByText('Go to home');
     const homeLink = screen.getByText('Go to home').closest('a');
     const route1Link = screen.getByText('Go to route 1').closest('a');
+    const laDanzeUiLink = screen.getByText('Go to la danze ui').closest('a');
     const drawerOpenStatus = screen.getByTestId('drawerOpenStatus');
     const routeName = screen.getByTestId('routeName');
     const homeLinkTooltip = () => screen.queryByText('Go to home tooltip');
@@ -90,6 +94,7 @@ describe('<DrawerListItem />', () => {
       homeLinkTooltip,
       homeItem,
       toggleDrawerButton,
+      laDanzeUiLink,
       container
     };
   };
@@ -121,10 +126,14 @@ describe('<DrawerListItem />', () => {
   });
 
   test('It should show links', async () => {
-    const { homeLink, route1Link } = setUp({});
+    const { homeLink, route1Link, laDanzeUiLink } = setUp({});
 
     expect(homeLink).toHaveTextContent('Go to home');
+    expect(homeLink).toHaveAttribute('href', '/');
     expect(route1Link).toHaveTextContent('Go to route 1');
+    expect(route1Link).toHaveAttribute('href', '/route1');
+    expect(laDanzeUiLink).toHaveTextContent('Go to la danze ui');
+    expect(laDanzeUiLink).toHaveAttribute('href', 'https://pchmn.github.io/la-danze-ui/');
   });
 
   test('It should be on home route and onActive should have been called at launch', async () => {

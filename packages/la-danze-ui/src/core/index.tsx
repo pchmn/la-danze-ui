@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+export * from './components/FlexLayout/FlexItem/FlexItem';
+export * from './components/FlexLayout/FlexLayout';
 export * from './components/LoadingPaper/LoadingPaper';
 export * from './components/NavLink/NavLink';
 export * from './drawer/Drawer/Drawer';

@@ -41,7 +41,8 @@ type PartialNavLinkProps = Pick<NavLinkProps, 'isActive' | 'onActive' | 'safeOnC
 interface DrawerListItemProps extends ListItemProps<any>, PartialNavLinkProps {
   title: string;
   selected?: boolean;
-  to: string;
+  to?: string;
+  href?: string;
   animationKey?: AnimationKey;
   noRefresh?: boolean;
   exact?: boolean;
@@ -58,6 +59,7 @@ const useTooltipStyles = makeStyles(() => ({
 export function DrawerListItem({
   children,
   to,
+  href,
   title,
   onClick,
   animationKey,
@@ -98,18 +100,8 @@ export function DrawerListItem({
     }
   }
 
-  return (
-    <AnimateLink
-      animationKey={animationKey}
-      to={to}
-      noRefresh={noRefresh}
-      exact={exact}
-      strict={strict}
-      safeOnClick={safeOnClick}
-      onClick={handleOnClick}
-      isActive={isActive}
-      onActive={handleOnActive}
-    >
+  function tooltip(): JSX.Element {
+    return (
       <Tooltip classes={tooltipClasses} title={open ? '' : title} placement="right">
         <ListItem
           className={`${classes.listItem} ${active ? 'active' : ''}`}
@@ -121,6 +113,30 @@ export function DrawerListItem({
           {children}
         </ListItem>
       </Tooltip>
-    </AnimateLink>
+    );
+  }
+
+  return (
+    <>
+      {to ? (
+        <AnimateLink
+          animationKey={animationKey}
+          to={to}
+          noRefresh={noRefresh}
+          exact={exact}
+          strict={strict}
+          safeOnClick={safeOnClick}
+          onClick={handleOnClick}
+          isActive={isActive}
+          onActive={handleOnActive}
+        >
+          {tooltip()}
+        </AnimateLink>
+      ) : (
+        <a href={href} target="_blank" rel="noreferrer" onClick={handleOnClick}>
+          {tooltip()}
+        </a>
+      )}
+    </>
   );
 }

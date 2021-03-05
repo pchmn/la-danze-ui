@@ -3,6 +3,7 @@ import { matcherHint, printExpected, printReceived } from 'jest-matcher-utils';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import invariant from 'tiny-invariant';
+import { matchers } from '@emotion/jest';
 
 // Render component wrapped by BrowserRouter
 // See https://testing-library.com/docs/example-react-router#reducing-boilerplate
@@ -79,6 +80,7 @@ expect.extend({
         };
   }
 });
+expect.extend(matchers);
 
 // Mock Framer motion
 // See https://www.hectane.com/blog/mock-framer-motion-with-jest and https://testing-library.com/docs/example-react-transition-group
