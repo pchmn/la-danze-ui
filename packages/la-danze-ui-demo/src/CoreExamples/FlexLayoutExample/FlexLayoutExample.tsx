@@ -18,21 +18,13 @@ export function FlexLayoutExample() {
         <Demo>
           <span>{'<FlexLayout>'}</span>
           <Paper variant="outlined" className={styles.paperContainer}>
-            <FlexLayout fullHeight>
+            <FlexLayout fullHeight >
               <FlexItem className={styles.flexItem}>
                 {'<FlexItem>'}
                 <Paper className={styles.paper}></Paper>
               </FlexItem>
               <FlexItem className={styles.flexItem} flexGrow={1} alignSelf="flex-end">
                 {'<FlexItem>'} (flexGrow=1, alignSelf=flex-end)
-                <Paper className={styles.paper}></Paper>
-              </FlexItem>
-              <FlexItem className={styles.flexItem}>
-                {'<FlexItem>'}
-                <Paper className={styles.paper}></Paper>
-              </FlexItem>
-              <FlexItem className={styles.flexItem}>
-                {'<FlexItem>'}
                 <Paper className={styles.paper}></Paper>
               </FlexItem>
             </FlexLayout>
@@ -62,14 +54,6 @@ export function FlexLayoutExample() {
       </FlexItem>
       <FlexItem flexGrow={1} alignSelf="flex-end">
         Flex item (flexGrow=1, alignSelf=flex-end)
-        <Paper variant="outlined"></Paper>
-      </FlexItem>
-      <FlexItem>
-        Flex item
-        <Paper variant="outlined"></Paper>
-      </FlexItem>
-      <FlexItem>
-        Flex item
         <Paper variant="outlined"></Paper>
       </FlexItem>
     </FlexLayout>
