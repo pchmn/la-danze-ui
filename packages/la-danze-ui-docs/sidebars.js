@@ -10,7 +10,7 @@ module.exports = {
         {
           type: 'category',
           label: 'Core',
-          items: ['usage/core/theme', 'usage/core/drawer'],
+          items: ['usage/core/theme', 'usage/core/drawer', 'usage/core/otherComponents'],
         },
         {
           type: 'category',
@@ -40,6 +40,8 @@ module.exports = {
             'api/components/FormField',
             'api/components/LoadingPaper',
             'api/components/NavLink',
+            'api/components/FlexLayout',
+            'api/components/FlexItem',
           ]
         },
         {

@@ -1,0 +1,78 @@
+---
+title: FlexLayout
+hide_title: true
+---
+
+# `FlexLayout`
+
+This component creates a `div` with `display: flex`, and permits customizing more css flex properties with props. It should be used with [`FlexItem`](api/components/FlexItem.mdx).
+
+
+## Example
+
+```jsx
+import { FlexLayout, FlexItem } from 'la-danze-ui';
+
+function App() {
+  return (
+    <FlexLayout flexDirection="column" flexWrap="wrap">
+      <FlexItem />
+      ...
+    </FlexLayout>
+  );
+}
+```
+
+## Props
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'flexDirection',
+    type: ['FlexDirection', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-direction">doc</a>.</>
+  },
+  {
+    name: 'flexWrap',
+    type: ['FlexWrap', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-wrap">doc</a>.</>
+  },
+  {
+    name: 'flexFlow',
+    type: ['MixProperties<FlexDirection, FlexWrap>', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-flow">doc</a>.</>
+  },
+  {
+    name: 'justifyContent',
+    type: ['JustifyContent', `MixProperties<'safe', JustifyContent>`, `MixProperties<'unsafe', JustifyContent>`, 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/justify-content">doc</a>.</>
+  },
+  {
+    name: 'alignItems',
+    type: ['AlignItems', `MixProperties<'safe', AlignItems>`, `MixProperties<'unsafe', AlignItems>`, 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/align-items">doc</a>.</>
+  },
+  {
+    name: 'alignContent',
+    type: ['AlignContent', `MixProperties<'safe', AlignContent>`, `MixProperties<'unsafe', AlignContent>`, 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/align-content">doc</a>.</>
+  },
+  {
+    name: 'fullHeight',
+    type: 'boolean',
+    description: <>If <code>true</code>, will set <code>height: 100%</code>.</>
+  },
+];
+
+<PropsTable componentProps={componentProps} />
+
+<div className="propsDescription">
+
+> **_<span className="codeFont bold">Globals</span>_**: <code>'inherit' | 'initial' | 'unset'</code> <br />
+> **_<span className="codeFont bold">FlexDirection</span>_**: `'row' | 'row-reverse' | 'column' | 'column-reverse'` <br />
+> **_<span className="codeFont bold">FlexWrap</span>_**: `'nowrap' | 'wrap' | 'wrap-reverse'` <br />
+> **_<span className="codeFont bold">JustifyContent</span>_**: `'flex-start' | 'flex-end' | 'start' | 'end' | 'left' | 'right' | 'center' | 'space-between' | 'space-around' | 'space-evenly'` <br />
+> **_<span className="codeFont bold">AlignItems</span>_**: `'flex-start' | 'flex-end' | 'start' | 'end' | 'stretch' | 'self-start' | 'self-end' | 'center' | 'baseline'` <br />
+> **_<span className="codeFont bold">AlignContent</span>_**: `'flex-start' | 'flex-end' | 'start' | 'end' | 'normal' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'`
+
+</div>

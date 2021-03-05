@@ -9,7 +9,7 @@
     "editor.formatOnSave": false
   },
   // Allow formatting for other languages
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // Let ESLint (incorporating Prettier errors) format code on save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
