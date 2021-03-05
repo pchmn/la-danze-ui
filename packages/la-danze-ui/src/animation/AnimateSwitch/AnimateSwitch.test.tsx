@@ -6,17 +6,21 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 describe('<AnimateSwitch />', () => {
-
-  const Container = ({setLocation = false, setOtherDiv = false}: {setLocation?:boolean; setOtherDiv?: boolean}) => {
-
+  const Container = ({
+    setLocation = false,
+    setOtherDiv = false
+  }: {
+    setLocation?: boolean;
+    setOtherDiv?: boolean;
+  }) => {
     const location = useLocation();
     return (
       <div>
         <Link to="/">Go to Home</Link>
         <Link to="/route1">Go to Route 1</Link>
 
-        {setOtherDiv 
-        ? <AnimateSwitch location={setLocation ? location : undefined}>
+        {setOtherDiv ? (
+          <AnimateSwitch location={setLocation ? location : undefined}>
             <AnimateRoute exact path="/">
               <RouteContainer routeName="home" />
             </AnimateRoute>
@@ -25,19 +29,21 @@ describe('<AnimateSwitch />', () => {
             </AnimateRoute>
             <div></div>
           </AnimateSwitch>
-        : <AnimateSwitch location={setLocation ? location : undefined}>
+        ) : (
+          <AnimateSwitch location={setLocation ? location : undefined}>
             <AnimateRoute exact path="/">
               <RouteContainer routeName="home" />
             </AnimateRoute>
             <AnimateRoute path="/route1">
               <RouteContainer routeName="route 1" />
             </AnimateRoute>
-          </AnimateSwitch>}
+          </AnimateSwitch>
+        )}
       </div>
     );
   };
 
-  const setUp = ({ route, ...props }: { route?: string, setLocation?:boolean; setOtherDiv?: boolean }) => {
+  const setUp = ({ route, ...props }: { route?: string; setLocation?: boolean; setOtherDiv?: boolean }) => {
     const container = renderWithRouter(<Container {...props} />, { route });
     const homeLink = screen.getByText('Go to Home');
     const route1Link = screen.getByText('Go to Route 1');
@@ -52,7 +58,7 @@ describe('<AnimateSwitch />', () => {
     console.error = jest.fn();
 
     const error = Error(`Invariant failed: You can't use other element than <AnimateRoute> in <AnimateSwitch>`);
-    expect(() => setUp({setLocation: true, setOtherDiv: true})).toThrow(error);
+    expect(() => setUp({ setLocation: true, setOtherDiv: true })).toThrow(error);
 
     // Restore writing to stderr.
     console.error = err;
@@ -65,7 +71,7 @@ describe('<AnimateSwitch />', () => {
   });
 
   test('It should be on route 1 at launch', async () => {
-    const { getRouteName } = setUp({route: '/route1'});
+    const { getRouteName } = setUp({ route: '/route1' });
 
     expect(getRouteName()).toHaveTextContent('route 1');
   });
@@ -79,7 +85,7 @@ describe('<AnimateSwitch />', () => {
   });
 
   test('It should redirect to home', async () => {
-    const { homeLink, getRouteName } = setUp({route: '/route1'});
+    const { homeLink, getRouteName } = setUp({ route: '/route1' });
 
     fireEvent.click(homeLink);
 

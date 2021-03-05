@@ -15,6 +15,7 @@ export function AnimateRoute({
   animationType,
   variants,
   fullHeight,
+  style,
   ...otherProps
 }: AnimateRouteProps): JSX.Element {
   invariant(useContext(AnimateSwitchContext), `You can't use <AnimateRoute> outside <AnimateSwitch>`);
@@ -28,6 +29,7 @@ export function AnimateRoute({
         animationType={animationType}
         variants={variants}
         fullHeight={fullHeight}
+        style={style}
       >
         {children}
       </MountTransition>

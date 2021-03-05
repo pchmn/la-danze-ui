@@ -22,6 +22,7 @@ export function AnimateSwitch({
   animationType,
   variants,
   fullHeight,
+  style,
   ...otherProps
 }: AnimateSwitchProps): JSX.Element {
   if (!location) {
@@ -39,7 +40,8 @@ export function AnimateSwitch({
           animate: child.props.animate || animate,
           animationType: child.props.animationType || animationType,
           variants: child.props.variants || variants,
-          fullHeight: child.props.fullHeight || fullHeight
+          fullHeight: child.props.fullHeight || fullHeight,
+          style: child.props.style || style
         });
       }
       invariant(false, `You can't use other element than <AnimateRoute> in <AnimateSwitch>`);

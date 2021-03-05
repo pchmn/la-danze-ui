@@ -20,14 +20,30 @@ describe('<MountTransition />', () => {
   const Container = () => {
     return (
       <>
-        <MountTransition><div>content without props</div></MountTransition>
-        <MountTransition animationType="fade"><div>content fade</div></MountTransition>
-        <MountTransition animationType="scale"><div>content scale</div></MountTransition>
-        <MountTransition animationType="slideUp"><div>content slideUp</div></MountTransition>
-        <MountTransition animationType="slideDown"><div>content slideDown</div></MountTransition>
-        <MountTransition animationType="slideLeft"><div>content slideLeft</div></MountTransition>
-        <MountTransition animationType="slideRight"><div>content slideRight</div></MountTransition>
-        <MountTransition variants={variants} fullHeight={true}><div>content variants</div></MountTransition>
+        <MountTransition>
+          <div>content without props</div>
+        </MountTransition>
+        <MountTransition animationType="fade">
+          <div>content fade</div>
+        </MountTransition>
+        <MountTransition animationType="scale">
+          <div>content scale</div>
+        </MountTransition>
+        <MountTransition animationType="slideUp">
+          <div>content slideUp</div>
+        </MountTransition>
+        <MountTransition animationType="slideDown">
+          <div>content slideDown</div>
+        </MountTransition>
+        <MountTransition animationType="slideLeft">
+          <div>content slideLeft</div>
+        </MountTransition>
+        <MountTransition animationType="slideRight">
+          <div>content slideRight</div>
+        </MountTransition>
+        <MountTransition variants={variants} fullHeight={true}>
+          <div>content variants</div>
+        </MountTransition>
       </>
     );
   };

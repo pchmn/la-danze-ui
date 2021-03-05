@@ -15,6 +15,7 @@ export function MountTransition({
   variants,
   fullHeight,
   transition = { duration: 0.225 },
+  style = {},
   ...otherProps
 }: React.PropsWithChildren<MountTransitionProps>): JSX.Element {
   if (!variants) {
@@ -40,6 +41,10 @@ export function MountTransition({
     }
   }
 
+  if (fullHeight) {
+    style.height = '100%';
+  }
+
   return (
     <motion.div
       exit={exit}
@@ -47,7 +52,7 @@ export function MountTransition({
       animate={animate}
       variants={variants}
       transition={transition}
-      style={fullHeight ? { display: 'flex', flexDirection: 'column', flex: 1 } : {}}
+      style={style}
       {...otherProps}
     >
       {children}
