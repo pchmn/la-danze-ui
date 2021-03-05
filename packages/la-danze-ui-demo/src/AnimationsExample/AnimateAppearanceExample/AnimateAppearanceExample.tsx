@@ -103,7 +103,7 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
 
           <div className={styles.animationResult}>
             <span>Result:</span>
-            <Paper variant="outlined" className={styles.paperResult}>
+            <Paper variant="outlined" className={`${styles.paperResult} overflowHidden`}>
               <AnimatePresence>
                 {animationStatus && (
                   <MountTransition animationType={animationType}>
@@ -115,13 +115,17 @@ export function AnimateAppearance({ className, ...props }: React.HTMLAttributes<
           </div>
         </Demo>
 
-        <SourceCode codeString={codeString} githubSourceLink="https://github.com/pchmn/la-danze-react/blob/main/.env" />
+        <SourceCode
+          codeString={codeString}
+          githubSourceLink="https://github.com/pchmn/la-danze-ui/blob/main/packages/la-danze-ui-demo/src/AnimationsExample/AnimateAppearanceExample/AnimateAppearanceExample.tsx"
+        />
       </DemoAndSource>
     </div>
   );
 }
 
-const codeString = `import Paper from '@material-ui/core/Paper';
+const codeString = `
+import Paper from '@material-ui/core/Paper';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { MountTransition } from 'la-danze-ui';
@@ -143,4 +147,4 @@ export function AnimationsExample() {
       }
     </AnimatePresence>
   );
-}`;
+}`.trim();

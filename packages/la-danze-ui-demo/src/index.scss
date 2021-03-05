@@ -4,12 +4,16 @@ h1, h2, h3, h4, h5 {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-    display: inline-block;
-    background: #44494f;
-    margin: 0;
-    padding: 2px 5px;
-    margin: 2px 0px;
-    border-radius: 6px;
-    font-size: 95%;
+   monospace;
+   display: inline-block;
+   background: #44494f;
+   margin: 0;
+   padding: 2px 5px;
+   margin: 2px 0px;
+   border-radius: 6px;
+   font-size: 95%;
+}
+
+.overflowHidden {
+  overflow: hidden;
 }
