@@ -7,10 +7,10 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 
 describe('<Drawer />', () => {
-  const Container = ({ theme = true, drawerContainer = true }: { theme?: boolean; drawerContainer?: boolean }) => {
+  const Container = ({ theme = true, drawerContainer = true, onLogoClick }: { theme?: boolean; drawerContainer?: boolean; onLogoClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void }) => {
     function drawer() {
       return (
-        <Drawer logo="logo" title="Drawer">
+        <Drawer logo="logo" title="Drawer" onLogoClick={onLogoClick}>
           drawer content
         </Drawer>
       );
@@ -34,15 +34,16 @@ describe('<Drawer />', () => {
     return <>{theme ? <Theme>{drawerTemplate()}</Theme> : drawer()}</>;
   };
 
-  const setUp = (props: { theme?: boolean; drawerContainer?: boolean }) => {
+  const setUp = (props: { theme?: boolean; drawerContainer?: boolean, onLogoClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void }) => {
     const container = render(<Container {...props} />);
     const mainContent = () => screen.getByText('main content');
     const drawerContent = () => screen.getByText('drawer content');
     const drawer = () => screen.getByLabelText('drawer');
     const toggleDrawerButton = () => screen.getByLabelText('toggle drawer');
     const toggleMobileDrawerButton = () => screen.getByLabelText('toggle mobile drawer');
+    const logo = () => screen.getByAltText('logo');
 
-    return { mainContent, drawerContent, drawer, toggleDrawerButton, toggleMobileDrawerButton, container };
+    return { mainContent, drawerContent, drawer, toggleDrawerButton, toggleMobileDrawerButton, logo, container };
   };
 
   test('It should throw an error if <Drawer> is outside <LaDanzeTheme>', async () => {
@@ -78,6 +79,23 @@ describe('<Drawer />', () => {
       expect(drawerContent()).toBeVisible();
       expect(mainContent()).toBeVisible();
     });
+  });
+
+  test('It should call onLogoClick method', async () => {
+    const onLogoClick = jest.fn();
+    const { logo } = setUp({onLogoClick});
+
+    fireEvent.click(logo());
+
+    await waitFor(() => {
+      expect(onLogoClick).toHaveBeenCalled();
+    });
+  });
+
+  test('It should work if no onLogoClick prop set', async () => {
+    const { logo } = setUp({});
+
+    fireEvent.click(logo());
   });
 
   test('It should open drawer', async () => {

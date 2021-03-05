@@ -10,22 +10,22 @@ on:
     # Run only on main branch
     branches:
       - "main"
-    # Run only if files modified are in docs or demo packages
-    # or workflow changes
-    paths:
-      - "packages/la-danze-ui-demo/**"
-      - "packages/la-danze-ui-docs/**"
-      - ".github/workflows/github-pages.yml"
+    # Run only if files modified are not in lib package
+    # and are not github docs
+    paths-ignore:
+      - "packages/la-danze-ui/**"
+      - "*.md"
+      - ".github/docs/**"
   pull_request:
     # Run only on main branch
     branches:
       - "main"
-    # Run only if files modified are in docs or demo packages
-    # or workflow changes
-    paths:
-      - "packages/la-danze-ui-demo/**"
-      - "packages/la-danze-ui-docs/**"
-      - ".github/workflows/github-pages.yml"
+    # Run only if files modified are not in lib package
+    # and are not github docs
+    paths-ignore:
+      - "packages/la-danze-ui/**"
+      - "*.md"
+      - ".github/docs/**"
 
 env:
   GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

@@ -48,7 +48,11 @@ module.exports = {
     footer: {
       style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} La Danze UI Built with Docusaurus.`
-    }
+    },
+    algolia: {
+      apiKey: '7bcb3d7271a6a01885ce57fdf6284f03',
+      indexName: 'ladanze',
+    },
   },
   presets: [
     [

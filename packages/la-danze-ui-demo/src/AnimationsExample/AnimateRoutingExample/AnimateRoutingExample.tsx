@@ -58,7 +58,7 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
 
           <div className={styles.animationResult}>
             <span>Result:</span>
-            <Paper variant="outlined" className={styles.paperResult}>
+            <Paper variant="outlined" className={`${styles.paperResult} overflowHidden`}>
               <AnimateSwitch animationKey={animationKey} animationType="slideLeft">
                 <AnimateRoute exact path="/animations/">
                   <Route name="Home" />
@@ -74,7 +74,10 @@ export function AnimateRouting({ className, ...props }: React.HTMLAttributes<any
           </div>
         </Demo>
 
-        <SourceCode codeString={codeString} githubSourceLink="https://github.com/pchmn/la-danze-react/blob/main/.env" />
+        <SourceCode
+          codeString={codeString}
+          githubSourceLink="https://github.com/pchmn/la-danze-ui/blob/main/packages/la-danze-ui-demo/src/AnimationsExample/AnimateRoutingExample/AnimateRoutingExample.tsx"
+        />
       </DemoAndSource>
     </div>
   );

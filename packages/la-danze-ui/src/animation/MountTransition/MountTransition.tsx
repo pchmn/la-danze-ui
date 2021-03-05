@@ -34,9 +34,9 @@ export function MountTransition({
       case 'slideRight':
         variants = slideRightVariant;
         break;
-      case 'fade':
-          variants = baseVariant;
-          break;
+      default:
+        variants = baseVariant;
+        break;
     }
   }
 

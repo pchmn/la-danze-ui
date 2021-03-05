@@ -37,9 +37,7 @@ export function FormsExample(): JSX.Element {
     <div className={styles.formsExample}>
       <DemoAndSource id="FormsExample">
         <Header>
-          <h1>
-            <code>Form</code> and <code>FormField</code>
-          </h1>
+          <h1>Form</h1>
           <span>
             Example of form using <code>react-hook-form</code> and <code>yup</code> by implementing <code>Form</code>{' '}
             and <code>FormField</code> components.
@@ -73,7 +71,10 @@ export function FormsExample(): JSX.Element {
           </Form>
         </Demo>
 
-        <SourceCode codeString={codeString} githubSourceLink="https://github.com/pchmn/la-danze-react/blob/main/.env" />
+        <SourceCode
+          codeString={codeString}
+          githubSourceLink="https://github.com/pchmn/la-danze-ui/blob/main/packages/la-danze-ui-demo/src/FormsExample/FormsExample.tsx"
+        />
       </DemoAndSource>
     </div>
   );

@@ -1,0 +1,71 @@
+---
+title: FlexItem
+hide_title: true
+---
+
+# `FlexItem`
+
+This component creates a `div` and permits adding css flex properties to this `div` with props. It should be used with [`FlexLayout`](api/components/FlexLayout.mdx).
+
+
+## Example
+
+```jsx
+import { FlexLayout, FlexItem } from 'la-danze-ui';
+
+function App() {
+  return (
+    <FlexLayout>
+      <FlexItem />
+      <FlexItem flexGrow={1} alignSelf="flex-end" />
+      ...
+    </FlexLayout>
+  );
+}
+```
+
+## Props
+
+import {PropsTable} from '/src/components/PropsTable';
+export const componentProps = [
+  {
+    name: 'order',
+    type: ['number', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/order">doc</a>.</>
+  },
+  {
+    name: 'flexGrow',
+    type: ['number', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-grow">doc</a>.</>
+  },
+  {
+    name: 'flexShrink',
+    type: ['number', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-shrink">doc</a>.</>
+  },
+  {
+    name: 'flexBasis',
+    type: ['FlexBasis', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex-basis">doc</a>.</>
+  },
+  {
+    name: 'flex',
+    type: ['Flex', 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/flex">doc</a>.</>
+  },
+  {
+    name: 'alignSelf',
+    type: [`'auto'`, `'normal'`, 'AlignItems', `MixProperties<'safe', AlignItems>`, `MixProperties<'unsafe', AlignItems>`, 'Globals'],
+    description: <>See mozilla <a href="https://developer.mozilla.org/fr/docs/Web/CSS/align-self">doc</a>.</>
+  }
+];
+
+<PropsTable componentProps={componentProps} />
+
+<div className="propsDescription">
+
+> **_<span className="codeFont bold">FlexBasis</span>_**: `number | string | 'fill' | 'max-content' | 'min-content' | 'fit-content' | 'content'` <br />
+> **_<span className="codeFont bold">Flex</span>_**: `'auto' | 'initial' | 'none' | number | string` <br />
+> **_<span className="codeFont bold">AlignItems</span>_**: `'flex-start' | 'flex-end' | 'start' | 'end' | 'stretch' | 'self-start' | 'self-end' | 'center' | 'baseline'`
+
+</div>

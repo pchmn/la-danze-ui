@@ -8,15 +8,15 @@ import { ResizeSensor } from 'css-element-queries';
 import { LoadingPaper } from 'la-danze-ui';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
-import React, { useEffect, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import styles from './DemoAndSource.module.scss';
 import { ReactComponent as GithubIcon } from '/assets/github.svg';
 
-interface DemoAndSourceProps {
+interface DemoAndSourceProps extends HTMLAttributes<any> {
   id: string;
 }
 
-export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndSourceProps>): JSX.Element {
+export function DemoAndSource({ children, className, id }: React.PropsWithChildren<DemoAndSourceProps>): JSX.Element {
   const { header, demo, sourceCode } = getContainers();
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function DemoAndSource({ children, id }: React.PropsWithChildren<DemoAndS
   }
 
   return (
-    <Grid container spacing={0} className={styles.demoAndSource} data-id={id}>
+    <Grid container spacing={0} className={`${styles.demoAndSource} ${className}`} data-id={id}>
       <>{header}</>
       <>{demo}</>
       <>{sourceCode}</>
@@ -83,7 +83,7 @@ export function Header({ children }: React.PropsWithChildren<any>): JSX.Element 
 export function Demo({ children, pending }: React.PropsWithChildren<{ pending?: boolean }>): JSX.Element {
   return (
     <Grid item md={6} xs={12}>
-      <LoadingPaper className={`${styles.demo} paperContainer`} pending={pending}>
+      <LoadingPaper className={`${styles.demo} mdDownFullWidth`} pending={pending}>
         {children}
       </LoadingPaper>
     </Grid>
@@ -137,7 +137,7 @@ export function SourceCode({
   return (
     <Grid item md={6} xs={12}>
       <Paper
-        className={`${styles.sourceCodePaper} paperContainer paperFullWidth`}
+        className={`${styles.sourceCodePaper} mdDownFullWidth`}
         style={height !== -1 ? { height: 'auto' } : { height }}
       >
         <div className={styles.actionBar}>

@@ -1,4 +1,4 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, darkScrollbar, ThemeProvider } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import StyledEngineProvider from '@material-ui/core/StyledEngineProvider';
 import React from 'react';
@@ -34,7 +34,7 @@ export const theme = createMuiTheme({
     ].join(',')
   },
   shape: {
-    borderRadius: 6
+    borderRadius: 7
   },
   components: {
     // Name of the component
@@ -45,7 +45,7 @@ export const theme = createMuiTheme({
           // Some CSS
           fontSize: '0.95rem',
           textTransform: 'initial',
-          padding: '6px 16px'
+          padding: '6px 20px'
           // borderRadius: '30px'
         }
       }
@@ -82,6 +82,11 @@ export const theme = createMuiTheme({
           boxShadow:
             '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)'
         }
+      }
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: darkScrollbar()
       }
     }
   }

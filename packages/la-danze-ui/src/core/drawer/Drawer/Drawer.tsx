@@ -1,3 +1,5 @@
+import { FlexItem } from '@la-danze-ui/core/components/FlexLayout/FlexItem/FlexItem';
+import { FlexLayout } from '@la-danze-ui/core/components/FlexLayout/FlexLayout';
 import { useOpenDrawer } from '@la-danze-ui/core/drawer/hooks/useOpenDrawer.hook';
 import { makeStyles, Theme } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,9 +18,11 @@ import { DrawerContext } from '../DrawerContext/DrawerContext';
 export interface DrawerProps {
   logo: string;
   title: string;
+  onLogoClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
 const drawerWidth = 290;
+const toolbarHeight = 180;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex'
@@ -55,7 +59,15 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    marginRight: '10px',
+    '& .MuiPaper-root': {
+      overflow: 'hidden',
+      top: '10px',
+      left: '10px',
+      height: 'calc(100% - 20px)',
+      borderRadius: theme.shape.borderRadius
+    }
   },
   drawerOpen: {
     width: drawerWidth,
@@ -79,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   toolbar: {
-    height: '150px',
+    height: toolbarHeight,
     position: 'relative',
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -98,6 +110,9 @@ const useStyles = makeStyles((theme) => ({
     '&.logoOpen': {
       top: '50%',
       transform: 'translateY(-50%)'
+    },
+    '&.clickable': {
+      cursor: 'pointer'
     },
     [theme.breakpoints.down('md')]: {
       top: '50%',
@@ -136,6 +151,10 @@ const useStyles = makeStyles((theme) => ({
       top: '50%'
     }
   },
+  divider: {
+    marginBottom: '30px',
+    marginTop: '18px'
+  },
   listItem: {
     padding: '6px 10px',
     margin: '0 20px 10px 20px',
@@ -164,7 +183,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export function Drawer({ children, logo, title }: React.PropsWithChildren<DrawerProps>): JSX.Element {
+export function Drawer({ children, logo, title, onLogoClick }: React.PropsWithChildren<DrawerProps>): JSX.Element {
   const matches = useMediaQuery((theme: Theme) => {
     invariant(theme, `You can't use <Drawer> outside <LaDanzeTheme> or material-ui <Theme.Provider>`);
     return theme.breakpoints.down('md');
@@ -177,29 +196,43 @@ export function Drawer({ children, logo, title }: React.PropsWithChildren<Drawer
     setOpen(!open);
   }
 
+  function handleLogoClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    if (onLogoClick) {
+      onLogoClick(event);
+    }
+  }
+
   function DrawerContent() {
     return (
       <DrawerContext.Provider value="drawer">
-        <div className={classes.toolbar}>
-          <div className={`${classes.logo} ${open ? 'logoOpen' : ''}`}>
-            <img src={logo} alt="logo" />
-            <span>{title}</span>
-          </div>
-          <Hidden mdDown implementation="css">
-            <IconButton
-              color="inherit"
-              aria-label="toggle drawer"
-              onClick={toggleDrawer}
-              edge="start"
-              className={`${classes.toggleButton} ${open ? 'toggleButtonOpen' : ''}`}
-            >
-              <SvgIcon>
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
-              </SvgIcon>
-            </IconButton>
-          </Hidden>
-        </div>
-        {children}
+        <FlexLayout flexDirection="column" fullHeight>
+          {/* Toolbar */}
+          <FlexItem className={classes.toolbar}>
+            <div className={`${classes.logo} ${open ? 'logoOpen' : ''} ${onLogoClick ? 'clickable' : ''}`} onClick={handleLogoClick}>
+              <img src={logo} alt="logo" />
+              <span>{title}</span>
+            </div>
+            <Hidden mdDown implementation="css">
+              <IconButton
+                color="inherit"
+                aria-label="toggle drawer"
+                onClick={toggleDrawer}
+                edge="start"
+                size="medium"
+                className={`${classes.toggleButton} ${open ? 'toggleButtonOpen' : ''}`}
+              >
+                <SvgIcon>
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
+                </SvgIcon>
+              </IconButton>
+            </Hidden>
+          </FlexItem>
+
+          {/* Content */}
+          <FlexItem flexGrow={1}>
+            {children}
+          </FlexItem>
+        </FlexLayout>
       </DrawerContext.Provider>
     );
   }

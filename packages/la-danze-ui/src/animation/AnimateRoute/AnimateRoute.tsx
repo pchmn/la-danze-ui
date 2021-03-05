@@ -9,9 +9,9 @@ export interface AnimateRouteProps extends RouteProps, AnimateRoutingProps {}
 
 export function AnimateRoute({
   children,
-  exit,
-  initial,
-  animate,
+  exit = 'out',
+  initial = 'initial',
+  animate = 'in',
   animationType,
   variants,
   fullHeight,
