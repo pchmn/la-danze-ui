@@ -17,7 +17,7 @@
     "dev:docs": "yarn --cwd packages/la-danze-ui-docs dev",
     "serve:docs": "yarn --cwd packages/la-danze-ui-docs serve",
     "build:docs": "yarn --cwd packages/la-danze-ui-docs build",
-    "build": "yarn build:lib && yarn build:demo && yarn build:docs",
+    "build": "yarn build:lib && yarn install --cwd packages/la-danze-ui-demo && yarn build:demo && yarn build:docs",
     "build:ci": "yarn build",
     "postbuild:ci": "rm -rf dist && mkdir dist && cp -r packages/la-danze-ui-docs/build/. dist && cp -r packages/la-danze-ui-demo/dist dist/demo"
   },
