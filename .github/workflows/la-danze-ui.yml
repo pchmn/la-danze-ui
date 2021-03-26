@@ -144,8 +144,8 @@ jobs:
   # Release lib package
   release:
     name: Release
-    # Launch only on main branch
-    if: github.ref == 'refs/heads/main'
+    # Launch only on main, beta or next branch
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/next'
     needs: build
     runs-on: ubuntu-latest
     steps:
