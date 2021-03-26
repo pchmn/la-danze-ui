@@ -2,7 +2,7 @@ import { AnimateLink } from '@la-danze-ui/animation/AnimateLink/AnimateLink';
 import { AnimationKey } from '@la-danze-ui/animation/hooks/useAnimationKey.hook';
 import { NavLinkProps } from '@la-danze-ui/core/components/NavLink/NavLink';
 import { useOpenDrawer } from '@la-danze-ui/core/drawer/hooks/useOpenDrawer.hook';
-import { useIsMount } from '@la-danze-ui/core/hooks/useIsMount.hook';
+import { useIsMount } from '@la-danze-ui/core/hooks/useIsMount/useIsMount.hook';
 import { makeStyles, Theme } from '@material-ui/core';
 import ListItem, { ListItemProps } from '@material-ui/core/ListItem';
 import Tooltip from '@material-ui/core/Tooltip';

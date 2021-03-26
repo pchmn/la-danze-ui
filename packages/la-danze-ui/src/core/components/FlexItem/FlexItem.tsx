@@ -27,4 +27,3 @@ export const FlexItem = styled.div(({ order, flexGrow, flexShrink, flexBasis, fl
   flex,
   alignSelf
 }));
-
