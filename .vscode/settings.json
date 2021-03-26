@@ -1,5 +1,5 @@
 {
-  "jestrunner.jestCommand": "npm run test --prefix packages/la-danze-ui --",
+  "jestrunner.jestCommand": "yarn test:lib --",
   // Disable default VSCode formatting for TypeScript files
   "[typescript]": {
     "editor.formatOnSave": false
@@ -14,5 +14,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "eslint.workingDirectories": [
+    { "directory": ".", "changeProcessCWD": true },
+ ]
 }
