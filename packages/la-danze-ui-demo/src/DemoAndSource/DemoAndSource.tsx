@@ -16,7 +16,12 @@ interface DemoAndSourceProps extends HTMLAttributes<any> {
   id: string;
 }
 
-export function DemoAndSource({ children, className, id }: React.PropsWithChildren<DemoAndSourceProps>): JSX.Element {
+export function DemoAndSource({
+  children,
+  className,
+  id,
+  style
+}: React.PropsWithChildren<DemoAndSourceProps>): JSX.Element {
   const { header, demo, sourceCode } = getContainers();
 
   useEffect(() => {
@@ -64,7 +69,7 @@ export function DemoAndSource({ children, className, id }: React.PropsWithChildr
   }
 
   return (
-    <Grid container spacing={0} className={`${styles.demoAndSource} ${className}`} data-id={id}>
+    <Grid container spacing={0} className={`${styles.demoAndSource} ${className}`} data-id={id} style={style}>
       <>{header}</>
       <>{demo}</>
       <>{sourceCode}</>

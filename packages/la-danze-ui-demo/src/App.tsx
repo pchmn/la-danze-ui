@@ -3,6 +3,7 @@ import Divider from '@material-ui/core/Divider';
 import {
   AnimateRoute,
   AnimateSwitch,
+  CookiePolicy,
   Drawer,
   DrawerContainer,
   DrawerListItem,
@@ -11,8 +12,7 @@ import {
   FlexLayout,
   MainContainer,
   Theme,
-  useAnimationKey,
-  useOpenDrawer
+  useAnimationKey
 } from 'la-danze-ui';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
@@ -22,11 +22,8 @@ import { FormsExample } from './FormsExample/FormsExample';
 import { ReactComponent as GithubIcon } from '/assets/github.svg';
 import logo from '/assets/logo.svg';
 
-export function App() {
-  const [open] = useOpenDrawer();
+export function App(): JSX.Element {
   const animationKey = useAnimationKey();
-
-  console.log('drawer open', open);
 
   function drawer() {
     return (
@@ -90,6 +87,35 @@ export function App() {
 
   return (
     <Theme>
+      <CookiePolicy
+        title="Privacy policy"
+        summary="We use cookies to improve your site experience."
+        settingsLabel="Cookie settings"
+        cookies={[
+          {
+            type: 'strictlyNecessary',
+            title: 'Strictly necessary',
+            summary: 'These cookies are necessary for the website (security, login).',
+            checked: true,
+            disabled: true
+          },
+          {
+            type: 'performance',
+            title: 'Performance',
+            summary: 'These cookies are used to analyse user behavior.',
+            checked: false,
+            disabled: false
+          },
+          {
+            type: 'functionality',
+            title: 'Functionality',
+            summary: 'These cookies are used to analyse user behavior.',
+            checked: false,
+            disabled: false
+          }
+        ]}
+        onCookieValueChange={(id, value) => console.log('cookie', id, value)}
+      />
       <DrawerTemplate>
         <DrawerContainer>{drawer()}</DrawerContainer>
 

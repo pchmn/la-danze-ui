@@ -6,7 +6,7 @@ import './index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename='/la-danze-ui/demo'>
+    <BrowserRouter basename="/la-danze-ui/demo">
       <App />
     </BrowserRouter>
   </React.StrictMode>,

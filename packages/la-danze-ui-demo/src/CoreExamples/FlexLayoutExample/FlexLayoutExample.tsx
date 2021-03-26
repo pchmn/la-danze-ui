@@ -18,7 +18,7 @@ export function FlexLayoutExample() {
         <Demo>
           <span>{'<FlexLayout>'}</span>
           <Paper variant="outlined" className={styles.paperContainer}>
-            <FlexLayout fullHeight >
+            <FlexLayout fullHeight>
               <FlexItem className={styles.flexItem}>
                 {'<FlexItem>'}
                 <Paper className={styles.paper}></Paper>
