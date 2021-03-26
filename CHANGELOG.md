@@ -1,3 +1,10 @@
+# [1.3.0-beta.2](https://github.com/pchmn/la-danze-ui/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2021-03-26)
+
+
+### Bug Fixes
+
+* css colors and demo dependency ([899add1](https://github.com/pchmn/la-danze-ui/commit/899add115a7d49ab7397f266e03d154f073ce2b8))
+
 # [1.3.0-beta.1](https://github.com/pchmn/la-danze-ui/compare/v1.2.2...v1.3.0-beta.1) (2021-03-26)
 
 
