@@ -1,3 +1,17 @@
+# [1.3.0-beta.1](https://github.com/pchmn/la-danze-ui/compare/v1.2.2...v1.3.0-beta.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* improve and format existing components ([d535d77](https://github.com/pchmn/la-danze-ui/commit/d535d776104db0406bb42331f7adddb3d5b68a9a))
+
+
+### Features
+
+* add Accordion component ([cfa5e56](https://github.com/pchmn/la-danze-ui/commit/cfa5e562f01e54ad817367b8338c93df44069964))
+* add CookiePolicy component ([20ccfb7](https://github.com/pchmn/la-danze-ui/commit/20ccfb7817a19803a8492227c7d1430d1ce5fcef))
+* add storage hook (localStorage, sessionStorage, cookieStorage) ([223d783](https://github.com/pchmn/la-danze-ui/commit/223d78380e2be914c9fe723cc29d89e77b2b1987))
+
 ## [1.2.2](https://github.com/pchmn/la-danze-ui/compare/v1.2.1...v1.2.2) (2021-03-05)
 
 
