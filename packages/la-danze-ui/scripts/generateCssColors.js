@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
 const palette = require('./palette.json');
+const path = require('path');
 
-const filePath = '../src/core/theme/colors.css';
+const filePath = path.resolve(__dirname, '../src/core/theme/colors.scss');
 
 generateCssColor();
 

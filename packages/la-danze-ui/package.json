@@ -23,6 +23,7 @@
   "homepage": "https://github.com/pchmn/la-danze-ui#readme",
   "scripts": {
     "start": "tsdx watch",
+    "prebuild": "yarn generate:css",
     "build": "tsdx build --tsconfig ./tsconfig.build.json",
     "postbuild": "yarn build:cookiepolicy",
     "test": "tsdx test --ci --runInBand",
@@ -30,7 +31,8 @@
     "lint": "tsdx lint",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "build:cookiepolicy": "browserify src/core/components/CookiePolicy/cookiePolicy.js -o cookiePolicy.js"
+    "build:cookiepolicy": "browserify src/core/components/CookiePolicy/cookiePolicy.js -o cookiePolicy.js",
+    "generate:css": "node ./scripts/generateCssColors.js"
   },
   "husky": {
     "hooks": {
