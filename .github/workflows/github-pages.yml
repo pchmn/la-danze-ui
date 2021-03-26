@@ -7,9 +7,11 @@ on:
     # Run every time a github release is created
     types: [created]
   push:
-    # Run only on main branch
+    # Run only on main, next or beta branch
     branches:
       - "main"
+      - "next"
+      - "beta"
     # Run only if files modified are not in lib package
     # and are not github docs
     paths-ignore:
@@ -17,9 +19,11 @@ on:
       - "*.md"
       - ".github/docs/**"
   pull_request:
-    # Run only on main branch
+    # Run only on main, next or beta branch
     branches:
       - "main"
+      - "next"
+      - "beta"
     # Run only if files modified are not in lib package
     # and are not github docs
     paths-ignore:

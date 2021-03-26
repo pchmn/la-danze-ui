@@ -24,11 +24,13 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build --tsconfig ./tsconfig.build.json",
+    "postbuild": "yarn build:cookiepolicy",
     "test": "tsdx test --ci --runInBand",
     "test:ci": "tsdx test --ci --coverage --runInBand",
     "lint": "tsdx lint",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "build:cookiepolicy": "browserify src/core/components/CookiePolicy/cookiePolicy.js -o cookiePolicy.js"
   },
   "husky": {
     "hooks": {
@@ -74,19 +76,25 @@
     ]
   },
   "dependencies": {
+    "js-cookie": "^2.2.1",
     "react-hookstore": "^1.5.1",
-    "tiny-invariant": "^1.1.0"
+    "tiny-invariant": "^1.1.0",
+    "yett": "^0.1.13"
   },
   "devDependencies": {
     "@emotion/jest": "^11.2.0",
     "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-image": "^2.0.6",
     "@size-limit/preset-small-lib": "^4.9.1",
+    "@svgr/rollup": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.2",
     "@types/history": "^4.7.8",
+    "@types/js-cookie": "^2.2.6",
     "@zerollup/ts-transform-paths": "^1.7.18",
     "autoprefixer": "^10.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "browserify": "^17.0.0",
     "copyfiles": "^2.4.1",
     "cssnano": "^4.1.10",
     "identity-obj-proxy": "^3.0.0",

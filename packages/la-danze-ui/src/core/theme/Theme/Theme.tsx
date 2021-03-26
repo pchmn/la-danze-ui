@@ -37,28 +37,14 @@ export const theme = createMuiTheme({
     borderRadius: 7
   },
   components: {
-    // Name of the component
     MuiButton: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
+          textTransform: 'initial'
+        },
+        sizeMedium: {
           fontSize: '0.95rem',
-          textTransform: 'initial',
           padding: '6px 20px'
-          // borderRadius: '30px'
-        }
-      }
-    },
-    MuiPaper: {
-      styleOverrides: {
-        // Name of the slot
-        root: {
-          // Some CSS
-          padding: '3rem',
-          '@media screen and (max-width: 600px)': {
-            padding: '2.5rem'
-          }
         }
       }
     },

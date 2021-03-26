@@ -1,4 +1,4 @@
-import { useIsMount } from '@la-danze-ui/core/hooks/useIsMount.hook';
+import { useIsMount } from '@la-danze-ui/core/hooks/useIsMount/useIsMount.hook';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 

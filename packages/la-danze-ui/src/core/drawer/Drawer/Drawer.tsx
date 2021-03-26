@@ -1,4 +1,4 @@
-import { FlexItem } from '@la-danze-ui/core/components/FlexLayout/FlexItem/FlexItem';
+import { FlexItem } from '@la-danze-ui/core/components/FlexItem/FlexItem';
 import { FlexLayout } from '@la-danze-ui/core/components/FlexLayout/FlexLayout';
 import { useOpenDrawer } from '@la-danze-ui/core/drawer/hooks/useOpenDrawer.hook';
 import { makeStyles, Theme } from '@material-ui/core';
@@ -24,9 +24,6 @@ export interface DrawerProps {
 const drawerWidth = 290;
 const toolbarHeight = 180;
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex'
-  },
   appBar: {
     padding: '2px 0',
     borderRadius: '0',
@@ -67,23 +64,19 @@ const useStyles = makeStyles((theme) => ({
       left: '10px',
       height: 'calc(100% - 20px)',
       borderRadius: theme.shape.borderRadius
-    }
-  },
-  drawerOpen: {
-    width: drawerWidth,
+    },
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    }),
+    })
+  },
+  drawerOpen: {
+    width: drawerWidth,
     '@media (max-width: 380px)': {
       width: '75%'
     }
   },
   drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
     overflowX: 'hidden',
     width: theme.spacing(9) + 1,
     [theme.breakpoints.up('md')]: {
@@ -208,7 +201,10 @@ export function Drawer({ children, logo, title, onLogoClick }: React.PropsWithCh
         <FlexLayout flexDirection="column" fullHeight>
           {/* Toolbar */}
           <FlexItem className={classes.toolbar}>
-            <div className={`${classes.logo} ${open ? 'logoOpen' : ''} ${onLogoClick ? 'clickable' : ''}`} onClick={handleLogoClick}>
+            <div
+              className={`${classes.logo} ${open ? 'logoOpen' : ''} ${onLogoClick ? 'clickable' : ''}`}
+              onClick={handleLogoClick}
+            >
               <img src={logo} alt="logo" />
               <span>{title}</span>
             </div>
@@ -229,9 +225,7 @@ export function Drawer({ children, logo, title, onLogoClick }: React.PropsWithCh
           </FlexItem>
 
           {/* Content */}
-          <FlexItem flexGrow={1}>
-            {children}
-          </FlexItem>
+          <FlexItem flexGrow={1}>{children}</FlexItem>
         </FlexLayout>
       </DrawerContext.Provider>
     );

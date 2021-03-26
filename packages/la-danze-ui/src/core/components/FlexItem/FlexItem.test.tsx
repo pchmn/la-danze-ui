@@ -1,17 +1,25 @@
-import { FlexItem } from '@la-danze-ui/core/components/FlexLayout/FlexItem/FlexItem';
+import { FlexItem } from '@la-danze-ui/core/components/FlexItem/FlexItem';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 describe('<FlexItem>', () => {
-  const Container = ({withProps}:{withProps?: boolean}) => {
+  const Container = ({ withProps }: { withProps?: boolean }) => {
     if (!withProps) {
-      return <FlexItem data-testid="flexItem">flex item</FlexItem>
+      return <FlexItem data-testid="flexItem">flex item</FlexItem>;
     }
     return (
-      <FlexItem data-testid="flexItem" order={2} flexGrow={1} flexShrink={1} flexBasis="fill" flex="auto" alignSelf="center">
+      <FlexItem
+        data-testid="flexItem"
+        order={2}
+        flexGrow={1}
+        flexShrink={1}
+        flexBasis="fill"
+        flex="auto"
+        alignSelf="center"
+      >
         flex item
       </FlexItem>
-    )
+    );
   };
 
   const setUp = (withProps = false) => {
@@ -44,5 +52,4 @@ describe('<FlexItem>', () => {
     expect(flexItem).toHaveStyleRule('flex', 'auto');
     expect(flexItem).toHaveStyleRule('align-self', 'center');
   });
-
 });

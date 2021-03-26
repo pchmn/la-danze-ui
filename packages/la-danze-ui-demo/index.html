@@ -6,6 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/svg+xml" href="/assets/logo.svg">
   <title>Demo | La Danze UI</title>
+  <script>
+    window.COOKIES_BLACKLIST = {
+      functionality: [
+        new RegExp('unpkg.com')
+      ],
+      performance: [
+        new RegExp('my-blacklisted-domain.com'),
+        new RegExp('my-blacklisted-domain2.com')
+      ]
+    };
+  </script>
+  <script src="./cookiePolicy.js"></script>
+  <!-- 2) Include Yett -->
+  <script src="https://unpkg.com/yett"></script>
+  <!-- 3) Profit! -->
+  <!-- This script is blocked -->
+  <script src="https://my-blacklisted-domain2.com/file.js"></script>
+  <script>
+    // This one too
+    (function() {
+      var script = document.createElement('script')
+      script.setAttribute('src', 'https://my-blacklisted-domain.com/some-file.js')
+      script.setAttribute('type', 'application/javascript')
+      document.head.appendChild(script)
+    })()
+  </script>
   <!-- Start Single Page Apps for GitHub Pages -->
   <script type="text/javascript">
     // Single Page Apps for GitHub Pages

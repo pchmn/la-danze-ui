@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { withClass } from '@la-danze-ui/core/withClass';
 
 type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
@@ -24,16 +25,17 @@ export interface FlexLayoutProps {
   fullHeight?: boolean;
 }
 
-export const FlexLayout = styled.div(
-  ({ flexDirection, flexWrap, flexFlow, justifyContent, alignItems, alignContent, fullHeight }: FlexLayoutProps) => ({
-    display: 'flex',
-    flexDirection,
-    flexWrap,
-    justifyContent,
-    flexFlow,
-    alignItems,
-    alignContent,
-    height: fullHeight ? '100%' : 'auto'
-  })
+export const FlexLayout = withClass('LaDuiFlexLayout')(
+  styled.div(
+    ({ flexDirection, flexWrap, flexFlow, justifyContent, alignItems, alignContent, fullHeight }: FlexLayoutProps) => ({
+      display: 'flex',
+      flexDirection,
+      flexWrap,
+      justifyContent,
+      flexFlow,
+      alignItems,
+      alignContent,
+      height: fullHeight ? '100%' : 'auto'
+    })
+  )
 );
-
